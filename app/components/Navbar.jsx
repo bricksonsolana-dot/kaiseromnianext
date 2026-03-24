@@ -200,34 +200,35 @@ export const Navbar = () => {
             </Link>
           ))}
 
-          <div
-            role="button"
-            tabIndex={0}
-            onPointerDown={handleToggleLanguage}
-            className={styles.overlayLangBtnMobile}
-            aria-label="Toggle language"
-          >
-            <span
-              className={
-                language === 'en'
-                  ? styles.overlayLangActive
-                  : styles.overlayLangInactive
-              }
-            >
-              ΕΝ
-            </span>
-            <span className={styles.overlayLangSlash}>/</span>
-            <span
-              className={
-                language === 'el'
-                  ? styles.overlayLangActive
-                  : styles.overlayLangInactive
-              }
-            >
-              ΕΛ
-            </span>
-          </div>
         </nav>
+
+        <div
+          role="button"
+          tabIndex={0}
+          onPointerDown={handleToggleLanguage}
+          className={styles.overlayLangBtnMobile}
+          aria-label="Toggle language"
+        >
+          <span
+            className={
+              language === 'en'
+                ? styles.overlayLangActive
+                : styles.overlayLangInactive
+            }
+          >
+            ΕΝ
+          </span>
+          <span className={styles.overlayLangSlash}>/</span>
+          <span
+            className={
+              language === 'el'
+                ? styles.overlayLangActive
+                : styles.overlayLangInactive
+            }
+          >
+            ΕΛ
+          </span>
+        </div>
       </div>
     </>
   );

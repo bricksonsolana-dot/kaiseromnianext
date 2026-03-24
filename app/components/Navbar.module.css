@@ -475,7 +475,10 @@ a.overlayContactItem:hover {
 
   .overlayLangBtnMobile {
     display: block;
-    margin-top: 2rem;
+    position: absolute;
+    bottom: 2rem;
+    left: 50%;
+    transform: translateX(-50%);
     background: none;
     border: none;
     color: rgba(255, 255, 255, 0.6);
@@ -487,7 +490,7 @@ a.overlayContactItem:hover {
     cursor: pointer;
     padding: 0.5rem 0;
     transition: color 0.2s ease;
-    text-align: left;
+    text-align: center;
   }
 
   .overlayLangBtnMobile:hover {

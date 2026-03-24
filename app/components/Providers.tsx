@@ -7,7 +7,6 @@ import { Toaster } from 'sonner';
 import { LanguageProvider } from '@/app/context/LanguageContext';
 import { Navbar } from '@/app/components/Navbar';
 import { Footer } from '@/app/components/Footer/Footer';
-import { CustomCursor } from '@/app/components/CustomCursor';
 import SmoothScroll from '@/app/components/SmoothScroll';
 
 // Optional: A lightweight scroll-to-top wrapper if needed
@@ -30,8 +29,7 @@ export default function Providers({ children }: { children: ReactNode }) {
       
       {/* Global visual effects */}
       <SmoothScroll children={undefined} />
-      <CustomCursor />
-      
+
       {/* Navbar is usually outside the main route content */}
       <Navbar />
       
