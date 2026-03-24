@@ -78,7 +78,7 @@ export default function CompanyPage() {
         <h2 className={styles.sectionTitle}>{t.mvv.title}</h2>
 
         <div className={styles.mvvRows}>
-          <AnimatedDivider />
+          
           <div className={styles.mvvRow}>
             <div>
               <h3 className={styles.mvvRowHeading}>{t.mvv.mission.title}</h3>
