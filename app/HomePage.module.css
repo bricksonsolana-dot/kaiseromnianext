@@ -1,0 +1,743 @@
+/* ─── Hero ───────────────────────────────────────────────────── */
+.hero {
+    position: relative;
+    height: 100svh;
+    width: 100%;
+    overflow: hidden;
+    background: var(--color-bg-dark);
+  }
+  
+  .heroBg {
+    position: absolute;
+    inset: 0;
+    will-change: transform;
+  }
+  
+  .heroBg img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    display: block;
+  }
+  
+  .heroOverlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      to top,
+      rgba(17, 17, 16, 0.75) 0%,
+      rgba(17, 17, 16, 0.35) 50%,
+      rgba(17, 17, 16, 0.1) 100%
+    );
+    z-index: 1;
+  }
+  
+  .heroContent {
+    position: absolute;
+    inset: 0;
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding: clamp(2rem, 6vw, 5rem);
+    padding-bottom: clamp(4rem, 7vw, 6rem);
+    will-change: transform, opacity;
+  }
+  
+  .heroTag {
+    font-family: var(--font-ui);
+    font-size: 0.68rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, 0.5);
+    display: block;
+    margin-bottom: 1.5rem;
+  }
+  
+  .heroHeadSpan {
+    font-family: var(--font-display);
+    font-size: var(--fs-h2);
+    font-weight: 300;
+    line-height: 1.1;
+    color: #fff;
+    display: block;
+  }
+  
+  .heroHeadSpan.italic {
+    font-style: italic;
+    color: rgba(255, 255, 255, 0.65);
+  }
+  
+  .heroSubtitle {
+    font-family: var(--font-body);
+    font-size: var(--fs-body);
+    font-weight: 300;
+    color: rgba(255, 255, 255, 0.55);
+    line-height: 1.75;
+    max-width: 36rem;
+    margin-top: 1rem;
+  }
+  
+  .heroEstablished {
+    position: absolute;
+    top: 7rem;
+    left: clamp(2rem, 6vw, 5rem);
+    z-index: 2;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+  }
+  
+  .heroEstLine {
+    width: 2rem;
+    height: 1px;
+    background: rgba(255,255,255,0.4);
+  }
+  
+  .heroEstText {
+    font-family: var(--font-ui);
+    font-size: 0.65rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.5);
+  }
+  
+  .heroBottom {
+    position: absolute;
+    bottom: clamp(5rem, 8vw, 6rem);
+    left: clamp(2rem, 6vw, 5rem);
+    right: clamp(2rem, 6vw, 5rem);
+    z-index: 2;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  
+  .heroScrollLine {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+  
+  .heroScrollText {
+    font-family: var(--font-ui);
+    font-size: 0.7rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, 0.55);
+  }
+  
+  .heroLine {
+    width: 48px;
+    height: 1px;
+    background: rgba(255, 255, 255, 0.4);
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .heroLine::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: rgba(255, 255, 255, 0.9);
+    animation: lineSlide 2.5s ease-in-out infinite;
+  }
+  
+  @keyframes lineSlide {
+    0%   { left: -100%; }
+    50%  { left: 0%; }
+    100% { left: 100%; }
+  }
+  
+  .heroTagline {
+    font-family: var(--font-ui);
+    font-size: 0.65rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, 0.35);
+  }
+  
+  
+  /* ─── Section layout ─────────────────────────────────────────── */
+  .section {
+    padding-block: clamp(5rem, 9vw, 8rem);
+    padding-inline: clamp(1.5rem, 6vw, 5rem);
+  }
+  
+  .sectionHeader {
+    display: flex;
+    align-items: baseline;
+    gap: 1rem;
+    margin-bottom: clamp(3rem, 5vw, 4rem);
+  }
+  
+  .sectionNum {
+    font-family: var(--font-ui);
+    font-size: 1rem;
+    color: var(--color-ink-muted);
+    letter-spacing: 0.1em;
+  }
+  
+  .sectionTitle {
+    font-family: var(--font-display);
+    font-size: clamp(1.6rem, 3vw, 2.2rem);
+    font-weight: 300;
+    color: var(--color-ink);
+    margin: 0;
+  }
+  
+  /* ─── Services list ──────────────────────────────────────────── */
+  .servicesList {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+  
+  .serviceItem {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .serviceRow {
+    display: grid;
+    grid-template-columns: 4rem 1fr 2rem;
+    align-items: center;
+    padding: 1.5rem 0;
+    cursor: pointer;
+    transition: padding-left 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+    width: 100%;
+    background: none;
+    border: none;
+    text-align: left;
+  }
+  
+  .serviceRow:hover {
+    padding-left: 0.5rem;
+  }
+  
+  .serviceRowOpen .serviceName {
+    color: var(--color-ink);
+  }
+  
+  .serviceCode {
+    font-family: var(--font-ui);
+    font-size: 0.7rem;
+    color: var(--color-ink-muted);
+    letter-spacing: 0.1em;
+  }
+  
+  .serviceName {
+    font-family: var(--font-display);
+    font-size: var(--fs-h3);
+    font-weight: 300;
+    color: var(--color-ink);
+    margin: 0;
+    transition: color 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+  
+  .serviceIcon {
+    font-family: var(--font-ui);
+    font-size: 1.5rem;
+    font-weight: 200;
+    color: var(--color-ink-muted);
+    display: flex;
+    justify-content: flex-end;
+    transition: transform 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+    line-height: 1;
+  }
+  
+  .serviceRowOpen .serviceIcon {
+    transform: rotate(45deg);
+  }
+  
+  .serviceContent {
+    display: grid;
+    grid-template-rows: 0fr;
+    transition: grid-template-rows 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+  
+  .serviceContentOpen {
+    grid-template-rows: 1fr;
+  }
+  
+  .serviceContentInner {
+    overflow: hidden;
+  }
+  
+  .serviceDescription {
+    font-family: var(--font-body);
+    font-size: clamp(0.95rem, 1.5vw, 1.1rem);
+    font-weight: 400;
+    line-height: 1.7;
+    color: var(--color-ink-muted);
+    margin: 0;
+    padding-left: 4rem;
+    padding-bottom: 1.5rem;
+    opacity: 0;
+    transform: translateY(-8px);
+    transition: 
+      opacity 0.5s cubic-bezier(0.22, 1, 0.36, 1),
+      transform 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+    transition-delay: 0s;
+  }
+  
+  .serviceContentOpen .serviceDescription {
+    opacity: 1;
+    transform: translateY(0);
+    transition-delay: 0.1s;
+  }
+  
+  .servicesFooter {
+    margin-top: 2.5rem;
+  }
+  
+  @media (max-width: 640px) {
+    .serviceRow {
+      grid-template-columns: 3rem 1fr 1.5rem;
+      padding: 1.25rem 0;
+    }
+  
+    .serviceDescription {
+      padding-left: 3rem;
+    }
+  
+    .serviceCode {
+      font-size: 0.65rem;
+    }
+  }
+  
+  /* ─── Company section ────────────────────────────────────────── */
+  .companyGrid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: clamp(3rem, 6vw, 6rem);
+    align-items: stretch; /* KEY: image matches text height */
+  }
+  
+  .companyHeading {
+    font-family: var(--font-display);
+    font-size: clamp(1.85rem, 3.5vw, 3rem);
+    font-weight: 300;
+    color: var(--color-ink);
+    margin: 0 0 1.5rem;
+    line-height: 1.15;
+  }
+  
+  .companyBody {
+    font-family: var(--font-body);
+    font-size: var(--fs-lead);
+    font-weight: 400;
+    color: var(--color-ink-muted);
+    line-height: 1.9;
+    margin: 0 0 2rem;
+  }
+  
+  /* Image matches text height — no fixed aspect ratio on desktop */
+  .companyImageWrap {
+    position: relative;
+    overflow: hidden;
+    width: 100%;
+    min-height: 400px;
+  }
+  
+  /* ─── Technology section ─────────────────────────────────────── */
+  .techSection {
+    background: var(--color-bg);
+    padding-block: clamp(5rem, 9vw, 8rem);
+    padding-inline: clamp(1.5rem, 6vw, 5rem);
+  }
+  
+  .techGrid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: clamp(3rem, 6vw, 6rem);
+    align-items: stretch; /* KEY: image matches text height */
+  }
+  
+  .techBody {
+    font-family: var(--font-body);
+    font-size: var(--fs-lead);
+    font-weight: 400;
+    color: var(--color-ink-muted);
+    line-height: 1.85;
+    margin: 0 0 2.5rem;
+  }
+  
+  .techBenefits {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.75rem;
+    margin-bottom: 2.5rem;
+  }
+  
+  .techBenefit {
+    border-top: 1px solid var(--color-rule);
+    padding-top: 1.1rem;
+  }
+  
+  .techBenefitTitle {
+    font-family: var(--font-ui);
+    font-size: 0.85rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--color-accent);
+    display: block;
+    margin-bottom: 0.6rem;
+  }
+  
+  .techBenefitDesc {
+    font-family: var(--font-body);
+    font-size: 1rem;
+    font-weight: 400;
+    color: var(--color-ink-muted);
+    line-height: 1.75;
+    margin: 0;
+  }
+  
+  /* Image matches text height — no fixed aspect ratio on desktop */
+  .techImageWrap {
+    position: relative;
+    overflow: hidden;
+    min-height: 400px;
+  }
+  
+  .techPatentBadge {
+    position: absolute;
+    top: 1.25rem;
+    right: 1.25rem;
+    background: var(--color-accent);
+    color: #fff;
+    font-family: var(--font-ui);
+    font-size: 0.65rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    padding: 0.4rem 0.8rem;
+  }
+  
+  /* ─── Projects section ───────────────────────────────────────── */
+  .projectsRows {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .projectPair {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: clamp(1.5rem, 3vw, 3rem);
+    padding: clamp(1.5rem, 3vw, 2.5rem) 0;
+  }
+  
+  .projectCard {
+    overflow: hidden;
+    text-decoration: none;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .projectImageWrap {
+    position: relative;
+    overflow: hidden;
+    padding-bottom: 75%;
+  }
+  
+  .projectInfoBar {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    padding: 1rem 0 0;
+    gap: 1rem;
+  }
+  
+  .projectName {
+    font-family: var(--font-display);
+    font-size: var(--fs-h4);
+    font-weight: 400;
+    color: var(--color-ink);
+    margin: 0;
+    line-height: 1.2;
+  }
+  
+  .projectMeta {
+    font-family: var(--font-ui);
+    font-size: 0.65rem;
+    letter-spacing: 0.1em;
+    color: var(--color-ink-muted);
+    text-align: right;
+    flex-shrink: 0;
+  }
+  
+  /* ─── Construction stages ────────────────────────────────────── */
+  .stagesSection {
+    padding-block: clamp(5rem, 9vw, 8rem);
+    padding-inline: clamp(1.5rem, 6vw, 5rem);
+  }
+  
+  .stagesSubtitle {
+    font-family: var(--font-body);
+    font-size: var(--fs-lead);
+    font-weight: 300;
+    color: var(--color-ink-muted);
+    line-height: 1.9;
+    max-width: 48rem;
+    margin: 0 0 clamp(2rem, 4vw, 3.5rem);
+  }
+  
+  .stagesRows {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .stagePairGrid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: clamp(1.5rem, 4vw, 3.5rem);
+    padding-block: clamp(2.5rem, 5vw, 4rem);
+  }
+  
+  .stageCard {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .stageInfo {
+    padding-top: 1.75rem;
+  }
+  
+  .stageImageWrap {
+    position: relative;
+    overflow: hidden;
+    padding-bottom: 66.667%;
+  }
+  
+  .stageLabel {
+    font-family: var(--font-ui);
+    font-size: 0.7rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--color-accent);
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    margin-bottom: 1rem;
+  }
+  
+  .stageLabelLine {
+    width: 2rem;
+    height: 1px;
+    background: var(--color-accent);
+  }
+  
+  .stageTitle {
+    font-family: var(--font-display);
+    font-size: clamp(1.5rem, 2.5vw, 2.2rem);
+    font-weight: 300;
+    color: var(--color-ink);
+    margin: 0 0 1rem;
+  }
+  
+  .stageDesc {
+    font-family: var(--font-body);
+    font-size: var(--fs-lead);
+    font-weight: 300;
+    color: var(--color-ink-muted);
+    line-height: 1.9;
+    margin: 0 0 1.5rem;
+  }
+  
+  .stageDetails {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+  
+  .stageDetail {
+    font-family: var(--font-ui);
+    font-size: var(--fs-label);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--color-ink-muted);
+    border: 1px solid var(--color-rule);
+    padding: 0.3rem 0.75rem;
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+  }
+  
+  .stageDetailDot {
+    width: 4px;
+    height: 4px;
+    border-radius: 50%;
+    background: var(--color-accent);
+    flex-shrink: 0;
+  }
+  
+  /* ─── CTA section ────────────────────────────────────────────── */
+  .ctaSection {
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .ctaBg {
+    position: absolute;
+    inset: 0;
+  }
+  
+  .ctaBg img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+  
+  .ctaOverlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(17,17,16,0.88);
+  }
+  
+  .ctaContent {
+    position: relative;
+    z-index: 1;
+    padding-block: clamp(5rem, 9vw, 8rem);
+    padding-inline: clamp(1.5rem, 6vw, 5rem);
+    max-width: 52rem;
+  }
+  
+  .ctaTitle {
+    font-family: var(--font-display);
+    font-size: var(--fs-display);
+    font-weight: 300;
+    color: #fff;
+    margin: 0 0 1.5rem;
+    line-height: 1.1;
+  }
+  
+  .ctaSubtitle {
+    font-family: var(--font-body);
+    font-size: 0.95rem;
+    font-weight: 300;
+    color: #666;
+    line-height: 1.9;
+    margin: 0 0 2.5rem;
+    max-width: 38rem;
+  }
+  
+  .ctaBtn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.75rem;
+    text-decoration: none;
+    font-family: var(--font-ui);
+    font-size: 1rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: #fff;
+    border: 1px solid #444;
+    padding: 1rem 2rem;
+    transition: border-color 0.25s ease, color 0.25s ease;
+  }
+  
+  .ctaBtn:hover {
+    border-color: var(--color-accent);
+    color: var(--color-accent);
+  }
+  
+  .ctaBtn svg { transition: transform 0.25s ease; }
+  .ctaBtn:hover svg { transform: translateX(5px); }
+  
+  
+  /* ═══════════════════════════════════════════════════════════════
+     RESPONSIVE — all breakpoints consolidated
+     ═══════════════════════════════════════════════════════════════ */
+  
+  /* ── 2100px — font-size adjustments only ────────────────────── */
+  @media (max-width: 2100px) {
+    .stageTitle {
+      font-size: 1.85rem;
+    }
+  }
+  
+  /* ── 1280px — image size adjustments only, keep 2-column layout */
+  @media (max-width: 1280px) {
+    .companyImageWrap {
+      min-height: unset;
+    }
+  
+    .techImageWrap {
+      min-height: unset;
+    }
+  }
+  
+  /* ── 900px — font-size adjustments ──────────────────────────── */
+  @media (max-width: 900px) {
+    .techBenefits {
+      grid-template-columns: 1fr;
+      gap: 1.5rem;
+    }
+  
+    .stageTitle {
+      font-size: 1.65rem;
+    }
+  }
+  
+  /* ── 768px ───────────────────────────────────────────────────── */
+  @media (max-width: 768px) {
+    .stagePairGrid {
+      grid-template-columns: 1fr;
+      gap: clamp(2.5rem, 6vw, 4rem);
+    }
+  }
+  
+  /* ── 640px — mobile ──────────────────────────────────────────── */
+  @media (max-width: 640px) {
+    .companyBody {
+      line-height: 1.8;
+    }
+  
+    .companyGrid {
+      grid-template-columns: 1fr;
+      gap: 3rem;
+    }
+  
+    .companyImageWrap {
+      order: -1;
+      padding-bottom: 75%;
+      margin-inline: calc(-1 * clamp(1.5rem, 6vw, 5rem));
+      width: calc(100% + 2 * clamp(1.5rem, 6vw, 5rem));
+    }
+  
+    .techGrid {
+      grid-template-columns: 1fr;
+      gap: 3rem;
+    }
+  
+    .techImageWrap {
+      order: -1;
+      padding-bottom: 75%;
+      margin-inline: calc(-1 * clamp(1.5rem, 6vw, 5rem));
+      width: calc(100% + 2 * clamp(1.5rem, 6vw, 5rem));
+    }
+  
+    .techBody {
+      line-height: 1.8;
+    }
+  
+    .stageTitle {
+      font-size: 1.5rem;
+    }
+  
+    .projectPair {
+      grid-template-columns: 1fr;
+    }
+  }
+  
+  /* ── 400px — small mobile ────────────────────────────────────── */
+  @media (max-width: 400px) {
+    .stageTitle {
+      font-size: 1.25rem;
+    }
+  }

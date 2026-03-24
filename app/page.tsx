@@ -1,65 +1,401 @@
-import Image from "next/image";
+// app/page.tsx
+'use client';
 
-export default function Home() {
+import { useEffect, useRef, useState } from 'react';
+import Link from 'next/link';
+import Image from 'next/image';
+import { useLanguage } from '@/app/context/LanguageContext';
+import translations from '@/app/translations/home'; // adjust path to match yours
+import styles from './HomePage.module.css';
+import { AnimatedDivider } from '@/app/components/AnimatedDivider/AnimatedDivider';
+import ParallaxImage from '@/app/components/ParallaxImage/ParallaxImage';
+
+// ── Types ──────────────────────────────────────────────────────────────────
+
+type Language = 'el' | 'en';
+
+interface Service {
+  code: string;
+  name: string;
+  description: string;
+}
+
+interface Project {
+  id: number;
+  nameEl: string;
+  nameEn: string;
+  locationEl: string;
+  locationEn: string;
+  year: string;
+  image: string;
+}
+
+// ── Static Data ────────────────────────────────────────────────────────────
+
+const ArrowRight = () => (
+  <svg
+    width="16"
+    height="16"
+    viewBox="0 0 16 16"
+    fill="none"
+    aria-hidden="true"
+  >
+    <path
+      d="M3 8h10M9 4l4 4-4 4"
+      stroke="currentColor"
+      strokeWidth="1.2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    />
+  </svg>
+);
+
+const SERVICES: Record<Language, Service[]> = {
+  el: [
+    {
+      code: '001',
+      name: 'Σχεδιασμός & Μηχανική',
+      description:
+        'Μελέτη που προσαρμόζεται από την αρχή στο σύστημα κατασκευής, περιορίζοντας αλλαγές και περιττές δαπάνες.',
+    },
+    {
+      code: '002',
+      name: 'Τεχνικός Σχεδιασμός Εφαρμογής',
+      description:
+        'Αποτελεί τον συνδετικό κρίκο μεταξύ μελέτης και κατασκευής, εξασφαλίζοντας ακρίβεια και σωστή υλοποίηση.',
+    },
+    {
+      code: '003',
+      name: 'Κατασκευή',
+      description:
+        'Εξειδίκευση στο double wall, με αποτέλεσμα ταχύτερη πρόοδο εργασιών και σταθερή ποιότητα.',
+    },
+    {
+      code: '004',
+      name: 'Διαχείριση Έργου',
+      description:
+        'Συνεχής παρακολούθηση χρονοδιαγράμματος και κόστους σε κάθε φάση του έργου.',
+    },
+  ],
+  en: [
+    {
+      code: '001',
+      name: 'Design & Engineering',
+      description:
+        'Studies adapted from the start to the construction system, limiting changes and unnecessary expenses.',
+    },
+    {
+      code: '002',
+      name: 'Technical Application Design',
+      description:
+        'The connecting link between study and construction, ensuring accuracy and proper implementation.',
+    },
+    {
+      code: '003',
+      name: 'Construction',
+      description:
+        'Specialization in double wall, resulting in faster progress and consistent quality.',
+    },
+    {
+      code: '004',
+      name: 'Project Management',
+      description:
+        'Continuous monitoring of schedule and cost at every phase of the project.',
+    },
+  ],
+};
+
+const PROJECTS: Project[] = [
+  {
+    id: 1,
+    nameEl: 'Εμπορικό Κέντρο The Mall',
+    nameEn: 'The Mall Athens',
+    locationEl: 'Αθήνα',
+    locationEn: 'Athens',
+    year: '2005',
+    image: '/images/home/erga/themall.png',
+  },
+  {
+    id: 2,
+    nameEl: 'Εμπορικό Κέντρο Athens Heart',
+    nameEn: 'Athens Heart Mall',
+    locationEl: 'Αθήνα',
+    locationEn: 'Athens',
+    year: '2008',
+    image: '/images/home/erga/athensheart.png',
+  },
+  {
+    id: 3,
+    nameEl: 'Ιδιωτική Κατοικία',
+    nameEn: 'Private Residency',
+    locationEl: 'Ναύπλιο',
+    locationEn: 'Nafplion',
+    year: '2012',
+    image: '/images/home/erga/petrino2.png',
+  },
+  {
+    id: 4,
+    nameEl: 'Ξενοδοχειακές Μονάδες',
+    nameEn: 'Villa Kyklades',
+    locationEl: 'Κυκλάδες',
+    locationEn: 'Kyklades',
+    year: '2015',
+    image: '/images/home/erga/kyklades.png',
+  },
+];
+
+// ── Component ──────────────────────────────────────────────────────────────
+
+export default function HomePage() {
+  const { language } = useLanguage() as { language: Language; toggleLanguage: () => void };
+  const t = translations[language];
+  const heroContentRef = useRef<HTMLDivElement>(null);
+  const heroBgRef = useRef<HTMLDivElement>(null);
+  const [openService, setOpenService] = useState<number | null>(null);
+
+  const services = SERVICES[language];
+
+  const handleServiceToggle = (index: number) => {
+    setOpenService(openService === index ? null : index);
+  };
+
+  // Parallax scroll effect on hero
+  useEffect(() => {
+    const onScroll = () => {
+      const sy = window.scrollY;
+      if (heroBgRef.current) {
+        heroBgRef.current.style.transform = `translateY(${sy * 0.15}px)`;
+      }
+      if (heroContentRef.current) {
+        heroContentRef.current.style.transform = `translateY(${sy * 0.25}px)`;
+        heroContentRef.current.style.opacity = String(
+          Math.max(0, 1 - sy / 600)
+        );
+      }
+    };
+    window.addEventListener('scroll', onScroll, { passive: true });
+    return () => window.removeEventListener('scroll', onScroll);
+  }, []);
+
+  // Pair up projects for the two-column row layout
+  const projectPairs: Project[][] = [
+    [PROJECTS[0], PROJECTS[1]],
+    [PROJECTS[2], PROJECTS[3]],
+  ];
+
   return (
-    <div className="flex flex-col flex-1 items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex flex-1 w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the page.tsx file.
+    <div data-testid="home-page">
+
+      {/* ── Hero ──────────────────────────────────────────────────── */}
+      <section className={styles.hero} data-testid="hero-section">
+        <div ref={heroBgRef} className={styles.heroBg}>
+          {/*
+           * next/image requires explicit width + height (or fill).
+           * Use fill + object-cover when the parent is position:relative
+           * with a fixed height — which your hero almost certainly is.
+           */}
+          <Image
+            src="/images/home/land4.jpg"
+            alt="Kaiser Omnia Construction"
+            fill
+            priority          // LCP image — load immediately
+            sizes="100vw"
+            className={styles.heroBgImg} // add object-fit:cover here in CSS
+          />
+        </div>
+        <div className={styles.heroOverlay} />
+
+        <div ref={heroContentRef} className={styles.heroContent}>
+          <span className={styles.heroTag}>{t.hero.tag}</span>
+          <h1>
+            <span className={styles.heroHeadSpan}>{t.hero.titleLine1}</span>
+            <span className={`${styles.heroHeadSpan} ${styles.italic}`}>
+              {t.hero.titleLine2}
+            </span>
           </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
-          </p>
+          <p className={styles.heroSubtitle}>{t.hero.subtitle}</p>
         </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
+      </section>
+
+      {/* ── 01 Services ───────────────────────────────────────────── */}
+      <AnimatedDivider />
+      <section className={styles.section} data-testid="services-section">
+        <div className={styles.sectionHeader}>
+          <span className={styles.sectionNum}>01</span>
+          <h2 className={styles.sectionTitle}>
+            {language === 'el' ? 'Υπηρεσίες μας' : 'Our Services'}
+          </h2>
+        </div>
+
+        <div className={styles.servicesList}>
+          <AnimatedDivider />
+          {services.map((s, i) => (
+            <div key={s.code} className={styles.serviceItem}>
+              <button
+                className={`${styles.serviceRow} ${
+                  openService === i ? styles.serviceRowOpen : ''
+                }`}
+                onClick={() => handleServiceToggle(i)}
+                aria-expanded={openService === i}
+              >
+                <span className={styles.serviceCode}>{s.code}</span>
+                <h3 className={styles.serviceName}>{s.name}</h3>
+                <span className={styles.serviceIcon}>+</span>
+              </button>
+
+              <div
+                className={`${styles.serviceContent} ${
+                  openService === i ? styles.serviceContentOpen : ''
+                }`}
+                aria-hidden={openService !== i}
+              >
+                <div className={styles.serviceContentInner}>
+                  <p className={styles.serviceDescription}>{s.description}</p>
+                </div>
+              </div>
+
+              <AnimatedDivider delay={(i + 1) * 80} />
+            </div>
+          ))}
+        </div>
+
+        <div className={styles.servicesFooter}>
+          <Link href="/services" className="arrow-link">
+            {language === 'el' ? 'Όλες οι υπηρεσίες' : 'All services'}{' '}
+            <ArrowRight />
+          </Link>
+        </div>
+      </section>
+
+      {/* ── 02 Company ────────────────────────────────────────────── */}
+      <AnimatedDivider />
+      <section className={styles.section} data-testid="about-preview">
+        <div className={styles.sectionHeader}>
+          <span className={styles.sectionNum}>02</span>
+          <h2 className={styles.sectionTitle}>{t.about.sectionTitle}</h2>
+        </div>
+
+        <div className={styles.companyGrid}>
+          <div>
+            <h3 className={styles.companyHeading}>{t.about.abouttitleline}</h3>
+            <p className={styles.companyBody}>{t.about.body}</p>
+            <Link href="/company" className="arrow-link">
+              {t.about.cta} <ArrowRight />
+            </Link>
+          </div>
+
+          <div className={styles.companyImageWrap}>
+            <ParallaxImage
+              src="/images/home/kaiser2.png"
+              alt="Kaiser Omnia construction"
             />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
+          </div>
         </div>
-      </main>
+      </section>
+
+      {/* ── 03 Recent Projects ────────────────────────────────────── */}
+      <AnimatedDivider />
+      <section className={styles.section} data-testid="projects-section">
+        <div className={styles.sectionHeader}>
+          <span className={styles.sectionNum}>03</span>
+          <h2 className={styles.sectionTitle}>{t.portfolio.sectionTitle}</h2>
+        </div>
+
+        <div className={styles.projectsRows}>
+          {projectPairs.map((pair, idx) => (
+            <div key={idx}>
+              {idx > 0 && <AnimatedDivider />}
+              <div className={styles.projectPair}>
+                {pair.map((p) => (
+                  <Link key={p.id} href="/projects" className={styles.projectCard}>
+                    <div className={styles.projectImageWrap}>
+                      <ParallaxImage
+                        src={p.image}
+                        alt={language === 'el' ? p.nameEl : p.nameEn}
+                      />
+                    </div>
+                    <div className={styles.projectInfoBar}>
+                      <h3 className={styles.projectName}>
+                        {language === 'el' ? p.nameEl : p.nameEn}
+                      </h3>
+                      <div className={styles.projectMeta}>
+                        <span>
+                          {language === 'el' ? p.locationEl : p.locationEn}
+                        </span>
+                        <br />
+                        <span>{p.year}</span>
+                      </div>
+                    </div>
+                  </Link>
+                ))}
+              </div>
+            </div>
+          ))}
+        </div>
+
+        <div style={{ marginTop: '2.5rem' }}>
+          <Link href="/projects" className="arrow-link">
+            {t.portfolio.viewAll} <ArrowRight />
+          </Link>
+        </div>
+      </section>
+
+      {/* ── 04 Technology ─────────────────────────────────────────── */}
+      <AnimatedDivider />
+      <section className={styles.techSection} data-testid="tech-preview">
+        <div className={styles.sectionHeader}>
+          <span className={styles.sectionNum}>04</span>
+          <h2 className={styles.sectionTitle}>{t.technology.sectionTitle}</h2>
+        </div>
+
+        <div className={styles.techGrid}>
+          <div>
+            <p className={styles.techBody}>{t.technology.body}</p>
+            <div className={styles.techBenefits}>
+              {t.technology.benefits.map((b, i) => (
+                <div key={i} className={styles.techBenefit}>
+                  <span className={styles.techBenefitTitle}>{b.title}</span>
+                  <p className={styles.techBenefitDesc}>{b.desc}</p>
+                </div>
+              ))}
+            </div>
+            <Link href="/services" className="arrow-link">
+              {t.technology.cta} <ArrowRight />
+            </Link>
+          </div>
+
+          <div className={styles.techImageWrap}>
+            <ParallaxImage
+              src="/images/home/geranosmepanel.png"
+              alt="Double Wall Technology"
+            />
+          </div>
+        </div>
+      </section>
+
+      {/* ── CTA ───────────────────────────────────────────────────── */}
+      <AnimatedDivider />
+      <section className={styles.ctaSection} data-testid="cta-banner">
+        <div className={styles.ctaBg}>
+          <Image
+            src="/images/home/land3.png"
+            alt=""
+            aria-hidden="true"
+            fill
+            sizes="100vw"
+            className={styles.ctaBgImg} // object-fit:cover in CSS
+          />
+        </div>
+        <div className={styles.ctaOverlay} />
+        <div className={styles.ctaContent}>
+          <h2 className={styles.ctaTitle}>{t.cta.title}</h2>
+          <p className={styles.ctaSubtitle}>{t.cta.subtitle}</p>
+          <Link href="/contact" className={styles.ctaBtn}>
+            {t.cta.btn} <ArrowRight />
+          </Link>
+        </div>
+      </section>
+
     </div>
   );
 }

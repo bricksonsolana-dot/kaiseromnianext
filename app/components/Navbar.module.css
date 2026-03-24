@@ -1,0 +1,534 @@
+/* ─── Mobile touch fixes ─────────────────────────────────────── */
+.hamburger,
+.langBtn,
+.overlayLangBtn,
+.overlayLangBtnMobile,
+.overlayNavItem {
+  -webkit-tap-highlight-color: transparent;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  user-select: none;
+  touch-action: manipulation;
+}
+
+@media (max-width: 767px) {
+  .hamburger {
+    min-width: 44px;
+    min-height: 44px;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .langBtn {
+    min-height: 44px;
+    padding: 0.5rem;
+  }
+}
+
+/* ─── Navbar ─────────────────────────────────────────────────── */
+.nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+  padding: 0 clamp(1.5rem, 5vw, 4rem);
+  height: 5rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  transition:
+    background-color 0.4s ease,
+    border-color 0.4s ease,
+    backdrop-filter 0.4s ease,
+    transform 0.35s ease;
+  border-bottom: 1px solid transparent;
+}
+
+/* ── Non-hero pages: always show a solid light bg ──────────── */
+.nav.solid {
+  background-color: var(--color-bg);
+  border-bottom-color: var(--color-rule);
+}
+
+/* ── Menu open: force black top bar ─────────────────────────── */
+.nav.menuOpen {
+  background-color: var(--color-bg-dark);
+  border-bottom-color: transparent;
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
+  z-index: 101;
+}
+
+/* ── Any page, once scrolled: frosted glass ─────────────────── */
+.nav.scrolled {
+  background-color: rgba(245, 243, 239, 0.94);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border-bottom-color: var(--color-rule);
+}
+
+/* ── Homepage top: fully transparent over dark hero ─────────── */
+.nav.transparent {
+  background-color: transparent;
+  border-bottom-color: transparent;
+}
+
+/* ─── Logo ───────────────────────────────────────────────────── */
+.logo {
+  display: flex;
+  flex-direction: column;
+  text-decoration: none;
+  line-height: 1;
+  transition: opacity 0.35s ease;
+}
+
+.logoMain {
+  font-family: var(--font-ui);
+  font-weight: 600;
+  font-size: 0.95rem; /* was clamp(1rem, 1.5vw, 1.5rem) */
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--color-ink);
+  transition: color 0.3s ease;
+}
+
+.nav.transparent .logoMain,
+.nav.menuOpen .logoMain {
+  color: #fff;
+}
+
+.logoSub {
+  font-family: var(--font-ui);
+  font-weight: 400;
+  font-size: 0.55rem; /* was 0.65rem */
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--color-ink-muted);
+  margin-top: 3px;
+  transition: color 0.3s ease;
+}
+
+.nav.transparent .logoSub,
+.nav.menuOpen .logoSub {
+  color: rgba(255, 255, 255, 0.55);
+}
+
+/* ─── Desktop links ──────────────────────────────────────────── */
+.desktopLinks {
+  display: flex;
+  align-items: center;
+  gap: 2rem; /* was 2.5rem */
+  transition: opacity 0.35s ease;
+}
+
+@media (max-width: 767px) {
+  .desktopLinks {
+    display: none;
+  }
+}
+
+.navLink {
+  font-family: var(--font-ui);
+  font-size: 0.75rem; /* was clamp(1rem, 1.5vw, 1.25rem) */
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  text-decoration: none;
+  color: var(--color-ink-muted);
+  transition: color 0.25s ease;
+  position: relative;
+}
+
+.navLink::after {
+  content: '';
+  position: absolute;
+  bottom: -3px;
+  left: 0;
+  width: 0;
+  height: 1px;
+  background-color: var(--color-ink);
+  transition: width 0.3s ease;
+}
+
+.navLink:hover {
+  color: var(--color-ink);
+}
+
+.navLink:hover::after {
+  width: 100%;
+}
+
+.nav.transparent .navLink,
+.nav.menuOpen .navLink {
+  color: rgba(255, 255, 255, 0.75);
+}
+
+.nav.transparent .navLink::after,
+.nav.menuOpen .navLink::after {
+  background-color: #fff;
+}
+
+.nav.transparent .navLink:hover,
+.nav.menuOpen .navLink:hover {
+  color: #fff;
+}
+
+/* ─── Hamburger ──────────────────────────────────────────────── */
+.hamburger {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  z-index: 101;
+}
+
+.hamburger span {
+  display: block;
+  width: 24px; /* was 26px */
+  height: 1.5px;
+  background-color: var(--color-ink);
+  transition: background-color 0.3s ease, transform 0.35s ease, opacity 0.35s ease;
+  transform-origin: center;
+}
+
+.nav.transparent .hamburger span,
+.nav.menuOpen .hamburger span {
+  background-color: #fff;
+}
+
+.hamburger.open span:nth-child(1) {
+  transform: translateY(6.5px) rotate(45deg);
+  background-color: #fff;
+}
+
+.hamburger.open span:nth-child(2) {
+  opacity: 0;
+}
+
+.hamburger.open span:nth-child(3) {
+  transform: translateY(-6.5px) rotate(-45deg);
+  background-color: #fff;
+}
+
+/* ─── Full-screen overlay (unchanged — menu fonts stay big) ─── */
+.overlay {
+  position: fixed;
+  inset: 0;
+  background-color: var(--color-bg-dark);
+  z-index: 99;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.45s ease;
+  overflow: hidden;
+}
+
+@media (max-width: 767px) {
+  .overlay {
+    grid-template-columns: 1fr;
+  }
+}
+
+.overlay.open {
+  opacity: 1;
+  pointer-events: all;
+}
+
+/* Left col — contact info */
+.overlayLeft {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: clamp(2rem, 6vw, 5rem);
+  border-right: 1px solid #222;
+}
+
+@media (max-width: 767px) {
+  .overlayLeft {
+    display: none;
+  }
+}
+
+.overlayContactLabel {
+  font-family: var(--font-ui);
+  font-size: var(--fs-label);
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: #444;
+  margin-bottom: 1.5rem;
+}
+
+.overlayContactItem {
+  font-family: var(--font-body);
+  font-size: 0.85rem;
+  font-weight: 400;
+  color: #666;
+  line-height: 1.8;
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+a.overlayContactItem:hover {
+  color: #fff;
+}
+
+.overlaySocial {
+  display: flex;
+  gap: 1.5rem;
+  margin-top: 2rem;
+}
+
+.overlaySocialLink {
+  font-family: var(--font-ui);
+  font-size: 0.7rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #444;
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.overlaySocialLink:hover {
+  color: var(--color-accent);
+}
+
+/* Right col — nav items */
+.overlayRight {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: clamp(2rem, 6vw, 5rem);
+}
+
+.overlayNavItem {
+  display: flex;
+  align-items: baseline;
+  gap: 1.25rem;
+  padding: 1.25rem 0;
+  border-bottom: 1px solid #1a1a1a;
+  text-decoration: none;
+  transform: translateY(20px);
+  opacity: 0;
+  transition: transform 0.5s ease, opacity 0.5s ease;
+}
+
+.overlay.open .overlayNavItem:nth-child(1) {
+  transform: translateY(0);
+  opacity: 1;
+  transition-delay: 0.05s;
+}
+
+.overlay.open .overlayNavItem:nth-child(2) {
+  transform: translateY(0);
+  opacity: 1;
+  transition-delay: 0.1s;
+}
+
+.overlay.open .overlayNavItem:nth-child(3) {
+  transform: translateY(0);
+  opacity: 1;
+  transition-delay: 0.15s;
+}
+
+.overlay.open .overlayNavItem:nth-child(4) {
+  transform: translateY(0);
+  opacity: 1;
+  transition-delay: 0.2s;
+}
+
+.overlay.open .overlayNavItem:nth-child(5) {
+  transform: translateY(0);
+  opacity: 1;
+  transition-delay: 0.25s;
+}
+
+.overlay.open .overlayNavItem:nth-child(6) {
+  transform: translateY(0);
+  opacity: 1;
+  transition-delay: 0.3s;
+}
+
+.overlayNavNum {
+  font-family: var(--font-ui);
+  font-size: 0.7rem;
+  font-weight: 400;
+  color: #444;
+  letter-spacing: 0.05em;
+  min-width: 2rem;
+  transition: color 0.2s ease;
+}
+
+.overlayNavLabel {
+  font-family: var(--font-display);
+  font-size: clamp(2.5rem, 4.5vw, 4.5rem);
+  font-weight: 400;
+  color: #555;
+  line-height: 1;
+  transition: color 0.2s ease;
+}
+
+.overlayNavItem:hover .overlayNavNum {
+  color: var(--color-accent);
+}
+
+.overlayNavItem:hover .overlayNavLabel {
+  color: #fff;
+}
+
+/* ─── Language switcher ──────────────────────────────────────── */
+.langBtn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-family: var(--font-ui);
+  font-size: 0.7rem; /* was clamp(1rem, 1.5vw, 1.25rem) */
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  color: var(--color-ink-muted);
+  display: flex;
+  align-items: center;
+  gap: 0.2rem;
+  padding: 0;
+  transition: color 0.2s ease, opacity 0.35s ease;
+  line-height: 1;
+}
+
+.langBtn span {
+  font-size: 0.7rem; /* was 0.8rem */
+  font-family: Arial, sans-serif;
+  line-height: 1;
+  display: inline-block;
+}
+
+.nav.transparent .langBtn,
+.nav.menuOpen .langBtn {
+  color: rgba(255, 255, 255, 0.6);
+}
+
+.langActive {
+  color: var(--color-ink);
+  opacity: 1;
+}
+
+.langInactive {
+  opacity: 0.4;
+}
+
+.nav.transparent .langActive,
+.nav.menuOpen .langActive {
+  color: #fff;
+}
+
+.nav.transparent .langInactive,
+.nav.menuOpen .langInactive {
+  color: rgba(255, 255, 255, 0.4);
+}
+
+.langSlash {
+  opacity: 0.35;
+  font-family: Arial, sans-serif;
+  font-size: 0.7rem; /* was 0.8rem */
+}
+
+/* ─── Overlay language button ────────────────────────────────── */
+.overlayLangBtn {
+  margin-top: 2rem;
+  background: none;
+  border: 1px solid #555;
+  color: #555;
+  font-family: var(--font-ui);
+  font-size: var(--fs-label);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+  transition: color 0.2s ease, border-color 0.2s ease;
+  display: inline-block;
+}
+
+.overlayLangBtn:hover {
+  color: #fff;
+  border-color: #555;
+}
+
+/* ─── Nav right group (lang + hamburger) ─────────────────────── */
+.navRight {
+  display: flex;
+  align-items: center;
+  gap: 1.25rem; /* was 1.5rem */
+}
+
+/* ─── Mobile overlay language button ─────────────────────────── */
+.overlayLangBtnMobile {
+  display: none;
+}
+
+@media (max-width: 767px) {
+  .nav.menuOpen .langBtn {
+    display: none;
+  }
+
+  .overlayLangBtnMobile {
+    display: block;
+    margin-top: 2rem;
+    background: none;
+    border: none;
+    color: rgba(255, 255, 255, 0.6);
+    font-family: var(--font-ui);
+    font-size: 1.25rem;
+    font-weight: 500;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    cursor: pointer;
+    padding: 0.5rem 0;
+    transition: color 0.2s ease;
+    text-align: left;
+  }
+
+  .overlayLangBtnMobile:hover {
+    color: #fff;
+  }
+
+  .overlayLangActive {
+    color: #fff;
+  }
+
+  .overlayLangInactive {
+    opacity: 0.4;
+  }
+
+  .overlayLangSlash {
+    opacity: 0.35;
+    margin: 0 0.15rem;
+  }
+}
+
+/* ── Projects page: hide on scroll down, reveal on scroll up ── */
+.nav.hidden {
+  background-color: transparent !important;
+  border-bottom-color: transparent !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+  pointer-events: none;
+}
+
+.nav.hidden .logo,
+.nav.hidden .desktopLinks,
+.nav.hidden .langBtn {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.nav.hidden .hamburger {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.nav.hidden .navRight {
+  pointer-events: auto;
+}

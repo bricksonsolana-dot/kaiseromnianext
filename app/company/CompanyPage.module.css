@@ -1,0 +1,594 @@
+/* ─── Company Page ───────────────────────────────────────────── */
+.page {
+    padding-top: 5rem;
+    min-height: 100vh;
+  }
+  
+  /* ── Header ─────────────────────────────────────────────────────── */
+  .header {
+    padding: clamp(3rem, 6vw, 6rem) clamp(1.5rem, 6vw, 5rem);
+  }
+  
+  .eyebrow {
+    font-family: var(--font-ui);
+    font-size: 0.75rem;
+    letter-spacing: 0.15em;
+    color: var(--color-ink-muted);
+    text-transform: uppercase;
+    display: block;
+    margin-bottom: 1rem;
+  }
+  
+  .pageTitle {
+    font-family: var(--font-display);
+    font-size: var(--fs-display);
+    font-weight: 300;
+    font-style: italic;
+    color: var(--color-ink);
+    margin: 0;
+    line-height: 1.1;
+  }
+  
+  /* ── Hero image ─────────────────────────────────────────────────── */
+  .heroImageWrap {
+    position: relative;
+    overflow: hidden;
+    width: 100%;
+    height: clamp(240px, 30vw, 480px);
+  }
+  
+  /* ── Generic section ─────────────────────────────────────────────── */
+  .section {
+    padding-block: clamp(4rem, 7vw, 7rem);
+    padding-inline: clamp(1.5rem, 6vw, 5rem);
+  }
+  
+  .sectionBadge {
+    font-family: var(--font-ui);
+    font-size: 0.75rem;
+    color: var(--color-ink-muted);
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    display: block;
+    margin-bottom: 1.5rem;
+  }
+  
+  .sectionTitle {
+    font-family: var(--font-display);
+    font-size: var(--fs-h2);
+    font-weight: 300;
+    color: var(--color-ink);
+    margin: 0 0 2rem;
+    line-height: 1.15;
+  }
+  
+  /* ── 01 About ────────────────────────────────────────────────────── */
+  .aboutGrid {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+  
+  .aboutPara {
+    font-family: var(--font-body);
+    font-size: var(--fs-lead);
+    font-weight: 300;
+    color: var(--color-ink-muted);
+    line-height: 1.9;
+    margin: 0 0 1.5rem;
+  }
+  
+  /* ── 02 Timeline ─────────────────────────────────────────────────── */
+  .timeline {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .timelineItem {
+    display: grid;
+    grid-template-columns: 6rem 1fr;
+    gap: 2rem;
+    padding-block: 1.75rem;
+  }
+  
+  .timelineYear {
+    font-family: var(--font-display);
+    font-size: 1.75rem;
+    font-weight: 300;
+    color: var(--color-ink-muted);
+    line-height: 1.2;
+    padding-top: 0.15rem;
+  }
+  
+  .timelineTitle {
+    font-family: var(--font-display);
+    font-size: 1.5rem;
+    font-weight: 300;
+    color: var(--color-ink);
+    margin: 0 0 0.5rem;
+  }
+  
+  .timelineDesc {
+    font-family: var(--font-body);
+    font-size: 1.1rem;
+    font-weight: 300;
+    color: var(--color-ink-muted);
+    line-height: 1.8;
+    margin: 0;
+  }
+  
+  /* ── 03 MVV (Mission/Vision/Values) ─────────────────────────────── */
+  .mvvGrid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1px;
+    background: var(--color-rule);
+    border: 1px solid var(--color-rule);
+  }
+  
+  .mvvCell {
+    background: var(--color-bg);
+    padding: 2.5rem 2rem;
+  }
+  
+  .mvvCellTitle {
+    font-family: var(--font-ui);
+    font-size: 0.75rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--color-accent);
+    display: block;
+    margin-bottom: 1rem;
+  }
+  
+  .mvvCellBody {
+    font-family: var(--font-body);
+    font-size: 1.1rem;
+    font-weight: 300;
+    color: var(--color-ink-muted);
+    line-height: 1.9;
+    margin: 0;
+  }
+  
+  .valuesList {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+  
+  .valuesList li {
+    font-family: var(--font-body);
+    font-size: 1.1rem;
+    font-weight: 300;
+    color: var(--color-ink-muted);
+  }
+  
+  .valuesList strong {
+    font-weight: 400;
+    color: var(--color-ink);
+  }
+  
+  /* ── 04 Stats ────────────────────────────────────────────────────── */
+  .statsGrid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1px;
+    background: var(--color-rule);
+    border: 1px solid var(--color-rule);
+  }
+  
+  .statCell {
+    background: var(--color-bg);
+    padding: 2.5rem 2rem;
+  }
+  
+  .statValue {
+    font-family: var(--font-display);
+    font-size: 3.5rem;
+    font-weight: 300;
+    color: var(--color-ink);
+    line-height: 1;
+    display: block;
+  }
+  
+  .statLabel {
+    font-family: var(--font-ui);
+    font-size: 0.75rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--color-ink-muted);
+    margin-top: 0.5rem;
+    display: block;
+  }
+  
+  /* ── 05 Certifications ───────────────────────────────────────────── */
+  .borderedGrid {
+    border-left: 1px solid var(--color-rule);
+    border-top: 1px solid var(--color-rule);
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+  }
+  
+  .certCell {
+    border-right: 1px solid var(--color-rule);
+    border-bottom: 1px solid var(--color-rule);
+    padding: 1.75rem 1.5rem;
+  }
+  
+  .certName {
+    font-family: var(--font-ui);
+    font-size: 1rem;
+    font-weight: 500;
+    letter-spacing: 0.05em;
+    color: var(--color-ink);
+    display: block;
+    margin-bottom: 0.4rem;
+  }
+  
+  .certDesc {
+    font-family: var(--font-body);
+    font-size: 1rem;
+    font-weight: 300;
+    color: var(--color-ink-muted);
+    margin: 0;
+  }
+  
+  /* ── 06 Team ─────────────────────────────────────────────────────── */
+  .teamIntro {
+    display: flex;
+    align-items: baseline;
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+  }
+  
+  .bigNum {
+    font-family: var(--font-display);
+    font-size: 5rem;
+    font-weight: 300;
+    color: var(--color-ink);
+    line-height: 1;
+  }
+  
+  .bigNumLabel {
+    font-family: var(--font-display);
+    font-size: 2.5rem;
+    font-weight: 300;
+    color: var(--color-ink);
+    margin: 0;
+    line-height: 1.2;
+  }
+  
+  .teamGrid {
+    border-left: 1px solid var(--color-rule);
+    border-top: 1px solid var(--color-rule);
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+  }
+  
+  .teamCell {
+    border-right: 1px solid var(--color-rule);
+    border-bottom: 1px solid var(--color-rule);
+    overflow: hidden;
+  }
+  
+  .teamPhoto {
+    aspect-ratio: 1;
+    width: 100%;
+    overflow: hidden;
+  }
+  
+  .teamPhoto img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+  
+  .teamPhotoPlaceholder {
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, #e5e0d8, #d8d2c8);
+  }
+  
+  .teamInfo {
+    padding: 1.25rem 1.5rem;
+  }
+  
+  .teamName {
+    font-family: var(--font-display);
+    font-size: 1.35rem;
+    font-weight: 300;
+    color: var(--color-ink);
+    margin: 0 0 0.25rem;
+  }
+  
+  .teamRole {
+    font-family: var(--font-ui);
+    font-size: 0.7rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--color-ink-muted);
+    display: block;
+    margin-bottom: 0.5rem;
+  }
+  
+  .teamBio {
+    font-family: var(--font-body);
+    font-size: 1rem;
+    font-weight: 300;
+    color: var(--color-ink-muted);
+    line-height: 1.7;
+    margin: 0;
+  }
+  
+  /* ── 07 Values ───────────────────────────────────────────────────── */
+  .valuesGrid {
+    border-left: 1px solid var(--color-rule);
+    border-top: 1px solid var(--color-rule);
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+  }
+  
+  .valueCell {
+    border-right: 1px solid var(--color-rule);
+    border-bottom: 1px solid var(--color-rule);
+    padding: clamp(2rem, 4vw, 3rem);
+  }
+  
+  .valueNum {
+    font-family: var(--font-ui);
+    font-size: 0.75rem;
+    color: var(--color-ink-muted);
+    letter-spacing: 0.1em;
+    display: block;
+    margin-bottom: 1.25rem;
+  }
+  
+  .valueTitle {
+    font-family: var(--font-display);
+    font-size: 2.5rem;
+    font-weight: 300;
+    color: var(--color-ink);
+    margin: 0 0 1rem;
+  }
+  
+  .valueDesc {
+    font-family: var(--font-body);
+    font-size: 1.1rem;
+    font-weight: 300;
+    color: var(--color-ink-muted);
+    line-height: 1.9;
+    margin: 0;
+  }
+  
+  
+  /* ═══════════════════════════════════════════════════════════════
+     RESPONSIVE BREAKPOINTS
+     ═══════════════════════════════════════════════════════════════ */
+  
+  /* ── 1400px ──────────────────────────────────────────────────── */
+  @media (max-width: 1400px) {
+    .timelineYear {
+      font-size: 1.5rem;
+    }
+  
+    .timelineTitle {
+      font-size: 1.35rem;
+    }
+  
+    .timelineDesc {
+      font-size: 1rem;
+    }
+  
+    .statValue {
+      font-size: 3rem;
+    }
+  
+    .bigNum {
+      font-size: 4rem;
+    }
+  
+    .bigNumLabel {
+      font-size: 2rem;
+    }
+  
+    .valueTitle {
+      font-size: 2.25rem;
+    }
+  }
+  
+  /* ── 1024px ──────────────────────────────────────────────────── */
+  @media (max-width: 1024px) {
+    .mvvGrid {
+      grid-template-columns: 1fr;
+    }
+  
+    .mvvCellBody {
+      font-size: 1rem;
+    }
+  
+    .valuesList li {
+      font-size: 1rem;
+    }
+  
+    .statsGrid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  
+    .statValue {
+      font-size: 2.75rem;
+    }
+  
+    .bigNum {
+      font-size: 3.5rem;
+    }
+  
+    .bigNumLabel {
+      font-size: 1.75rem;
+    }
+  
+    .teamGrid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  
+    .valuesGrid {
+      grid-template-columns: 1fr;
+    }
+  
+    .valueTitle {
+      font-size: 2rem;
+    }
+  
+    .valueDesc {
+      font-size: 1rem;
+    }
+  }
+  
+  /* ── 768px ───────────────────────────────────────────────────── */
+  @media (max-width: 768px) {
+    .timelineYear {
+      font-size: 1.35rem;
+    }
+  
+    .timelineTitle {
+      font-size: 1.25rem;
+    }
+  
+    .timelineDesc {
+      font-size: 0.95rem;
+    }
+  
+    .borderedGrid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  
+    .certName {
+      font-size: 0.9rem;
+    }
+  
+    .certDesc {
+      font-size: 0.9rem;
+    }
+  
+    .statValue {
+      font-size: 2.5rem;
+    }
+  
+    .bigNum {
+      font-size: 3rem;
+    }
+  
+    .bigNumLabel {
+      font-size: 1.5rem;
+    }
+  
+    .teamName {
+      font-size: 1.2rem;
+    }
+  
+    .teamBio {
+      font-size: 0.9rem;
+    }
+  
+    .valueTitle {
+      font-size: 1.75rem;
+    }
+  }
+  
+  /* ── 640px — mobile ──────────────────────────────────────────── */
+  @media (max-width: 640px) {
+    .aboutPara {
+      line-height: 1.8;
+    }
+  
+    .timelineItem {
+      grid-template-columns: 4.5rem 1fr;
+      gap: 1.25rem;
+    }
+  
+    .timelineYear {
+      font-size: 1.25rem;
+    }
+  
+    .timelineTitle {
+      font-size: 1.15rem;
+    }
+  
+    .timelineDesc {
+      font-size: 0.9rem;
+    }
+  
+    .mvvCellBody {
+      font-size: 0.95rem;
+    }
+  
+    .valuesList li {
+      font-size: 0.95rem;
+    }
+  
+    .statsGrid {
+      grid-template-columns: 1fr;
+    }
+  
+    .statValue {
+      font-size: 2.25rem;
+    }
+  
+    .borderedGrid {
+      grid-template-columns: 1fr;
+    }
+  
+    .teamGrid {
+      grid-template-columns: 1fr;
+    }
+  
+    .teamName {
+      font-size: 1.15rem;
+    }
+  
+    .bigNum {
+      font-size: 2.5rem;
+    }
+  
+    .bigNumLabel {
+      font-size: 1.35rem;
+    }
+  
+    .valueTitle {
+      font-size: 1.5rem;
+    }
+  
+    .valueDesc {
+      font-size: 0.95rem;
+    }
+  }
+  
+  /* ── 400px — small mobile ────────────────────────────────────── */
+  @media (max-width: 400px) {
+    .timelineYear {
+      font-size: 1.1rem;
+    }
+  
+    .timelineTitle {
+      font-size: 1.05rem;
+    }
+  
+    .statValue {
+      font-size: 2rem;
+    }
+  
+    .bigNum {
+      font-size: 2rem;
+    }
+  
+    .bigNumLabel {
+      font-size: 1.15rem;
+    }
+  
+    .valueTitle {
+      font-size: 1.35rem;
+    }
+  }

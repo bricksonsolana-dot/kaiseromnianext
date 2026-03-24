@@ -1,0 +1,353 @@
+/* ─── Projects Page ──────────────────────────────────────────────────────────
+   Bilingual editorial list — 2 projects per row, separated by ProjectDividers.
+   All horizontal borders are <ProjectDivider /> components — never static.
+─────────────────────────────────────────────────────────────────────────── */
+
+.page {
+    padding-top: 0; /* was 5rem — no longer needed since nav is in flow */
+    min-height: 100vh;
+    padding-inline: clamp(1.5rem, 6vw, 5rem);
+  }
+  
+  /* ── SECTION 1 — Page header ─────────────────────────────────── */
+  .header {
+    padding-top: clamp(2.5rem, 5vw, 4.5rem);
+    padding-bottom: 1.5rem;
+  }
+  
+  .eyebrow {
+    font-family: var(--font-ui);
+    font-size: 0.75rem;
+    letter-spacing: 0.15em;
+    color: #7A7670;
+    text-transform: uppercase;
+    display: block;
+    margin-bottom: 0.75rem;
+  }
+  
+  .titleRow {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+  
+  .pageTitle {
+    font-family: var(--font-display);
+    font-size: var(--fs-display);
+    font-weight: 400;
+    color: var(--color-ink);
+    margin: 0;
+    line-height: 1;
+    display: flex;
+    align-items: baseline;
+    gap: 0.6rem;
+  }
+  
+  .pageSubtitle {
+    font-family: var(--font-body);
+    font-size: clamp(0.95rem, 1.5vw, 1.1rem);
+    color: #7A7670;
+    margin: 0.75rem 0 0;
+    line-height: 1.5;
+  }
+  
+  .titleCount {
+    font-family: var(--font-display);
+    font-size: clamp(1.4rem, 3vw, 2.2rem);
+    font-weight: 300;
+    color: #7A7670;
+  }
+  
+  .allLink {
+    font-family: var(--font-ui);
+    font-size: 0.8rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: #7A7670;
+    text-decoration: none;
+    flex-shrink: 0;
+    transition: color 0.2s ease;
+    align-self: flex-end;
+    padding-bottom: 0.2rem;
+  }
+  
+  .allLink:hover { color: var(--color-ink); }
+  
+  /* ── Animated divider — ProjectDivider component ─────────────── */
+  /* Grows from left → right exactly once. Observer disconnects after. */
+  /* Slightly taller and slower than a standard AnimatedDivider for visibility. */
+  .divider {
+    width: 100%;
+    height: 1.5px;
+    background-color: #C0BAB0;
+    transform: scaleX(0);
+    transform-origin: left center; /* CRITICAL: left-to-right only */
+    transition: transform 1.6s cubic-bezier(0.22, 1, 0.36, 1);
+    will-change: transform;
+    display: block;
+  }
+  
+  .divider.dividerVisible {
+    transform: scaleX(1);
+  }
+  
+  /* ── SECTION 2 — Filter bar ──────────────────────────────────── */
+  .filterBar {
+    /* removed position: sticky and top */
+    z-index: 50;
+    background: var(--color-bg);
+    padding: 1rem 0;
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    flex-wrap: wrap;
+  }
+  
+  .filterLabel {
+    font-family: var(--font-ui);
+    font-size: 0.7rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: #7A7670;
+  }
+  
+  .filterBtn {
+    background: none;
+    border: none;
+    border-bottom: 1px solid transparent;
+    cursor: pointer;
+    font-family: var(--font-ui);
+    font-size: 0.75rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: #7A7670;
+    padding: 0.3rem 0;
+    transition: color 0.2s ease, border-color 0.2s ease;
+  }
+  
+  .filterBtn:hover  { color: var(--color-ink); }
+  
+  .filterBtn.active {
+    color: var(--color-ink);
+    border-bottom-color: var(--color-ink);
+  }
+  
+  /* ── SECTION 3 — Project pairs ───────────────────────────────── */
+  
+  /* Pair: 2 cards side-by-side, equal width */
+  .projectPair {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: clamp(1.5rem, 3vw, 3rem);
+    padding: clamp(2rem, 4vw, 3rem) 0;
+  
+    /* Entrance animation — JS adds .rowVisible after 120 ms delay */
+    opacity: 0;
+    transform: translateY(20px);
+    transition:
+      opacity  0.7s cubic-bezier(0.22, 1, 0.36, 1),
+      transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+  
+  .projectPair.rowVisible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  
+  /* ── Individual card: image on top, info below ─────────────── */
+  .projectCard {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+  }
+  
+  /* Image — outer wrapper defines dimensions; ParallaxImage fills it.
+     padding-bottom trick: gives the container a definite height equal to
+     75% of its width (4:3 ratio) even when all children are absolute.   */
+  .projectImageWrap {
+    position: relative;
+    overflow: hidden;
+    width: 100%;
+    padding-bottom: 75%;
+  }
+  
+  /* ── Swiper carousel ─────────────────────────────────────────── */
+  .swiperInstance {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+  }
+  
+  /* Arrow nudge animation — floats up and returns once per cycle */
+  @keyframes arrowBounce {
+    0%, 100% { transform: translateY(0); }
+    20%       { transform: translateY(-6px); }
+    40%       { transform: translateY(0); }
+  }
+  
+  /* Nav arrows — thin lines, no background, fade in on hover */
+  .swiperInstance :global(.swiper-button-prev),
+  .swiperInstance :global(.swiper-button-next) {
+    width: 2.2rem;
+    height: 2.2rem;
+    background: none;
+    border: none;
+    color: #fff;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    margin-top: -1.1rem;
+  }
+  
+  .swiperInstance :global(.swiper-button-prev)::after,
+  .swiperInstance :global(.swiper-button-next)::after {
+    font-size: 0.55rem;
+    font-weight: 300;
+    letter-spacing: 0;
+  }
+  
+  .projectCard:hover .swiperInstance :global(.swiper-button-prev),
+  .projectCard:hover .swiperInstance :global(.swiper-button-next) {
+    opacity: 1;
+    animation: arrowBounce 3s ease-in-out infinite;
+  }
+  
+  /* Slight delay on the next arrow so they don't bounce in unison */
+  .projectCard:hover .swiperInstance :global(.swiper-button-next) {
+    animation-delay: 0.2s;
+  }
+  
+  .swiperInstance :global(.swiper-button-prev):hover,
+  .swiperInstance :global(.swiper-button-next):hover {
+    opacity: 0.75;
+  }
+  
+  /* Pagination dots */
+  .swiperInstance :global(.swiper-pagination-bullet) {
+    background: rgba(255, 255, 255, 0.5);
+    opacity: 1;
+    transition: background 0.2s ease;
+  }
+  
+  .swiperInstance :global(.swiper-pagination-bullet-active) {
+    background: #fff;
+  }
+  
+  /* Info */
+  .projectInfo {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    padding: 1.25rem 0 0;
+  }
+  
+  .projectCategory {
+    font-family: var(--font-ui);
+    font-size: 0.7rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: #7A7670;
+  }
+  
+  .projectTitle {
+    font-family: var(--font-display);
+    font-size: var(--fs-h4);
+    font-weight: 400;
+    color: var(--color-ink);
+    margin: 0;
+    line-height: 1.2;
+  }
+  
+  .projectMeta {
+    font-family: var(--font-ui);
+    font-size: 0.75rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: #7A7670;
+    margin: 0;
+  }
+  
+  .projectStatus {
+    font-family: var(--font-ui);
+    font-size: 0.65rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--color-accent);
+  }
+  
+  /* Arrow — invisible by default, fades in on card hover */
+  .projectArrow {
+    font-family: var(--font-body);
+    font-size: 1.1rem;
+    color: #7A7670;
+    opacity: 0;
+    transform: translateX(-4px);
+    transition: opacity 0.25s ease, transform 0.25s ease;
+    display: inline-block;
+    margin-top: 0.25rem;
+  }
+  
+  .projectCard:hover .projectArrow {
+    opacity: 1;
+    transform: translateX(2px);
+  }
+  
+  /* ── Empty state ─────────────────────────────────────────────── */
+  .emptyState {
+    padding: 4rem 0;
+    font-family: var(--font-ui);
+    font-size: 0.8rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: #7A7670;
+  }
+  
+  /* ── Responsive ──────────────────────────────────────────────── */
+  
+  /* Mobile — stack pairs vertically (1 card per row) */
+  @media (max-width: 640px) {
+    .projectPair {
+      grid-template-columns: 1fr;
+      gap: 2rem;
+    }
+  
+    .filterBar { gap: 0.85rem; }
+  
+    /* Always show carousel arrows on mobile */
+    .swiperInstance :global(.swiper-button-prev),
+    .swiperInstance :global(.swiper-button-next) {
+      opacity: 1;
+      animation: arrowBounce 3s ease-in-out infinite;
+    }
+  
+    .swiperInstance :global(.swiper-button-next) {
+      animation-delay: 0.2s;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .titleRow { flex-direction: column; gap: 0.5rem; }
+    .allLink  { align-self: flex-start; }
+  }
+  
+  /* ── Sticky stacking card ────────────────────────────────────── */
+  .stickyCard {
+    position: sticky;
+    top: 0; /* was 9rem — now sticks to viewport top */
+    background-color: var(--color-bg);
+    box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.04);
+  }
+  
+  @media (max-width: 640px) {
+    .stickyCard {
+      position: relative;
+      top: auto;
+      box-shadow: none;
+    }
+  }
+  
+  .nav.static {
+    position: relative;
+  }

@@ -1,0 +1,125 @@
+/* ─── Footer ─────────────────────────────────────────────────── */
+.footer {
+  background-color: var(--color-bg-dark);
+  color: #fff;
+  padding: clamp(4rem, 8vw, 6rem) clamp(1.5rem, 6vw, 5rem) 0;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 2.5rem;
+  padding-bottom: clamp(3rem, 5vw, 4rem);
+}
+
+@media (max-width: 1024px) {
+  .grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (max-width: 640px) {
+  .grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+/* Logo column */
+.logoCol {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.logoMain {
+  font-family: var(--font-ui);
+  font-weight: 500;
+  font-size: 1rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: #fff;
+}
+
+.logoSub {
+  font-family: var(--font-ui);
+  font-size: 0.65rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #444;
+  font-weight: 300;
+}
+
+/* Column heading */
+.colHeading {
+  font-family: var(--font-ui);
+  font-size: 0.65rem;
+  font-weight: 400;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: #444;
+  margin-bottom: 1.25rem;
+}
+
+/* Links */
+.colLinks {
+  display: flex;
+  flex-direction: column;
+  gap: 0.65rem;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.colLinks a,
+.colLinks span {
+  font-family: var(--font-body);
+  font-size: 0.85rem;
+  font-weight: 300;
+  color: #777;
+  text-decoration: none;
+  transition: color 0.2s ease;
+  display: block;
+}
+
+.colLinks a:hover {
+  color: #fff;
+}
+
+/* Bottom bar */
+.bottom {
+  /* border-top removed — replaced by <AnimatedDivider color="#2a2a2a" /> in JSX */
+  padding: 1.5rem 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+}
+
+.copyright {
+  font-family: var(--font-ui);
+  font-size: 0.7rem;
+  letter-spacing: 0.08em;
+  color: #444;
+}
+
+.legalLinks {
+  display: flex;
+  gap: 1.5rem;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.legalLinks a {
+  font-family: var(--font-ui);
+  font-size: 0.7rem;
+  letter-spacing: 0.08em;
+  color: #444;
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.legalLinks a:hover {
+  color: #fff;
+}

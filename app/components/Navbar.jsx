@@ -1,0 +1,236 @@
+'use client'
+import { useState, useEffect, useCallback } from 'react';
+import Link from 'next/link';
+import { usePathname } from 'next/navigation';
+import { useLanguage } from '../context/LanguageContext';
+import styles from './Navbar.module.css';
+
+const NAV_ITEMS = {
+  el: [
+    { num: '01', label: 'Αρχική', path: '/' },
+    { num: '02', label: 'Έργα', path: '/projects' },
+    { num: '03', label: 'Εταιρεία', path: '/company' },
+    { num: '04', label: 'Υπηρεσίες', path: '/services' },
+    { num: '05', label: 'Τεχνολογία', path: '/technology' },
+    { num: '06', label: 'Επικοινωνία', path: '/contact' },
+  ],
+  en: [
+    { num: '01', label: 'Home', path: '/' },
+    { num: '02', label: 'Projects', path: '/projects' },
+    { num: '03', label: 'Company', path: '/company' },
+    { num: '04', label: 'Services', path: '/services' },
+    { num: '05', label: 'Technology', path: '/technology' },
+    { num: '06', label: 'Contact', path: '/contact' },
+  ],
+};
+
+const CONTACT_INFO = {
+  el: { label: 'Επικοινωνία', projects: 'Έργα', technology: 'Τεχνολογία' },
+  en: { label: 'Contact', projects: 'Projects', technology: 'Technology' },
+};
+
+export const Navbar = () => {
+  const [isScrolled, setIsScrolled] = useState(false);
+  const [menuOpen, setMenuOpen] = useState(false);
+  const [hidden, setHidden] = useState(false);
+  const pathname = usePathname();
+  const { language, toggleLanguage } = useLanguage();
+
+  const items = NAV_ITEMS[language];
+  const labels = CONTACT_INFO[language];
+
+  const isProjectsPage = pathname === '/projects';
+
+  useEffect(() => {
+    let lastY = window.scrollY;
+    const onScroll = () => {
+      const y = window.scrollY;
+      setIsScrolled(y > 60);
+      if (isProjectsPage) {
+        if (y > lastY && y > 80) setHidden(true);
+        else if (y < lastY) setHidden(false);
+      }
+      lastY = y;
+    };
+    window.addEventListener('scroll', onScroll, { passive: true });
+    return () => window.removeEventListener('scroll', onScroll);
+  }, [isProjectsPage]);
+
+  useEffect(() => {
+    setMenuOpen(false);
+  }, [pathname]);
+
+  useEffect(() => {
+    document.body.style.overflow = menuOpen ? 'hidden' : '';
+    return () => {
+      document.body.style.overflow = '';
+    };
+  }, [menuOpen]);
+
+  const handleToggleLanguage = useCallback((e) => {
+    e.preventDefault();
+    e.stopPropagation();
+    toggleLanguage();
+  }, [toggleLanguage]);
+
+  const handleToggleMenu = useCallback((e) => {
+    e.preventDefault();
+    e.stopPropagation();
+    setHidden(false);
+    setMenuOpen((v) => !v);
+  }, []);
+
+  const isHeroPage = pathname === '/';
+  const isTransparent = isHeroPage && !isScrolled && !menuOpen;
+
+  const navClass = [
+    styles.nav,
+    menuOpen
+      ? styles.menuOpen
+      : isTransparent
+      ? styles.transparent
+      : styles.solid,
+    isScrolled && !menuOpen ? styles.scrolled : '',
+    isProjectsPage && hidden && !menuOpen ? styles.hidden : '',
+  ]
+    .filter(Boolean)
+    .join(' ');
+
+  return (
+    <>
+      <nav data-testid="navbar" className={navClass}>
+        <Link href="/" className={styles.logo} data-testid="logo">
+          <span className={styles.logoMain}>Kaiser Omnia</span>
+          <span className={styles.logoSub}>Construction</span>
+        </Link>
+
+        <div className={styles.desktopLinks}>
+          <Link href="/projects" className={styles.navLink}>
+            {labels.projects}
+          </Link>
+          <Link href="/technology" className={styles.navLink}>
+            {labels.technology}
+          </Link>
+          <Link href="/contact" className={styles.navLink}>
+            {labels.label}
+          </Link>
+        </div>
+
+        <div className={styles.navRight}>
+          <div
+            data-testid="language-switcher"
+            role="button"
+            tabIndex={0}
+            onPointerDown={handleToggleLanguage}
+            className={styles.langBtn}
+            aria-label="Toggle language"
+          >
+            <span className={language === 'el' ? styles.langActive : styles.langInactive}>
+              ΕΛ
+            </span>
+            <span className={styles.langSlash}>/</span>
+            <span className={language === 'en' ? styles.langActive : styles.langInactive}>
+              ΕΝ
+            </span>
+          </div>
+
+          <div
+            data-testid="mobile-menu-toggle"
+            role="button"
+            tabIndex={0}
+            aria-label="Toggle menu"
+            className={`${styles.hamburger} ${menuOpen ? styles.open : ''}`}
+            onPointerDown={handleToggleMenu}
+          >
+            <span />
+            <span />
+            <span />
+          </div>
+        </div>
+      </nav>
+
+      <div
+        data-testid="mobile-menu"
+        className={`${styles.overlay} ${menuOpen ? styles.open : ''}`}
+        aria-hidden={!menuOpen}
+      >
+        <div className={styles.overlayLeft}>
+          <p className={styles.overlayContactLabel}>
+            {language === 'el' ? 'Επικοινωνία' : 'Get in touch'}
+          </p>
+          <span className={styles.overlayContactItem}>Leoforos Kifisias 44</span>
+          <span className={styles.overlayContactItem}>Athens, Greece 15125</span>
+          <a
+            href="tel:+302103000155"
+            className={styles.overlayContactItem}
+            style={{ marginTop: '0.75rem' }}
+          >
+            +30 210 300 0155
+          </a>
+          <a href="mailto:info@kaiseromnia.gr" className={styles.overlayContactItem}>
+            info@kaiseromnia.gr
+          </a>
+
+          <div className={styles.overlaySocial}>
+            <a href="#" className={styles.overlaySocialLink}>Instagram</a>
+            <a href="#" className={styles.overlaySocialLink}>LinkedIn</a>
+            <a href="#" className={styles.overlaySocialLink}>Facebook</a>
+          </div>
+
+          <div
+            role="button"
+            tabIndex={0}
+            onPointerDown={handleToggleLanguage}
+            className={styles.overlayLangBtn}
+            aria-label="Toggle language"
+          >
+            {language === 'el' ? 'EN →' : 'ΕΛ →'}
+          </div>
+        </div>
+
+        <nav className={styles.overlayRight}>
+          {items.map((item) => (
+            <Link
+              key={item.path}
+              href={item.path}
+              className={styles.overlayNavItem}
+            >
+              <span className={styles.overlayNavNum}>{item.num}</span>
+              <span className={styles.overlayNavLabel}>{item.label}</span>
+            </Link>
+          ))}
+
+          <div
+            role="button"
+            tabIndex={0}
+            onPointerDown={handleToggleLanguage}
+            className={styles.overlayLangBtnMobile}
+            aria-label="Toggle language"
+          >
+            <span
+              className={
+                language === 'en'
+                  ? styles.overlayLangActive
+                  : styles.overlayLangInactive
+              }
+            >
+              ΕΝ
+            </span>
+            <span className={styles.overlayLangSlash}>/</span>
+            <span
+              className={
+                language === 'el'
+                  ? styles.overlayLangActive
+                  : styles.overlayLangInactive
+              }
+            >
+              ΕΛ
+            </span>
+          </div>
+        </nav>
+      </div>
+    </>
+  );
+};
+
+export default Navbar;
