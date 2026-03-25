@@ -1,21 +1,21 @@
 // All project meta (images + category) — static, not translatable
 // Each project has an `images` array for the carousel — swap URLs as needed.
 export const projectsMeta = [
-    { id: 1,  category: 'apartment',   images: ['/images/home/erga/mall-1.png',    '/images/home/erga/mall-2.png',    '/images/home/erga/mall-3.png'],    status: 'completed',   year: '2023' },
-    { id: 2,  category: 'hotel',       images: ['/images/home/erga/athens-heart-1.png',       '/images/home/erga/athens-heart-2.png',       '/images/home/erga/athens-heart-3.png'],       status: 'completed',   year: '2022' },
-    { id: 3,  category: 'commercial',  images: ['/images/home/erga/kykladespool1.png', '/images/home/erga/kykladespool2.png', '/images/home/erga/kykladespool3.png'], status: 'completed',   year: '2021' },
-    { id: 4,  category: 'residential', images: ['/images/home/erga/kyklades1.png',       '/images/home/erga/kyklades2.png',       '/images/home/erga/kyklades3.png'],       status: 'completed',   year: '2020' },
-    { id: 5,  category: 'public',      images: ['/images/home/erga/villaview1.png',             '/images/home/erga/villaview2.png',             '/images/home/erga/villaview3.png'],             status: 'completed',   year: '2019' },
-    { id: 6,  category: 'industrial',  images: ['/images/home/erga/petrino1.png',     '/images/home/erga/petrino2.png',     '/images/home/erga/petrino3.png'],     status: 'completed',   year: '2021' },
-    { id: 7,  category: 'apartment',   images: ['/images/home/erga/villapool1.png',  '/images/home/erga/villapool2.png',  '/images/home/erga/villapool3.png'],  status: 'completed',   year: '2023' },
-    { id: 8,  category: 'hotel',       images: ['/images/home/erga/nayplio1.png', '/images/home/erga/nayplio2.png', '/images/home/erga/nayplio3.png'], status: 'completed',   year: '2022' },
-    { id: 9,  category: 'residential', images: ['/images/home/erga/zakynthos.png',   '/images/home/erga/zakynthos.png',   '/images/home/erga/zakynthos.png'],   status: 'completed',   year: '2020' },
+    { id: 1,  category: 'commercial',   images: ['/images/home/erga/mall-1.png',    '/images/home/erga/mall-2.png',    '/images/home/erga/mall-3.png'],    status: 'completed',   year: '2023' },
+    { id: 2,  category: 'commercial',       images: ['/images/home/erga/athens-heart-1.png',       '/images/home/erga/athens-heart-2.png',       '/images/home/erga/athens-heart-3.png'],       status: 'completed',   year: '2022' },
+    { id: 3,  category: 'hotel',  images: ['/images/home/erga/kykladespool1.png', '/images/home/erga/kykladespool2.png', '/images/home/erga/kykladespool3.png'], status: 'completed',   year: '2021' },
+    { id: 4,  category: 'hotel', images: ['/images/home/erga/kyklades1.png',       '/images/home/erga/kyklades2.png',       '/images/home/erga/kyklades3.png'],       status: 'completed',   year: '2020' },
+    { id: 5,  category: 'residential',      images: ['/images/home/erga/villaview1.png',             '/images/home/erga/villaview2.png',             '/images/home/erga/villaview3.png'],             status: 'completed',   year: '2019' },
+    { id: 6,  category: 'residential',  images: ['/images/home/erga/petrino1.png',     '/images/home/erga/petrino2.png',     '/images/home/erga/petrino3.png'],     status: 'completed',   year: '2021' },
+    { id: 7,  category: 'residential',   images: ['/images/home/erga/villapool1.png',  '/images/home/erga/villapool2.png',  '/images/home/erga/villapool3.png'],  status: 'completed',   year: '2023' },
+    { id: 8,  category: 'residential',       images: ['/images/home/erga/nayplio1.png', '/images/home/erga/nayplio2.png', '/images/home/erga/nayplio3.png'], status: 'completed',   year: '2022' },
+    { id: 9,  category: 'residential', images: ['/images/home/erga/house1.png',   '/images/home/erga/house2.png',   '/images/home/erga/house3.png'],   status: 'completed',   year: '2020' },
     { id: 10, category: 'apartment',   images: ['/images/home/erga/sygkrothma2.png', '/images/home/erga/sygkrothma2.png', '/images/home/erga/sygkrothma2.png'], status: 'in-progress', year: '2024' },
   ];
   
   const translations = {
     el: {
-      eyebrow: '',
+      eyebrow: '// Έργα',
       pageTitle: 'Επιλεγμένα Έργα',
       pageSubtitle: 'Έργα που αντιπροσωπεύουν τον τρόπο που σχεδιάζουμε και κατασκευάζουμε.',
   
@@ -67,7 +67,7 @@ export const projectsMeta = [
   
     // ════════════════════════════════════════════════════════════════
     en: {
-      eyebrow: '',
+      eyebrow: '// Projects',
       pageTitle: 'Selected Projects',
       pageSubtitle: 'Projects that represent the way we design and build.',
   

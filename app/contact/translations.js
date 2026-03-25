@@ -3,7 +3,7 @@ const translations = {
       // ── Breadcrumb ──────────────────────────────────────────────
       breadcrumb: {
         home: 'Αρχική',
-        contact: 'Επικοινωνία',
+        contact: '// Επικοινωνία',
       },
   
       // ── Hero ────────────────────────────────────────────────────
@@ -129,7 +129,7 @@ const translations = {
       // ── Breadcrumb ──────────────────────────────────────────────
       breadcrumb: {
         home: 'Home',
-        contact: 'Contact',
+        contact: '// Contact',
       },
   
       // ── Hero ────────────────────────────────────────────────────
