@@ -5,6 +5,7 @@ import Image from 'next/image';
 import { useLanguage } from '@/app/context/LanguageContext';
 import translations from './translations';
 import styles from './ContactPage.module.css';
+import { AnimatedDivider } from '@/app/components/AnimatedDivider/AnimatedDivider';
 
 const EMPTY_FORM = {
   name: '',
@@ -284,10 +285,11 @@ export default function ContactClient() {
         <h2 className={styles.sectionTitle}>{t.faq.sectionTitle}</h2>
 
         <div className={styles.faqList} data-testid="faq-accordion">
+          <AnimatedDivider />
           {t.faq.items.map((item, index) => (
-            <div key={index}>
+            <div key={index} className={styles.faqEntry}>
               <button
-                className={styles.faqItem}
+                className={`${styles.faqRow} ${openFaq === index ? styles.faqRowOpen : ''}`}
                 onClick={() => toggleFaq(index)}
                 data-testid={`faq-trigger-${index}`}
                 aria-expanded={openFaq === index}
@@ -300,9 +302,16 @@ export default function ContactClient() {
                 </span>
               </button>
 
-              {openFaq === index && (
-                <p className={styles.faqAnswer}>{item.answer}</p>
-              )}
+              <div
+                className={`${styles.faqContent} ${openFaq === index ? styles.faqContentOpen : ''}`}
+                aria-hidden={openFaq !== index}
+              >
+                <div className={styles.faqContentInner}>
+                  <p className={styles.faqAnswer}>{item.answer}</p>
+                </div>
+              </div>
+
+              <AnimatedDivider delay={(index + 1) * 80} />
             </div>
           ))}
         </div>

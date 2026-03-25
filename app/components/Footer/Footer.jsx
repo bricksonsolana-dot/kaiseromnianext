@@ -79,9 +79,17 @@ export const Footer = () => (
       <p className={styles.copyright}>
         &copy; {new Date().getFullYear()} Kaiser Omnia Construction. All rights reserved.
       </p>
+      <a
+        href="https://digitalfootprint.gr"
+        target="_blank"
+        rel="noopener noreferrer"
+        className={styles.credit}
+      >
+        Made by Digital Footprint
+      </a>
       <ul className={styles.legalLinks}>
-        <li><a href="#">Privacy Policy</a></li>
-        <li><a href="#">Terms of Use</a></li>
+        <li><Link href="/privacy-policy">Privacy Policy</Link></li>
+        <li><Link href="/terms-of-use">Terms of Use</Link></li>
       </ul>
     </div>
   </footer>

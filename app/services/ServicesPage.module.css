@@ -218,45 +218,108 @@
     margin: 0;
   }
   
-  /* ── Comparison table ─────────────────────────────────────────── */
-  .compTable {
-    width: 100%;
-    border-collapse: collapse;
-    margin-top: 1.5rem;
+  /* ── Comparison grid ──────────────────────────────────────────── */
+  .compGrid {
+    margin-top: 2rem;
   }
-  
-  .compTable th,
-  .compTable td {
-    border: 1px solid var(--color-rule);
-    padding: 1rem 1.25rem;
-    text-align: left;
-    font-family: var(--font-body);
-    font-size: var(--fs-body);
-    font-weight: 300;
+
+  .compHeaderRow {
+    display: grid;
+    grid-template-columns: 2fr 2fr 2fr;
+    gap: clamp(1rem, 3vw, 3rem);
+    padding-bottom: 1rem;
+    border-bottom: 1px solid var(--color-rule);
   }
-  
-  .compTable thead th {
+
+  .compHeaderConv,
+  .compHeaderDouble {
+    font-family: var(--font-display);
+    font-size: clamp(1rem, 1.5vw, 1.2rem);
+    font-weight: 500;
+    letter-spacing: 0;
+    text-transform: none;
+    color: var(--color-ink-muted);
+  }
+
+  .compHeaderDouble {
+    color: var(--color-accent);
+  }
+
+  .compRow {
+    display: grid;
+    grid-template-columns: 2fr 2fr 2fr;
+    gap: clamp(1rem, 3vw, 3rem);
+    padding: clamp(1.25rem, 2.5vw, 1.75rem) 0;
+    border-bottom: 1px solid var(--color-rule);
+    align-items: center;
+  }
+
+  .compFeature {
     font-family: var(--font-ui);
-    font-size: var(--fs-label);
+    font-size: 0.72rem;
     letter-spacing: 0.1em;
     text-transform: uppercase;
+    color: var(--color-ink);
+    text-align: center;
+  }
+
+  .compConv {
+    font-family: var(--font-body);
+    font-size: clamp(0.9rem, 1.3vw, 1rem);
+    font-weight: 300;
     color: var(--color-ink-muted);
-    background: var(--color-bg);
+    line-height: 1.5;
   }
-  
-  .compTable tbody tr:hover {
-    background: rgba(139, 108, 66, 0.04);
+
+  .compDouble {
+    font-family: var(--font-body);
+    font-size: clamp(0.9rem, 1.3vw, 1rem);
+    font-weight: 400;
+    color: var(--color-ink);
+    line-height: 1.5;
   }
-  
-  .compTable .colDouble {
-    color: var(--color-accent);
-    background: rgba(139, 108, 66, 0.05);
-  }
-  
-  .compTable .colDoubleHead {
-    color: var(--color-accent) !important;
-    background: rgba(139, 108, 66, 0.05) !important;
-    border-top: 2px solid var(--color-accent);
+
+  @media (max-width: 640px) {
+    .compHeaderRow {
+      display: none;
+    }
+
+    .compRow {
+      grid-template-columns: 1fr 1fr;
+      row-gap: 0.85rem;
+      column-gap: 1.25rem;
+    }
+
+    .compFeature {
+      grid-column: 1 / -1;
+    }
+
+    .compConv {
+      border-left: 1px solid var(--color-rule);
+      padding-left: 1rem;
+    }
+
+    .compConv::before {
+      content: attr(data-label);
+      display: block;
+      font-family: var(--font-ui);
+      font-size: 0.6rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--color-ink-muted);
+      margin-bottom: 0.3rem;
+    }
+
+    .compDouble::before {
+      content: attr(data-label);
+      display: block;
+      font-family: var(--font-ui);
+      font-size: 0.6rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--color-accent);
+      margin-bottom: 0.3rem;
+    }
   }
   
   /* ── CTA dark ─────────────────────────────────────────────────── */

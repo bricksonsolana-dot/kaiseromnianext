@@ -1,0 +1,94 @@
+.page {
+  padding-top: 5rem;
+  min-height: 100vh;
+  padding-inline: clamp(1.5rem, 6vw, 5rem);
+}
+
+.header {
+  padding-top: clamp(2.5rem, 5vw, 4.5rem);
+  padding-bottom: 1.5rem;
+}
+
+.eyebrow {
+  font-family: var(--font-ui);
+  font-size: 0.75rem;
+  letter-spacing: 0.15em;
+  color: #7A7670;
+  text-transform: uppercase;
+  display: block;
+  margin-bottom: 0.75rem;
+}
+
+.pageTitle {
+  font-family: var(--font-display);
+  font-size: var(--fs-display);
+  font-weight: 400;
+  color: var(--color-ink);
+  margin: 0 0 0.5rem;
+  line-height: 1;
+}
+
+.lastUpdated {
+  font-family: var(--font-ui);
+  font-size: 0.72rem;
+  letter-spacing: 0.1em;
+  color: #7A7670;
+  margin: 0.75rem 0 0;
+}
+
+.content {
+  padding-top: clamp(2rem, 4vw, 3.5rem);
+  padding-bottom: clamp(4rem, 8vw, 7rem);
+  max-width: 72ch;
+  display: flex;
+  flex-direction: column;
+  gap: clamp(2rem, 4vw, 3rem);
+}
+
+.section {
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+}
+
+.sectionTitle {
+  font-family: var(--font-display);
+  font-size: clamp(1.1rem, 2vw, 1.4rem);
+  font-weight: 400;
+  color: var(--color-ink);
+  margin: 0;
+  line-height: 1.2;
+}
+
+.body {
+  font-family: var(--font-body);
+  font-size: var(--fs-body);
+  font-weight: 300;
+  color: var(--color-ink-muted);
+  line-height: 1.85;
+  margin: 0;
+}
+
+.list {
+  font-family: var(--font-body);
+  font-size: var(--fs-body);
+  font-weight: 300;
+  color: var(--color-ink-muted);
+  line-height: 1.85;
+  margin: 0;
+  padding-left: 1.25rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+
+.contactLink {
+  color: var(--color-ink);
+  text-decoration: none;
+  border-bottom: 1px solid var(--color-rule);
+  transition: border-color 0.2s ease;
+}
+
+.contactLink:hover {
+  border-color: var(--color-ink);
+}

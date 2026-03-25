@@ -70,31 +70,36 @@ export default function TechnologyClient() {
         </div>
       </section>
 
-      {/* ── Comparison table ─────────────────────────────────── */}
+      {/* ── Comparison grid ──────────────────────────────────── */}
       <AnimatedDivider />
       <section className={styles.section}>
         <span className={styles.sectionBadge}>{t.comparison.badge}</span>
         <h2 className={styles.sectionTitle}>{t.comparison.title}</h2>
 
-        <div style={{ overflowX: 'auto' }}>
-          <table className={styles.compTable}>
-            <thead>
-              <tr>
-                <th>{t.comparison.headers.feature}</th>
-                <th>{t.comparison.headers.conventional}</th>
-                <th className={styles.colDoubleHead}>{t.comparison.headers.doubleWall}</th>
-              </tr>
-            </thead>
-            <tbody>
-              {t.comparison.rows.map((row) => (
-                <tr key={row.feature}>
-                  <td><strong style={{ fontWeight: 400 }}>{row.feature}</strong></td>
-                  <td style={{ color: 'var(--color-ink-muted)' }}>{row.conventional}</td>
-                  <td className={styles.colDouble}>{row.doubleWall}</td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
+        <div className={styles.compGrid}>
+          <div className={styles.compHeaderRow}>
+            <span />
+            <span className={styles.compHeaderDouble}>{t.comparison.headers.doubleWall}</span>
+            <span className={styles.compHeaderConv}>{t.comparison.headers.conventional}</span>
+          </div>
+
+          {t.comparison.rows.map((row, i) => (
+            <div key={i} className={styles.compRow}>
+              <span className={styles.compFeature}>{row.feature}</span>
+              <span
+                className={styles.compDouble}
+                data-label={t.comparison.headers.doubleWall}
+              >
+                {row.doubleWall}
+              </span>
+              <span
+                className={styles.compConv}
+                data-label={t.comparison.headers.conventional}
+              >
+                {row.conventional}
+              </span>
+            </div>
+          ))}
         </div>
       </section>
 
