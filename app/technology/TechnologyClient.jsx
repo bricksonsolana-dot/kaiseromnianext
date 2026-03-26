@@ -1,6 +1,7 @@
 'use client';
 
 import Link from 'next/link';
+import Image from 'next/image';
 import { useLanguage } from '@/app/context/LanguageContext';
 import translations from './translations';
 import styles from '@/app/services/ServicesPage.module.css';
@@ -79,24 +80,24 @@ export default function TechnologyClient() {
         <div className={styles.compGrid}>
           <div className={styles.compHeaderRow}>
             <span />
-            <span className={styles.compHeaderDouble}>{t.comparison.headers.doubleWall}</span>
             <span className={styles.compHeaderConv}>{t.comparison.headers.conventional}</span>
+            <span className={styles.compHeaderDouble}>{t.comparison.headers.doubleWall}</span>
           </div>
 
           {t.comparison.rows.map((row, i) => (
             <div key={i} className={styles.compRow}>
               <span className={styles.compFeature}>{row.feature}</span>
               <span
-                className={styles.compDouble}
-                data-label={t.comparison.headers.doubleWall}
-              >
-                {row.doubleWall}
-              </span>
-              <span
                 className={styles.compConv}
                 data-label={t.comparison.headers.conventional}
               >
                 {row.conventional}
+              </span>
+              <span
+                className={styles.compDouble}
+                data-label={t.comparison.headers.doubleWall}
+              >
+                {row.doubleWall}
               </span>
             </div>
           ))}
@@ -106,11 +107,24 @@ export default function TechnologyClient() {
       {/* ── CTA ──────────────────────────────────────────────── */}
       <AnimatedDivider />
       <section className={styles.ctaSection}>
-        <h2 className={styles.ctaTitle}>{t.cta.title}</h2>
-        <p className={styles.ctaSubtitle}>{t.cta.subtitle}</p>
-        <Link href="/contact" className="arrow-link" style={{ color: '#888', borderColor: '#444' }}>
-          {t.cta.btn} <ArrowRight />
-        </Link>
+        <div className={styles.ctaBg}>
+          <Image
+            src="/images/home/land3.png"
+            alt=""
+            aria-hidden="true"
+            fill
+            sizes="100vw"
+            className={styles.ctaBgImg}
+          />
+        </div>
+        <div className={styles.ctaOverlay} />
+        <div className={styles.ctaContent}>
+          <h2 className={styles.ctaTitle}>{t.cta.title}</h2>
+          <p className={styles.ctaSubtitle}>{t.cta.subtitle}</p>
+          <Link href="/contact" className={styles.ctaBtn}>
+            {t.cta.btn} <ArrowRight />
+          </Link>
+        </div>
       </section>
 
     </div>

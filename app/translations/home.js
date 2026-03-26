@@ -202,7 +202,7 @@ const translations = {
   
       // ── CTA Banner ───────────────────────────────────────────────
       cta: {
-        title: 'Από το Όραμα στην Κατασκευή',
+        title: 'Από τη Μελέτη έως την Υλοποίηση',
         subtitle:
           'Κάθε έργο ξεκινά από μια ιδέα. Η ομάδα μας αναλαμβάνει να μετατρέψει το όραμά σας σε μια σύγχρονη και αξιόπιστη κατασκευή, με σωστό σχεδιασμό, οργάνωση και υψηλές προδιαγραφές υλοποίησης. ',
         btn: 'Επικοινωνήστε Μαζί μας',
@@ -368,7 +368,7 @@ const translations = {
   
       // ── CTA Banner ───────────────────────────────────────────────
       cta: {
-        title: 'From Vision to Construction',
+        title: 'From Design to Delivery',
         subtitle:
           'Every project begins with an idea. Our team takes on the task of turning your vision into a modern, reliable construction — with proper planning, organisation and high delivery standards.',
         btn: 'Contact Us',

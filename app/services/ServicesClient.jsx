@@ -1,6 +1,7 @@
 'use client';
 
 import Link from 'next/link';
+import Image from 'next/image';
 import { useLanguage } from '@/app/context/LanguageContext';
 import translations from './translations';
 import homeTranslations from '@/app/translations/home';
@@ -118,11 +119,24 @@ export default function ServicesClient() {
       {/* ── CTA ──────────────────────────────────────────────── */}
       <AnimatedDivider />
       <section className={styles.ctaSection}>
-        <h2 className={styles.ctaTitle}>{t.cta.title}</h2>
-        <p className={styles.ctaSubtitle}>{t.cta.subtitle}</p>
-        <Link href="/contact" className="arrow-link" style={{ color: '#888', borderColor: '#444' }}>
-          {t.cta.btn} <ArrowRight />
-        </Link>
+        <div className={styles.ctaBg}>
+          <Image
+            src="/images/home/land3.png"
+            alt=""
+            aria-hidden="true"
+            fill
+            sizes="100vw"
+            className={styles.ctaBgImg}
+          />
+        </div>
+        <div className={styles.ctaOverlay} />
+        <div className={styles.ctaContent}>
+          <h2 className={styles.ctaTitle}>{t.cta.title}</h2>
+          <p className={styles.ctaSubtitle}>{t.cta.subtitle}</p>
+          <Link href="/contact" className={styles.ctaBtn}>
+            {t.cta.btn} <ArrowRight />
+          </Link>
+        </div>
       </section>
 
     </div>

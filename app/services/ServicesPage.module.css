@@ -294,7 +294,7 @@
       grid-column: 1 / -1;
     }
 
-    .compConv {
+    .compDouble {
       border-left: 1px solid var(--color-rule);
       padding-left: 1rem;
     }
@@ -322,13 +322,35 @@
     }
   }
   
-  /* ── CTA dark ─────────────────────────────────────────────────── */
+  /* ── CTA ──────────────────────────────────────────────────────── */
   .ctaSection {
-    background: var(--color-bg-dark);
-    padding-block: clamp(4rem, 7vw, 6rem);
-    padding-inline: clamp(1.5rem, 6vw, 5rem);
+    position: relative;
+    overflow: hidden;
   }
-  
+
+  .ctaBg {
+    position: absolute;
+    inset: 0;
+  }
+
+  .ctaBgImg {
+    object-fit: cover;
+  }
+
+  .ctaOverlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(17, 17, 16, 0.88);
+  }
+
+  .ctaContent {
+    position: relative;
+    z-index: 1;
+    padding-block: clamp(5rem, 9vw, 8rem);
+    padding-inline: clamp(1.5rem, 6vw, 5rem);
+    max-width: 52rem;
+  }
+
   .ctaTitle {
     font-family: var(--font-display);
     font-size: var(--fs-display);
@@ -337,16 +359,39 @@
     margin: 0 0 1rem;
     line-height: 1.1;
   }
-  
+
   .ctaSubtitle {
     font-family: var(--font-body);
     font-size: 0.9rem;
     font-weight: 300;
-    color: #666;
+    color: #888;
     line-height: 1.9;
     margin: 0 0 2rem;
-    max-width: 36rem;
+    max-width: 38rem;
   }
+
+  .ctaBtn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.75rem;
+    font-family: var(--font-ui);
+    font-size: 0.75rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: #888;
+    text-decoration: none;
+    border-bottom: 1px solid #444;
+    padding-bottom: 0.25rem;
+    transition: border-color 0.25s ease, color 0.25s ease;
+  }
+
+  .ctaBtn:hover {
+    border-color: var(--color-accent);
+    color: var(--color-accent);
+  }
+
+  .ctaBtn svg { transition: transform 0.25s ease; }
+  .ctaBtn:hover svg { transform: translateX(5px); }
   
   
   /* ═══════════════════════════════════════════════════════════════

@@ -65,7 +65,14 @@ const ProjectCard = ({ project, statusLabels }) => {
         >
           {images.map((src, i) => (
             <SwiperSlide key={i}>
-              <ParallaxImage src={src} alt={`${project.name} ${i + 1}`} />
+              {i === 0
+                ? <ParallaxImage src={src} alt={`${project.name} 1`} />
+                : (
+                  <div className={styles.plainSlide}>
+                    <img src={src} alt={`${project.name} ${i + 1}`} className={styles.plainSlideImg} />
+                  </div>
+                )
+              }
             </SwiperSlide>
           ))}
         </Swiper>

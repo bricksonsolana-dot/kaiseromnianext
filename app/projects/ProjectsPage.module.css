@@ -180,6 +180,20 @@
     width: 100%;
     height: 100%;
   }
+
+  /* Plain (non-parallax) slide image — no entrance animation */
+  .plainSlide {
+    position: absolute;
+    inset: 0;
+    overflow: hidden;
+  }
+
+  .plainSlideImg {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
   
   /* Arrow nudge animation — floats up and returns once per cycle */
   @keyframes arrowBounce {

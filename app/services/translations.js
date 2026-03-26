@@ -113,8 +113,8 @@ const translations = {
       },
   
       cta: {
-        title: 'Έτοιμοι να Εφαρμόσετε την Τεχνολογία Διπλών Τοίχων;',
-        subtitle: 'Επικοινωνήστε μαζί μας για να μάθετε πώς η τεχνολογία μας μπορεί να μετατρέψει το επόμενο κατασκευαστικό σας έργο.',
+        title: 'Αναθέστε το Έργο σας στους Ειδικούς',
+        subtitle: 'Από τον σχεδιασμό έως την ολοκλήρωση, αναλαμβάνουμε κάθε φάση με τεχνογνωσία και υπευθυνότητα.',
         btn: 'Ζητήστε Προσφορά',
       },
     },
@@ -229,8 +229,8 @@ const translations = {
       },
   
       cta: {
-        title: 'Ready to Apply Double Wall Technology?',
-        subtitle: 'Contact us to learn how our technology can transform your next construction project.',
+        title: 'Entrust Your Project to the Experts',
+        subtitle: 'From design through to completion, we take on every phase with expertise and accountability.',
         btn: 'Request a Quote',
       },
     },
