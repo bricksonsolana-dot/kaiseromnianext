@@ -29,8 +29,8 @@ const translations = {
     categories: [
       { id: 'all',         name: 'Όλα'           },
       { id: 'residential', name: 'Κατοικίες'     },
-      { id: 'commercial',  name: 'Εμπορικά'      },
       { id: 'hotel',       name: 'Τουριστικά'    },
+      { id: 'commercial',  name: 'Συμμετοχές'      },
     ],
 
     statusLabels: {
@@ -78,8 +78,8 @@ const translations = {
     categories: [
       { id: 'all',         name: 'All'          },
       { id: 'residential', name: 'Residences'   },
-      { id: 'commercial',  name: 'Commercial'   },
-      { id: 'hotel',       name: 'Tourist'      },
+      { id: 'hotel',       name: 'Touristic'      },
+      { id: 'commercial',  name: 'Collaborations'   },
     ],
 
     statusLabels: {

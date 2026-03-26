@@ -46,7 +46,7 @@ export default function ServicesClient() {
         </h1>
       </div>
       <div className={styles.heroImageWrap}>
-        <ParallaxImage src="/images/services/services1.png" alt="Double Wall Technology" />
+        <ParallaxImage src="/images/services/services.png" alt="Double Wall Technology" />
       </div>
 
       {/* ── 01 Services list ──────────────────────────────────── */}

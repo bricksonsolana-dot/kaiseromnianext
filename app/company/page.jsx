@@ -27,7 +27,7 @@ export default function CompanyPage() {
       {/* ── Hero Image ──────────────────────────────────────── */}
       <div className={styles.heroImageWrap}>
         <ParallaxImage
-          src="/images/About/crane.jpg"
+          src="/images/About/company.png"
           alt="Kaiser Omnia Construction"
         />
       </div>
@@ -85,7 +85,7 @@ export default function CompanyPage() {
               <p className={styles.mvvRowBody}>{t.mvv.mission.content}</p>
             </div>
             <div className={styles.mvvImageWrap}>
-              <ParallaxImage src="/images/home/kaiser2.png" alt="Mission" />
+              <ParallaxImage src="/images/home/philosophy.png" alt="Mission" />
             </div>
           </div>
 
@@ -96,7 +96,7 @@ export default function CompanyPage() {
               <p className={styles.mvvRowBody}>{t.mvv.vision.content}</p>
             </div>
             <div className={styles.mvvImageWrap}>
-              <ParallaxImage src="/images/home/geranosmepanel.png" alt="Vision" />
+              <ParallaxImage src="/images/home/eksidikeysh.png" alt="Vision" />
             </div>
           </div>
 

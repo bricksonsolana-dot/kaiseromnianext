@@ -1,11 +1,11 @@
 const translations = {
     el: {
       eyebrow: '// Εταιρεία',
-      pageTitle: '40+ Χρόνια Κατασκευαστικής Αριστείας',
+      pageTitle: '1979 – Σήμερα',
   
       // ── 01 About ──────────────────────────────────────────────────
       about: {
-        badge: '01 — 1979 – Σήμερα',
+        badge: '01 — Η KaiserOmnia',
         paragraphs: [
           'Από το 1979, η Kaiser Omnia δραστηριοποιείται στον σχεδιασμό και την υλοποίηση έργων οπλισμένου σκυροδέματος, με συνεχή παρουσία στον κατασκευαστικό κλάδο και σταθερή προσήλωση στην ποιότητα και τη δομική αξιοπιστία. ',
           'Η εξειδίκευση στην τεχνολογία Double Wall δεν αποτελεί απλώς μια επιμέρους εφαρμογή, αλλά βασικό αντικείμενο δραστηριότητας. Η εμπειρία και η τεχνική εξειδίκευση στο σύστημα αυτό εξασφαλίζουν την υλοποίηση έργων με ακρίβεια, συνέπεια και υψηλές κατασκευαστικές προδιαγραφές. ',
@@ -16,8 +16,7 @@ const translations = {
   
       // ── 02 Timeline ───────────────────────────────────────────────
       timeline: {
-        badge: '02 — Ιστορία',
-        title: 'Η Πορεία μας στον Χρόνο',
+        badge: '02 — Η Πορεία μας στον Χρόνο',
         events: [
           { year: '1979', title: 'Ίδρυση', desc: 'Ίδρυση της εταιρείας και έναρξη δραστηριότητας στον κατασκευαστικό τομέα.' },
           { year: '1990', title: 'Ανάπτυξη Έργων ', desc: 'Συμμετοχή σε έργα κατοικιών και πολυκατοικιών, καθώς και πρωτοποριακή εφαρμογή του συστήματος σε εμπορικά έργα μεγάλης κλίμακας.' },
@@ -71,41 +70,15 @@ const translations = {
         ],
       },
   
-      // ── 06 Team ───────────────────────────────────────────────────
-      team: {
-        badge: '06 — Ομάδα',
-        bigNum: '18',
-        title: 'Αφοσιωμένοι Επαγγελματίες',
-        members: [
-          { name: 'Κωνσταντίνος Καίσερ',    role: 'Διευθύνων Σύμβουλος',  bio: 'Με 30+ χρόνια εμπειρίας στον κατασκευαστικό κλάδο, οδηγεί την εταιρεία στην κορυφή.' },
-          { name: 'Δρ. Ελένη Παπαδοπούλου', role: 'Τεχνική Διευθύντρια',  bio: 'PhD Πολιτικός Μηχανικός με εξειδίκευση στην τεχνολογία προκατασκευασμένων στοιχείων.' },
-          { name: 'Νικόλαος Αντωνίου',      role: 'Αρχιτέκτονας',         bio: 'Βραβευμένος αρχιτέκτονας με έργα σε Ελλάδα, Κύπρο και Μέση Ανατολή.' },
-          { name: 'Μαρία Γεωργίου',          role: 'Διευθύντρια Έργων',    bio: 'Με 15+ χρόνια εμπειρίας στη διαχείριση μεγάλων κατασκευαστικών έργων.' },
-          { name: 'Παναγιώτης Λάμπρου',     role: 'Τεχνικός Διευθυντής',  bio: 'Ειδικός στην τεχνολογία Double Wall με εκτενή εμπειρία σε μεγάλης κλίμακας έργα.' },
-          { name: 'Σοφία Νικολάου',          role: 'Επικεφαλής Σχεδιασμού', bio: 'Βραβευμένη σχεδιάστρια με ειδίκευση στον σύγχρονο αρχιτεκτονικό σχεδιασμό.' },
-        ],
-      },
-  
-      // ── 07 Values ─────────────────────────────────────────────────
-      values: {
-        badge: '07 — Αξίες',
-        bigNum: '3',
-        title: 'Βασικές Επιχειρηματικές Αξίες',
-        items: [
-          { num: '01', title: 'Ακεραιότητα', desc: 'Λειτουργούμε με πλήρη διαφάνεια και ειλικρίνεια σε όλες τις σχέσεις μας με τους πελάτες, τηρώντας κάθε δέσμευσή μας — χωρίς εξαιρέσεις.' },
-          { num: '02', title: 'Ομαδικότητα', desc: 'Οι διεπιστημονικές ομάδες μας συνεργάζονται άψογα, συνδυάζοντας διαφορετικές εξειδικεύσεις για να αντιμετωπίσουν σύνθετες προκλήσεις και να παραδώσουν εξαιρετικά αποτελέσματα.' },
-          { num: '03', title: 'Ποιότητα',    desc: 'Τηρούμε τα υψηλότερα δυνατά πρότυπα επιμέλειας, χρησιμοποιώντας μόνο τα καλύτερα υλικά και τις πιο αυστηρές διαδικασίες ποιοτικού ελέγχου.' },
-        ],
-      },
     },
   
     // ════════════════════════════════════════════════════════════════
     en: {
       eyebrow: '// Company',
-      pageTitle: '40+ Years of Construction Excellence',
+      pageTitle: '1979-Today',
   
       about: {
-        badge: '01 — About us',
+        badge: '01 — KaiserOmnia',
         paragraphs: [
           'Kaiser Omnia operates in the development and delivery of reinforced concrete projects, specialising in Double Wall technology. Its scope covers residential, professional and commercial developments, with an emphasis on structural durability, contemporary architectural design and the creation of long-term investment value.',
           'Every project is approached with strategic organisation, from study and design through to construction and full delivery, with rigorous technical oversight at every stage.',
@@ -113,8 +86,7 @@ const translations = {
       },
   
       timeline: {
-        badge: '02 — History',
-        title: 'Our Journey Through Time',
+        badge: '02 — Our Journey Through Time',
         events: [
           { year: '1979',  title: 'Foundation',              desc: 'Establishment of the company and the beginning of its activity in the construction sector.' },
           { year: '1990',  title: 'Double Wall Technology',  desc: 'Implementation of Double Wall technology in the company\'s construction projects.' },
@@ -171,30 +143,7 @@ const translations = {
         ],
       },
   
-      team: {
-        badge: '06 — Team',
-        bigNum: '18',
-        title: 'Dedicated Professionals',
-        members: [
-          { name: 'Konstantinos Kaiser',    role: 'Chief Executive Officer', bio: 'With 30+ years of experience in the construction industry, he leads the company to the top.' },
-          { name: 'Dr. Eleni Papadopoulou', role: 'Technical Director',      bio: 'PhD Civil Engineer specialising in prefabricated element technology.' },
-          { name: 'Nikolaos Antoniou',      role: 'Architect',               bio: 'Award-winning architect with projects in Greece, Cyprus and the Middle East.' },
-          { name: 'Maria Georgiou',          role: 'Project Manager',         bio: 'With 15+ years of experience managing large-scale construction projects.' },
-          { name: 'Panagiotis Lambrou',      role: 'Technical Director',      bio: 'Specialist in Double Wall technology with extensive experience in large-scale projects.' },
-          { name: 'Sofia Nikolaou',          role: 'Design Lead',             bio: 'Award-winning designer specialising in contemporary architectural design.' },
-        ],
-      },
-  
-      values: {
-        badge: '07 — Values',
-        bigNum: '3',
-        title: 'Core Business Values',
-        items: [
-          { num: '01', title: 'Integrity',  desc: 'We operate with complete transparency and honesty in all our client relationships, delivering on every commitment we make — no exceptions.' },
-          { num: '02', title: 'Teamwork',   desc: 'Our multidisciplinary teams collaborate seamlessly, combining diverse expertise to solve complex challenges and deliver exceptional results together.' },
-          { num: '03', title: 'Quality',    desc: 'We hold ourselves to the highest possible standards of craftsmanship, using only the finest materials and most rigorous quality control processes.' },
-        ],
-      },
+
     },
   };
   

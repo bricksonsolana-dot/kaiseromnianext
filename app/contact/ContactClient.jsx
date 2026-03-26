@@ -63,7 +63,7 @@ export default function ContactClient() {
       {/* ── Hero Image ────────────────────────────────────────── */}
       <div className={styles.heroImageWrap}>
         <Image
-          src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=1920&auto=format&fit=crop&q=80"
+          src="/contact/contact.png"
           alt="Contact"
           fill
           priority
