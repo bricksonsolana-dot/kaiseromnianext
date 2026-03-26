@@ -35,17 +35,14 @@ export default function CompanyPage() {
       {/* ── 01 About ────────────────────────────────────────── */}
       <AnimatedDivider />
       <section className={styles.section}>
+        <span className={styles.sectionBadge}>{t.about.badge}</span>
+        <h2 className={styles.sectionTitle}>{t.about.title}</h2>
         <div className={styles.aboutGrid}>
-          <div>
-            <span className={styles.sectionBadge}>{t.about.badge}</span>
-          </div>
-          <div>
-            {t.about.paragraphs.map((p, i) => (
-              <p key={i} className={styles.aboutPara}>
-                {p}
-              </p>
-            ))}
-          </div>
+          {t.about.paragraphs.map((p, i) => (
+            <p key={i} className={styles.aboutPara}>
+              {p}
+            </p>
+          ))}
         </div>
       </section>
 

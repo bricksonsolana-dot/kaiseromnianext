@@ -5,7 +5,8 @@ const translations = {
   
       // ── 01 About ──────────────────────────────────────────────────
       about: {
-        badge: '01 — Η KaiserOmnia',
+        badge: '01',
+        title: 'Η KaiserOmnia',
         paragraphs: [
           'Από το 1979, η Kaiser Omnia δραστηριοποιείται στον σχεδιασμό και την υλοποίηση έργων οπλισμένου σκυροδέματος, με συνεχή παρουσία στον κατασκευαστικό κλάδο και σταθερή προσήλωση στην ποιότητα και τη δομική αξιοπιστία. ',
           'Η εξειδίκευση στην τεχνολογία Double Wall δεν αποτελεί απλώς μια επιμέρους εφαρμογή, αλλά βασικό αντικείμενο δραστηριότητας. Η εμπειρία και η τεχνική εξειδίκευση στο σύστημα αυτό εξασφαλίζουν την υλοποίηση έργων με ακρίβεια, συνέπεια και υψηλές κατασκευαστικές προδιαγραφές. ',
@@ -16,7 +17,8 @@ const translations = {
   
       // ── 02 Timeline ───────────────────────────────────────────────
       timeline: {
-        badge: '02 — Η Πορεία μας στον Χρόνο',
+        badge: '02',
+        title: 'Η Πορεία μας στον Χρόνο',
         events: [
           { year: '1979', title: 'Ίδρυση', desc: 'Ίδρυση της εταιρείας και έναρξη δραστηριότητας στον κατασκευαστικό τομέα.' },
           { year: '1990', title: 'Ανάπτυξη Έργων ', desc: 'Συμμετοχή σε έργα κατοικιών και πολυκατοικιών, καθώς και πρωτοποριακή εφαρμογή του συστήματος σε εμπορικά έργα μεγάλης κλίμακας.' },
@@ -28,7 +30,7 @@ const translations = {
   
       // ── 03 Mission / Vision / Values ─────────────────────────────
       mvv: {
-        badge: '03 — Φιλοσοφία',
+        badge: '03',
         title: 'Αποστολή, Όραμα, Αξίες',
         mission: {
           title: 'Η φιλοσοφία μας ',
@@ -78,7 +80,8 @@ const translations = {
       pageTitle: '1979-Today',
   
       about: {
-        badge: '01 — KaiserOmnia',
+        badge: '01',
+        title: 'KaiserOmnia',
         paragraphs: [
           'Kaiser Omnia operates in the development and delivery of reinforced concrete projects, specialising in Double Wall technology. Its scope covers residential, professional and commercial developments, with an emphasis on structural durability, contemporary architectural design and the creation of long-term investment value.',
           'Every project is approached with strategic organisation, from study and design through to construction and full delivery, with rigorous technical oversight at every stage.',
@@ -86,7 +89,8 @@ const translations = {
       },
   
       timeline: {
-        badge: '02 — Our Journey Through Time',
+        badge: '02',
+        title: 'Our Journey Through Time',
         events: [
           { year: '1979',  title: 'Foundation',              desc: 'Establishment of the company and the beginning of its activity in the construction sector.' },
           { year: '1990',  title: 'Double Wall Technology',  desc: 'Implementation of Double Wall technology in the company\'s construction projects.' },
@@ -98,7 +102,7 @@ const translations = {
       },
   
       mvv: {
-        badge: '03 — Philosophy',
+        badge: '03',
         title: 'Mission, Vision, Values',
         mission: {
           title: 'Mission',

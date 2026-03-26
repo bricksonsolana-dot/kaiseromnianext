@@ -286,7 +286,7 @@ export default function HomePage() {
 
           <div className={styles.companyImageWrap}>
             <ParallaxImage
-              src="/images/home/kaiser2.png"
+              src="/images/home/whowearehome.png"
               alt="Kaiser Omnia construction"
             />
           </div>

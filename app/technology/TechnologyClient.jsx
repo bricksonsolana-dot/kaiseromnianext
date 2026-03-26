@@ -49,7 +49,7 @@ export default function TechnologyClient() {
             ))}
           </div>
           <div className={styles.introImageWrap}>
-            <ParallaxImage src="/images/home/nafplio_kataskeyh.png" alt="Nafplio Construction" />
+            <ParallaxImage src="/images/home/technology.png" alt="Nafplio Construction" />
           </div>
         </div>
       </section>
