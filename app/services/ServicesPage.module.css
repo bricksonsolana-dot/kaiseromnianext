@@ -125,7 +125,7 @@
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: clamp(2.5rem, 5vw, 5rem);
-    align-items: start;
+    align-items: stretch;
   }
   
   .introPara {
@@ -181,10 +181,9 @@
   }
   
   .introImageWrap {
-    position: sticky;
-    top: 5.5rem;
+    position: relative;
     overflow: hidden;
-    aspect-ratio: 3 / 2;
+    min-height: 400px;
   }
   
   /* ── Advantages grid ──────────────────────────────────────────── */
@@ -415,7 +414,7 @@
     }
 
     .introImageWrap {
-      position: relative;
+      min-height: unset;
       aspect-ratio: 16 / 9;
       order: -1; /* Image first */
     }

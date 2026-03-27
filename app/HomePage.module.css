@@ -315,7 +315,7 @@
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: clamp(3rem, 6vw, 6rem);
-    align-items: start;
+    align-items: stretch;
   }
 
   
@@ -338,11 +338,10 @@
   }
   
   .companyImageWrap {
-    position: sticky;
-    top: 5.5rem;
+    position: relative;
     overflow: hidden;
     width: 100%;
-    aspect-ratio: 3 / 4;
+    min-height: 400px;
   }
   
   /* ─── Technology section ─────────────────────────────────────── */
@@ -356,7 +355,7 @@
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: clamp(3rem, 6vw, 6rem);
-    align-items: stretch; /* KEY: image matches text height */
+    align-items: stretch;
   }
   
   .techBody {
@@ -399,7 +398,6 @@
     margin: 0;
   }
   
-  /* Image matches text height — no fixed aspect ratio on desktop */
   .techImageWrap {
     position: relative;
     overflow: hidden;
@@ -662,24 +660,40 @@
     }
   }
   
-  /* ── 1280px — image size adjustments only, keep 2-column layout */
-  @media (max-width: 1280px) {
-    .companyImageWrap {
-      min-height: unset;
-    }
   
-    .techImageWrap {
-      min-height: unset;
-    }
-  }
-  
-  /* ── 900px — font-size adjustments ──────────────────────────── */
+  /* ── 900px — stack 2-col grids, font-size adjustments ───────── */
   @media (max-width: 900px) {
+    .companyGrid {
+      grid-template-columns: 1fr;
+      gap: 3rem;
+    }
+
+    .companyImageWrap {
+      order: -1;
+      min-height: unset;
+      aspect-ratio: 16 / 9;
+      margin-inline: calc(-1 * clamp(1.5rem, 6vw, 5rem));
+      width: calc(100% + 2 * clamp(1.5rem, 6vw, 5rem));
+    }
+
+    .techGrid {
+      grid-template-columns: 1fr;
+      gap: 3rem;
+    }
+
+    .techImageWrap {
+      order: -1;
+      min-height: unset;
+      aspect-ratio: 16 / 9;
+      margin-inline: calc(-1 * clamp(1.5rem, 6vw, 5rem));
+      width: calc(100% + 2 * clamp(1.5rem, 6vw, 5rem));
+    }
+
     .techBenefits {
       grid-template-columns: 1fr;
       gap: 1.5rem;
     }
-  
+
     .stageTitle {
       font-size: 1.65rem;
     }
@@ -698,32 +712,7 @@
     .companyBody {
       line-height: 1.8;
     }
-  
-    .companyGrid {
-      grid-template-columns: 1fr;
-      gap: 3rem;
-    }
-  
-    .companyImageWrap {
-      position: relative;
-      order: -1;
-      aspect-ratio: 4 / 3;
-      margin-inline: calc(-1 * clamp(1.5rem, 6vw, 5rem));
-      width: calc(100% + 2 * clamp(1.5rem, 6vw, 5rem));
-    }
-  
-    .techGrid {
-      grid-template-columns: 1fr;
-      gap: 3rem;
-    }
-  
-    .techImageWrap {
-      order: -1;
-      padding-bottom: 75%;
-      margin-inline: calc(-1 * clamp(1.5rem, 6vw, 5rem));
-      width: calc(100% + 2 * clamp(1.5rem, 6vw, 5rem));
-    }
-  
+
     .techBody {
       line-height: 1.8;
     }
