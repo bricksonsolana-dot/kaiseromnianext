@@ -14,6 +14,7 @@ const translations = {
   
       // ── Contact Form ─────────────────────────────────────────────
       form: {
+        sectionLabel: '// Επικοινωνία',
         sectionTitle: 'Φόρμα Επικοινωνίας',
         fields: {
           name: {
@@ -49,6 +50,7 @@ const translations = {
         submittingBtn: 'Αποστολή...',
         successMessage: 'Το μήνυμά σας στάλθηκε επιτυχώς!',
         successDescription: 'Θα επικοινωνήσουμε μαζί σας το συντομότερο δυνατό.',
+        resetBtn: 'Αποστολή νέου μηνύματος',
       },
   
       // ── Project Types ────────────────────────────────────────────
@@ -68,19 +70,19 @@ const translations = {
         },
         phone: {
           title: 'Τηλεφωνική Επικοινωνία',
-          mobile: 'Κινητό',
-          mobileNumber: '+30 694 820 9440',
-          hours: 'Δευτέρα – Παρασκευή\n08:00 – 18:00',
+          number: '+30 694 820 9440',
+          hours: 'Δευτέρα – Παρασκευή, 08:00 – 18:00',
         },
         email: {
           title: 'Email',
-          address: 'kaiseromnia03@gmail.com',
+          addresses: ['info@kaiseromnia.gr', 'sales@kaiseromnia.gr'],
         },
       },
-  
+
       // ── Map ──────────────────────────────────────────────────────
       map: {
         title: 'Kaiser Omnia - Ασπρόπυργος',
+        src: 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d12563.876539012345!2d23.5833!3d38.1833!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x14a1a7f2c1e5d5b7%3A0x400bd2ce2b980a0!2z0JHPg9C/z4HPjM-Az4XPgc6/z4I!5e0!3m2!1sel!2sgr!4v1',
       },
   
       // ── FAQ ──────────────────────────────────────────────────────
@@ -106,7 +108,7 @@ const translations = {
           },
           {
             question: 'Υπάρχει δυνατότητα εξατομίκευσης του έργου;',
-            answer: 'Κάθε έργο προσαρμόζεται στις ανάγκες του πελάτη, με δυνατότητα επιλογής υλικών και τεχνικών λύσεων.',
+            answer: 'Κάθε έργο προσαρμόζεται στις ανάγκες του πελάτη, με επιλογές σε υλικά και επιμέρους στοιχεία της κατασκευής, με σταθερή εφαρμογή του συστήματος double wall.',
           },
           {
             question: 'Ποιες είναι οι προϋποθέσεις για την έναρξη κατασκευής;',
@@ -140,6 +142,7 @@ const translations = {
   
       // ── Contact Form ─────────────────────────────────────────────
       form: {
+        sectionLabel: '// Contact',
         sectionTitle: 'Contact Form',
         fields: {
           name: {
@@ -175,6 +178,7 @@ const translations = {
         submittingBtn: 'Sending...',
         successMessage: 'Your message was sent successfully!',
         successDescription: 'We will get back to you as soon as possible.',
+        resetBtn: 'Send another message',
       },
   
       // ── Project Types ────────────────────────────────────────────
@@ -194,19 +198,19 @@ const translations = {
         },
         phone: {
           title: 'Phone Contact',
-          mobile: 'Mobile',
-          mobileNumber: '+30 694 820 9440',
-          hours: 'Monday – Friday\n08:00 – 18:00',
+          number: '+30 694 820 9440',
+          hours: 'Monday – Friday, 08:00 – 18:00',
         },
         email: {
           title: 'Email',
-          address: 'kaiseromnia03@gmail.com',
+          addresses: ['info@kaiseromnia.gr', 'sales@kaiseromnia.gr'],
         },
       },
-  
+
       // ── Map ──────────────────────────────────────────────────────
       map: {
         title: 'Kaiser Omnia - Aspropyrgos',
+        src: 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d12563.876539012345!2d23.5833!3d38.1833!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x14a1a7f2c1e5d5b7%3A0x400bd2ce2b980a0!2z0JHPg9C/z4HPjM-Az4XPgc6/z4I!5e0!3m2!1sel!2sgr!4v1',
       },
   
       // ── FAQ ──────────────────────────────────────────────────────

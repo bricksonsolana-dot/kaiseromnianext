@@ -63,7 +63,7 @@ export default function ContactClient() {
       {/* ── Hero Image ────────────────────────────────────────── */}
       <div className={styles.heroImageWrap}>
         <Image
-          src="/contact/contact.png"
+          src="/contact/contact1.png"
           alt="Contact"
           fill
           priority
@@ -89,8 +89,11 @@ export default function ContactClient() {
         {/* Phone */}
         <div className={styles.infoCell}>
           <span className={styles.infoCellLabel}>{t.info.phone.title}</span>
-          <a href="tel:+302103000155" className={styles.infoCellLink}>
-            +30 210 300 0155
+          <a
+            href={`tel:${t.info.phone.number.replace(/\s/g, '')}`}
+            className={styles.infoCellLink}
+          >
+            {t.info.phone.number}
           </a>
           <span className={styles.infoCellMeta}>{t.info.phone.hours}</span>
         </div>
@@ -98,12 +101,11 @@ export default function ContactClient() {
         {/* Email */}
         <div className={styles.infoCell}>
           <span className={styles.infoCellLabel}>{t.info.email.title}</span>
-          <a href="mailto:info@kaiseromnia.gr" className={styles.infoCellLink}>
-            info@kaiseromnia.gr
-          </a>
-          <a href="mailto:sales@kaiseromnia.gr" className={styles.infoCellLink}>
-            sales@kaiseromnia.gr
-          </a>
+          {t.info.email.addresses.map((addr) => (
+            <a key={addr} href={`mailto:${addr}`} className={styles.infoCellLink}>
+              {addr}
+            </a>
+          ))}
         </div>
 
       </div>
@@ -111,7 +113,7 @@ export default function ContactClient() {
       {/* ── Form Section ──────────────────────────────────────── */}
       <section className={styles.formSection} data-testid="contact-form-section">
         <div className={styles.formHeader}>
-          <span className={styles.sectionBadge}>{t.form.sectionLabel ?? t.breadcrumb.contact}</span>
+          <span className={styles.sectionBadge}>{t.form.sectionLabel}</span>
           <h2 className={styles.sectionTitle}>{t.form.sectionTitle}</h2>
         </div>
 
@@ -120,7 +122,7 @@ export default function ContactClient() {
             <p className={styles.successText}>{t.form.successMessage}</p>
             <p className={styles.successDesc}>{t.form.successDescription}</p>
             <button className={styles.resetBtn} onClick={handleReset}>
-              {t.form.resetBtn ?? 'Send another message'}
+              {t.form.resetBtn}
             </button>
           </div>
         ) : (
@@ -267,7 +269,7 @@ export default function ContactClient() {
       <section data-testid="map-section">
         <div className={styles.mapWrap}>
           <iframe
-            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d12563.876539012345!2d23.5833!3d38.1833!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x14a1a7f2c1e5d5b7%3A0x400bd2ce2b980a0!2z0JHPg9C/z4HPjM-Az4XPgc6/z4I!5e0!3m2!1sel!2sgr!4v1"
+            src={t.map.src}
             width="100%"
             height="100%"
             style={{ border: 0 }}

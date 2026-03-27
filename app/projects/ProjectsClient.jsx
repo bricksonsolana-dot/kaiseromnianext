@@ -10,6 +10,7 @@ import { useLanguage } from '@/app/context/LanguageContext';
 import translations, { projectsMeta } from './translations';
 import styles from './ProjectsPage.module.css';
 import ParallaxImage from '@/app/components/ParallaxImage/ParallaxImage';
+import PageCTA from '@/app/components/PageCTA/PageCTA';
 
 // ── ProjectDivider ────────────────────────────────────────────────
 const ProjectDivider = ({ delay = 0 }) => {
@@ -86,10 +87,9 @@ const ProjectCard = ({ project, statusLabels }) => {
         </p>
         {project.status && (
           <span className={styles.projectStatus}>
-            {statusLabels[project.status]}
+            {project.statusLabel || statusLabels[project.status]}
           </span>
         )}
-        <span className={styles.projectArrow} aria-hidden="true">→</span>
       </div>
     </div>
   );
@@ -144,6 +144,7 @@ export default function ProjectsClient() {
       name: text.name || '',
       location: text.location || '',
       typeName: text.type || '',
+      statusLabel: text.statusLabel || null,
     };
   });
 
@@ -199,6 +200,10 @@ export default function ProjectsClient() {
           </div>
         ))
       )}
+
+      <div className={styles.fullBleed}>
+        <PageCTA />
+      </div>
 
     </div>
   );

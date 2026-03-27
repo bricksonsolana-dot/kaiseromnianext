@@ -9,6 +9,7 @@ import translations from '@/app/translations/home'; // adjust path to match your
 import styles from './HomePage.module.css';
 import { AnimatedDivider } from '@/app/components/AnimatedDivider/AnimatedDivider';
 import ParallaxImage from '@/app/components/ParallaxImage/ParallaxImage';
+import PageCTA from '@/app/components/PageCTA/PageCTA';
 
 // ── Types ──────────────────────────────────────────────────────────────────
 
@@ -108,26 +109,26 @@ const SERVICES: Record<Language, Service[]> = {
 const PROJECTS: Project[] = [
   {
     id: 1,
-    nameEl: 'Εμπορικό Κέντρο The Mall',
-    nameEn: 'The Mall Athens',
-    locationEl: 'Αθήνα',
+    nameEl: 'Ιδιωτική Κατοικία',
+    nameEn: 'Modern Residence',
+    locationEl: 'Αθήνα, Αττική',
     locationEn: 'Athens',
-    year: '2005',
-    image: '/images/home/erga/themall.png',
+    year: '2022',
+    image: '/images/home/erga/villaview1.png',
   },
   {
     id: 2,
-    nameEl: 'Εμπορικό Κέντρο Athens Heart',
-    nameEn: 'Athens Heart Mall',
-    locationEl: 'Αθήνα',
+    nameEl: 'Ιδιωτική Κατοικία',
+    nameEn: 'Modern Residence',
+    locationEl: 'Αθήνα, Αττική',
     locationEn: 'Athens',
-    year: '2008',
-    image: '/images/home/erga/athensheart.png',
+    year: '2025',
+    image: '/images/home/erga/residence1.png',
   },
   {
     id: 3,
     nameEl: 'Ιδιωτική Κατοικία',
-    nameEn: 'Private Residency',
+    nameEn: 'Private Residence',
     locationEl: 'Ναύπλιο',
     locationEn: 'Nafplion',
     year: '2012',
@@ -135,12 +136,12 @@ const PROJECTS: Project[] = [
   },
   {
     id: 4,
-    nameEl: 'Ξενοδοχειακές Μονάδες',
-    nameEn: 'Villa Kyklades',
+    nameEl: 'Τουριστικές Κατοικίες',
+    nameEn: 'Tourist Residences',
     locationEl: 'Κυκλάδες',
     locationEn: 'Kyklades',
     year: '2015',
-    image: '/images/home/erga/kyklades.png',
+    image: '/images/home/erga/kykladespool1.png',
   },
 ];
 
@@ -374,27 +375,7 @@ export default function HomePage() {
       </section>
 
       {/* ── CTA ───────────────────────────────────────────────────── */}
-      <AnimatedDivider />
-      <section className={styles.ctaSection} data-testid="cta-banner">
-        <div className={styles.ctaBg}>
-          <Image
-            src="/images/home/land3.png"
-            alt=""
-            aria-hidden="true"
-            fill
-            sizes="100vw"
-            className={styles.ctaBgImg} // object-fit:cover in CSS
-          />
-        </div>
-        <div className={styles.ctaOverlay} />
-        <div className={styles.ctaContent}>
-          <h2 className={styles.ctaTitle}>{t.cta.title}</h2>
-          <p className={styles.ctaSubtitle}>{t.cta.subtitle}</p>
-          <Link href="/contact" className={styles.ctaBtn}>
-            {t.cta.btn} <ArrowRight />
-          </Link>
-        </div>
-      </section>
+      <PageCTA />
 
     </div>
   );

@@ -37,7 +37,8 @@
     position: relative;
     overflow: hidden;
     width: 100%;
-    height: clamp(280px, 35vw, 560px);
+    aspect-ratio: 16 / 9;
+    max-height: 700px;
   }
   
   /* ── 01 Services list ──────────────────────────────────────────── */
@@ -124,7 +125,7 @@
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: clamp(2.5rem, 5vw, 5rem);
-    align-items: stretch; /* Image matches text height */
+    align-items: start;
   }
   
   .introPara {
@@ -179,11 +180,10 @@
     display: block;
   }
   
-  /* Image fills height of text column on desktop */
   .introImageWrap {
     position: relative;
     overflow: hidden;
-    min-height: 400px;
+    aspect-ratio: 3 / 2;
   }
   
   /* ── Advantages grid ──────────────────────────────────────────── */
@@ -412,40 +412,32 @@
       grid-template-columns: 1fr;
       gap: 2.5rem;
     }
-  
+
     .introImageWrap {
-      padding-bottom: 56.25%; /* 16:9 cinematic when stacked */
-      min-height: unset;
+      aspect-ratio: 16 / 9;
       order: -1; /* Image first */
     }
   }
-  
-  /* ── 1200px ──────────────────────────────────────────────────── */
-  @media (max-width: 1200px) {
-    .introImageWrap {
-      padding-bottom: 66.667%; /* 3:2 */
-    }
-  }
-  
+
   /* ── 900px ───────────────────────────────────────────────────── */
   @media (max-width: 900px) {
     .advantagesGrid {
       grid-template-columns: repeat(2, 1fr);
     }
-  
+
     .introImageWrap {
-      padding-bottom: 75%; /* 4:3 */
+      aspect-ratio: 4 / 3;
     }
   }
-  
+
   /* ── 640px — mobile ──────────────────────────────────────────── */
   @media (max-width: 640px) {
     .advantagesGrid {
       grid-template-columns: 1fr;
     }
-  
+
     .introImageWrap {
-      padding-bottom: 75%;
+      aspect-ratio: 4 / 3;
       margin-inline: calc(-1 * clamp(1.5rem, 6vw, 5rem));
       width: calc(100% + 2 * clamp(1.5rem, 6vw, 5rem));
     }

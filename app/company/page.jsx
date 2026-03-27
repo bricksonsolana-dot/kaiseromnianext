@@ -6,6 +6,7 @@ import translations from './translations';
 import styles from './CompanyPage.module.css';
 import { AnimatedDivider } from '@/app/components/AnimatedDivider/AnimatedDivider';
 import ParallaxImage from '@/app/components/ParallaxImage/ParallaxImage';
+import PageCTA from '@/app/components/PageCTA/PageCTA';
 
 export default function CompanyPage() {
   const { language } = useLanguage();
@@ -27,7 +28,7 @@ export default function CompanyPage() {
       {/* ── Hero Image ──────────────────────────────────────── */}
       <div className={styles.heroImageWrap}>
         <ParallaxImage
-          src="/images/About/company.png"
+          src="/company/company3.png"
           alt="Kaiser Omnia Construction"
         />
       </div>
@@ -104,12 +105,13 @@ export default function CompanyPage() {
               <p className={styles.mvvRowBody}>{t.mvv.values.content}</p>
             </div>
             <div className={styles.mvvImageWrap}>
-              <ParallaxImage src="/images/About/crane.jpg" alt="Values" />
+              <ParallaxImage src="/images/About/desmeysh.png" alt="Values" />
             </div>
           </div>
         </div>
       </section>
 
+      <PageCTA />
 
     </div>
   );

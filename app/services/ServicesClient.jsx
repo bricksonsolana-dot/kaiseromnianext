@@ -1,7 +1,5 @@
 'use client';
 
-import Link from 'next/link';
-import Image from 'next/image';
 import { useLanguage } from '@/app/context/LanguageContext';
 import translations from './translations';
 import homeTranslations from '@/app/translations/home';
@@ -9,12 +7,8 @@ import styles from '@/app/services/ServicesPage.module.css';
 import homeStyles from '@/app/HomePage.module.css';
 import { AnimatedDivider } from '@/app/components/AnimatedDivider/AnimatedDivider';
 import ParallaxImage from '@/app/components/ParallaxImage/ParallaxImage';
+import PageCTA from '@/app/components/PageCTA/PageCTA';
 
-const ArrowRight = () => (
-  <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
-    <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round"/>
-  </svg>
-);
 
 const STAGE_IMAGES = [
   '/images/home/stages/1.png',
@@ -117,27 +111,7 @@ export default function ServicesClient() {
       </section>
 
       {/* ── CTA ──────────────────────────────────────────────── */}
-      <AnimatedDivider />
-      <section className={styles.ctaSection}>
-        <div className={styles.ctaBg}>
-          <Image
-            src="/images/home/land3.png"
-            alt=""
-            aria-hidden="true"
-            fill
-            sizes="100vw"
-            className={styles.ctaBgImg}
-          />
-        </div>
-        <div className={styles.ctaOverlay} />
-        <div className={styles.ctaContent}>
-          <h2 className={styles.ctaTitle}>{t.cta.title}</h2>
-          <p className={styles.ctaSubtitle}>{t.cta.subtitle}</p>
-          <Link href="/contact" className={styles.ctaBtn}>
-            {t.cta.btn} <ArrowRight />
-          </Link>
-        </div>
-      </section>
+      <PageCTA />
 
     </div>
   );

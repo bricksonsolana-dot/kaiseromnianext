@@ -1,8 +1,8 @@
 const translations = {
     el: {
       eyebrow: '// Υπηρεσίες',
-      titleLine1: 'Πλήρης σειρά',
-      titleLine2: 'κατασκευαστικών υπηρεσιών',
+      titleLine1: 'Από τη Μελέτη έως την Υλοποίηση',
+      titleLine2: '',
   
       // ── Technology explanation (hero body) ──────────────────────
       intro: {

@@ -44,7 +44,8 @@
     position: relative;
     overflow: hidden;
     width: 100%;
-    height: clamp(280px, 35vw, 560px);
+    aspect-ratio: 16 / 9;
+    max-height: 700px;
   }
   
   /* ── Contact info strip ──────────────────────────────────────── */
