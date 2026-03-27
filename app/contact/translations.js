@@ -235,7 +235,7 @@ const translations = {
             answer: 'Construction warranties are provided in accordance with applicable technical standards and contractual terms.',
           },
           {
-            question: 'Is project customization possible',
+            question: 'Is project customization possible?',
             answer: 'Each project is tailored to the client’s needs, with flexibility in material selection and construction details, while maintaining the consistent application of the Double Wall system.',
           },
           {
