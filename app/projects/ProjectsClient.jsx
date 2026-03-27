@@ -125,20 +125,32 @@ const ProjectPair = ({ projects, statusLabels }) => {
 };
 
 // ── Page ──────────────────────────────────────────────────────────
-export default function ProjectsClient() {
+export default function ProjectsClient({ sanityProjects = [] }) {
   const { language } = useLanguage();
   const t = translations[language];
   const [activeFilter, setActiveFilter] = useState('all');
 
-  const allProjects = projectsMeta.map((meta) => {
-    const text = t.projects.find((p) => p.id === meta.id) || {};
-    return {
-      ...meta,
-      name: text.name || '',
-      location: text.location || '',
-      typeName: text.type || '',
-    };
-  });
+  // Use Sanity data if available, otherwise fall back to hardcoded translations
+  const allProjects = sanityProjects.length > 0
+    ? sanityProjects.map((p) => ({
+        id: p._id,
+        category: p.category,
+        images: p.images || [],
+        status: p.status,
+        year: p.year,
+        name: p.name?.[language] || '',
+        location: p.location?.[language] || '',
+        typeName: p.typeName?.[language] || '',
+      }))
+    : projectsMeta.map((meta) => {
+        const text = t.projects.find((p) => p.id === meta.id) || {};
+        return {
+          ...meta,
+          name: text.name || '',
+          location: text.location || '',
+          typeName: text.type || '',
+        };
+      });
 
   const filtered =
     activeFilter === 'all'

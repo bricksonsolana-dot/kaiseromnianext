@@ -4,7 +4,7 @@
 ─────────────────────────────────────────────────────────────────────────── */
 
 .page {
-    padding-top: 0; /* was 5rem — no longer needed since nav is in flow */
+    padding-top: 5rem; /* account for fixed navbar height */
     min-height: 100vh;
     padding-inline: clamp(1.5rem, 6vw, 5rem);
   }

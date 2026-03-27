@@ -8,8 +8,8 @@ const securityHeaders = [
       "script-src 'self' 'unsafe-inline'",
       "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com",
       "font-src 'self' https://fonts.gstatic.com",
-      "img-src 'self' data: blob:",
-      "connect-src 'self'",
+      "img-src 'self' data: blob: https://cdn.sanity.io",
+      "connect-src 'self' https://*.sanity.io https://*.api.sanity.io",
       "frame-ancestors 'none'",
     ].join("; "),
   },
@@ -43,7 +43,17 @@ const nextConfig: NextConfig = {
   async headers() {
     return [
       {
-        source: "/(.*)",
+        // Permissive CSP for Sanity Studio
+        source: "/admin/:path*",
+        headers: [
+          {
+            key: "Content-Security-Policy",
+            value: "default-src *; script-src * 'unsafe-inline' 'unsafe-eval'; style-src * 'unsafe-inline'; img-src * data: blob:; font-src * data:; connect-src *; frame-src *; frame-ancestors 'self'",
+          },
+        ],
+      },
+      {
+        source: "/((?!admin).*)",
         headers: securityHeaders,
       },
     ];
@@ -53,6 +63,10 @@ const nextConfig: NextConfig = {
       {
         protocol: "https",
         hostname: "images.unsplash.com",
+      },
+      {
+        protocol: "https",
+        hostname: "cdn.sanity.io",
       },
     ],
   },

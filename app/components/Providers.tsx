@@ -23,22 +23,29 @@ function ScrollToTop() {
 }
 
 export default function Providers({ children }: { children: ReactNode }) {
+  const pathname = usePathname();
+  const isStudio = pathname.startsWith('/admin');
+
+  if (isStudio) {
+    return <>{children}</>;
+  }
+
   return (
     <LanguageProvider>
       <ScrollToTop />
-      
+
       {/* Global visual effects */}
       <SmoothScroll children={undefined} />
 
       {/* Navbar is usually outside the main route content */}
       <Navbar />
-      
+
       {/* Page content gets injected here */}
       {children}
-      
+
       {/* Footer is usually outside the main route content */}
       <Footer />
-      
+
       {/* Global notification toaster */}
       <Toaster position="top-right" richColors />
     </LanguageProvider>

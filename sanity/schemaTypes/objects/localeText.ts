@@ -1,0 +1,19 @@
+import { defineType } from 'sanity'
+
+export const localeText = defineType({
+  name: 'localeText',
+  title: 'Localized Text',
+  type: 'object',
+  fields: [
+    {
+      name: 'el',
+      title: 'Greek',
+      type: 'text',
+    },
+    {
+      name: 'en',
+      title: 'English',
+      type: 'text',
+    },
+  ],
+})
