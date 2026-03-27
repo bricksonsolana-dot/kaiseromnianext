@@ -20,29 +20,29 @@ const translations = {
         badge: '02',
         title: 'Η Πορεία μας στον Χρόνο',
         events: [
-          { year: '1979', title: 'Ίδρυση', desc: 'Ίδρυση της εταιρείας και έναρξη δραστηριότητας στον κατασκευαστικό τομέα.' },
-          { year: '1990', title: 'Ανάπτυξη Έργων ', desc: 'Συμμετοχή σε έργα κατοικιών και πολυκατοικιών, καθώς και πρωτοποριακή εφαρμογή του συστήματος σε εμπορικά έργα μεγάλης κλίμακας.' },
-          { year: '2000', title: 'Πανελλαδική Δραστηριότητα ', desc: 'Η εταιρεία επεκτείνει τη δραστηριότητά της σε έργα σε όλη την Ελλάδα. ' },
-          { year: '2010', title: 'Επέκταση στη Μέση Ανατολή', desc: 'Η Kaiser Omnia επεκτείνει τη δραστηριότητά της στη Τζέντα, αναπτύσσοντας νέες συνεργασίες και έργα στη Σαουδική Αραβία.' },
-          { year: 'Σήμερα', title: 'Εξέλιξη της Κατασκευής', desc: 'Η Kaiser Omnia συνεχίζει την πορεία της στον κατασκευαστικό τομέα, εφαρμόζοντας σύγχρονες μεθόδους και τεχνολογίες σε έργα μεγάλης κλίμακας.' },
+          { year: '1979', title: 'Ίδρυση της εταιρείας', desc: 'Έναρξη δραστηριότητας στον κατασκευαστικό τομέα.' },
+          { year: '2000', title: 'Έργα μεγάλης κλίμακας ', desc: 'Πρώτη συμμετοχή σε εμπορικά έργα μεγάλης κλίμακας με εφαρμογή του συστήματος double wall' },
+          { year: '2010', title: 'Έργα υψηλών απαιτήσεων', desc: 'Συμμετοχή σε έργα αυξημένης πολυπλοκότητας και υψηλών προδιαγραφών.' },
+          { year: '2015', title: 'Διεύρυνση δραστηριότητας', desc: 'Ανάληψη έργων σε όλη την Ελλάδα και έναρξη διεθνούς παρουσίας με δραστηριότητα στη Τζέντα. '},
+          { year: 'Σήμερα', title: 'Εξέλιξη της Κατασκευής', desc: 'Η Kaiser Omnia συνεχίζει δυναμικά, με αποκλειστική εξειδίκευση στο σύστημα double wall' },
         ],
       },
   
       // ── 03 Mission / Vision / Values ─────────────────────────────
       mvv: {
         badge: '03',
-        title: 'Αποστολή, Όραμα, Αξίες',
+        title: 'Τεχνική Προσέγγιση & Αρχές Υλοποίησης',
         mission: {
           title: 'Η φιλοσοφία μας ',
-          content: 'Στην Kaiser Omnia πιστεύουμε ότι οι σύγχρονες κατασκευές πρέπει να συνδυάζουν ποιότητα, αντοχή και τεχνολογική εξέλιξη. Στόχος μας είναι να δημιουργούμε κτίρια που ανταποκρίνονται στις απαιτήσεις της σύγχρονης αρχιτεκτονικής και προσφέρουν μακροχρόνια αξία, αξιοποιώντας σύγχρονες τεχνικές κατασκευής και εξειδικευμένη τεχνογνωσία. ',
+          content: 'Η υλοποίηση κάθε έργου βασίζεται σε σαφή οργάνωση, τεχνικό σχεδιασμό και συνεπή διαχείριση όλων των σταδίων της κατασκευής. Η προσέγγιση δίνει έμφαση στον συντονισμό των εργασιών, στην ακρίβεια εφαρμογής και στη λειτουργική ολοκλήρωση του έργου ',
         },
         vision: {
           title: 'Η εξειδίκευσή μας ',
-          content: 'Η Kaiser Omnia εξειδικεύεται στην τεχνολογία κατασκευής Double Wall, μια σύγχρονη μέθοδο που προσφέρει αυξημένη στατική αντοχή, υψηλή ακρίβεια κατασκευής και σημαντική μείωση του χρόνου υλοποίησης ενός έργου. Με τη χρήση της τεχνολογίας αυτής, τα έργα μπορούν να ολοκληρωθούν σημαντικά ταχύτερα σε σχέση με τις συμβατικές μεθόδους δόμησης, διατηρώντας παράλληλα υψηλά πρότυπα ποιότητας και ασφάλειας.',
+          content: 'Η Kaiser Omnia εξειδικεύεται στην τεχνολογία Double Wall, ένα σύγχρονο σύστημα κατασκευής που συνδυάζει την ακρίβεια βιομηχανικής παραγωγής με την αντοχή μονολιθικού σκυροδέματος επί τόπου. Η μέθοδος αυτή εξασφαλίζει απόλυτη γεωμετρική ακρίβεια, σταθερή ποιότητα κατασκευής και σημαντικά μειωμένο χρόνο υλοποίησης, χωρίς συμβιβασμούς στη στατική επάρκεια.',
         },
         values: {
           title: 'Η δέσμευσή μας ',
-          content: 'Δεσμευόμαστε να παραδίδουμε έργα που ξεχωρίζουν για την ποιότητα κατασκευής, την ασφάλεια και τη λειτουργικότητά τους. Μέσα από σωστό σχεδιασμό, οργανωμένη διαχείριση έργου και έμπειρη ομάδα συνεργατών, στόχος μας είναι να ολοκληρώνουμε κάθε κατασκευή με συνέπεια στον χρόνο παράδοσης και με σεβασμό στις απαιτήσεις του κάθε έργου. ',
+          content: 'Κάθε έργο αντιμετωπίζεται με υπευθυνότητα, συνέπεια και πλήρη έλεγχο σε κάθε στάδιο της κατασκευής. Στόχος μας είναι η άρτια υλοποίηση, η τήρηση των χρονοδιαγραμμάτων και η δημιουργία κατασκευών που ανταποκρίνονται απόλυτα στις απαιτήσεις του πελάτη, τόσο σε ποιότητα όσο και σε λειτουργικότητα.',
         },
       },
   
@@ -83,8 +83,10 @@ const translations = {
         badge: '01',
         title: 'KaiserOmnia',
         paragraphs: [
-          'Kaiser Omnia operates in the development and delivery of reinforced concrete projects, specialising in Double Wall technology. Its scope covers residential, professional and commercial developments, with an emphasis on structural durability, contemporary architectural design and the creation of long-term investment value.',
-          'Every project is approached with strategic organisation, from study and design through to construction and full delivery, with rigorous technical oversight at every stage.',
+          'Since 1979, Kaiser Omnia has been engaged in the design and construction of reinforced concrete projects, maintaining a strong presence in the construction sector and a consistent commitment to quality and structural reliability.',
+          'Double Wall technology is not treated as a secondary application, but as a core area of expertise. The company’s experience and technical specialization in this system ensure the delivery of projects with precision, consistency, and high construction standards.',
+          'The company’s scope includes residential, commercial, and professional projects, with a focus on contemporary architectural design, structural integrity, and long-term value. Each project is approached through a structured methodology and continuous technical oversight, from initial design to final execution.',
+
         ],
       },
   
@@ -92,35 +94,28 @@ const translations = {
         badge: '02',
         title: 'Our Journey Through Time',
         events: [
-          { year: '1979',  title: 'Foundation',              desc: 'Establishment of the company and the beginning of its activity in the construction sector.' },
-          { year: '1990',  title: 'Double Wall Technology',  desc: 'Implementation of Double Wall technology in the company\'s construction projects.' },
-          { year: '2000',  title: 'Project Development',     desc: 'Participation in residential and apartment building projects, as well as pioneering application of the system in large-scale commercial projects.' },
-          { year: '2010',  title: 'Nationwide Activity',     desc: 'The company expands its operations to projects across all of Greece.' },
-          { year: '2015',  title: 'Milestone',               desc: 'Surpassed 1,500 completed projects nationwide.' },
-          { year: 'Today', title: 'Evolution of Construction', desc: 'Kaiser Omnia continues its course in the construction sector, applying modern methods and technologies to large-scale projects.' },
+          { year: '1979',  title: 'Company Foundation',              desc: 'Entry into the construction sector.' },
+          { year: '2000',  title: 'Large-Scale Projects',     desc: 'First involvement in large-scale commercial projects with the application of the Double Wall system.' },
+          { year: '2010',  title: 'High-Demand Projects',     desc: 'Participation in complex, high-specification projects.' },
+          { year: '2015',  title: 'Expansion of Activities',               desc: 'Undertaking projects across Greece and establishing an international presence with activity in Jeddah. '},
+          { year: 'Today', title: 'EAdvancing Construction', desc: 'Kaiser Omnia continues to grow, with exclusive specialization in the Double Wall system' },
         ],
       },
   
       mvv: {
         badge: '03',
-        title: 'Mission, Vision, Values',
+        title: 'Technical Approach & Principles of Execution',
         mission: {
-          title: 'Mission',
-          content: 'To provide constructions that stand the test of time, combining innovative Double Wall technology with our unmatched expertise, to create spaces that exceed expectations.',
+          title: 'Our Philosophy',
+          content: 'The execution of each project is based on clear organization, technical planning, and consistent management across all stages of construction. The approach emphasizes coordination, precision in execution, and the functional completion of the project.',
         },
         vision: {
-          title: 'Vision',
-          content: 'To redefine construction standards in Greece and southeastern Europe, establishing Double Wall technology as the primary construction method of the future.',
-        },
+          title: 'Our Expertise',
+          content: 'Kaiser Omnia specializes in Double Wall technology, a modern construction system that combines the precision of industrial production with the strength of in-situ monolithic concrete. This method ensures absolute geometric accuracy, consistent construction quality, and significantly reduced project timelines, without compromising structural performance.',
+ },
         values: {
-          title: 'Values',
-          items: [
-            { bold: 'Integrity',   rest: 'Transparency in every transaction' },
-            { bold: 'Innovation',  rest: 'Continuous evolution' },
-            { bold: 'Safety',      rest: 'Priority #1' },
-            { bold: 'Excellence',  rest: 'Without compromise' },
-          ],
-        },
+          title: 'Our Commitment',
+          content: 'Each project is handled with responsibility, consistency, and full control at every stage of construction. The objective is the proper execution of each project, adherence to timelines, and the delivery of constructions that fully meet client requirements, both in quality and functionality.'},
       },
   
       stats: {

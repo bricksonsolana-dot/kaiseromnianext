@@ -218,7 +218,7 @@ const translations = {
         titleLine1: 'Development & Construction',
         titleLine2: 'of Modern Residences',
         subtitle:
-          'We develop and deliver high-specification residential projects, combining architectural design, double wall technology (Double Wall) and full project management.',
+          'We develop and implement residential projects of high standards, combining architectural design, Double Wall technology, and full project management.',
         ctaProjects: 'View Our Projects',
         ctaInvestment: 'Partnership & Investment',
       },
@@ -235,8 +235,8 @@ const translations = {
       about: {
         sectionLabel: 'The Company',
         sectionTitle: 'Who We Are',
-        abouttitleline: 'Αναπτύσσουμε Σύγχρονα Έργα με Στρατηγική Προσέγγιση ',
-        body: 'Kaiser Omnia operates in the development and delivery of reinforced concrete projects, specialising in Double Wall technology. Its scope covers residential, professional and commercial developments, with an emphasis on structural durability, contemporary architectural design and the creation of long-term investment value. Every project is approached with strategic organisation, from study and design through to construction and full delivery, with rigorous technical oversight at every stage.',
+        abouttitleline: 'We Develop Contemporary Projects with a Strategic Approach',
+        body: 'Kaiser Omnia operates in the development and execution of reinforced concrete projects, with specialization in Double Wall technology. Its scope includes residential, commercial and professional developments, with emphasis on structural integrity, contemporary architectural design, and long-term investment value. Each project is approached with structured planning, from study and design to construction and full execution, with strict technical control at every stage.',
         cta: 'Learn More',
         badge: {
           value: '40+',
@@ -285,25 +285,25 @@ const translations = {
   
       // ── Technology Preview ───────────────────────────────────────
       technology: {
-        sectionTitle: 'The technology behind the construction',
-        body: 'Modern residential construction evolves through methods that improve quality, project organisation and overall construction efficiency. The double wall system is based on twin concrete panels placed on site and connected by specialised metal connectors (girders), maintaining the correct spacing and structural stability. The cavity between them is then filled with concrete, creating a unified reinforced concrete structural frame. This approach combines technological precision with the timeless durability of concrete construction and enables the faster delivery of high-specification buildings.',
-        cta: 'Learn more',
+        sectionTitle: 'The Construction Advantage of Double Wall',
+        body: 'The Double Wall technology of KAISER OMNIA is not simply a construction method, but a complete building system that redefines how modern reinforced concrete structures are executed. Its core advantage lies in the combination of industrial precision and in-situ concreting, allowing full control of quality at every stage of the project. Unlike conventional methods, where quality largely depends on site conditions, this system transfers critical construction stages to a controlled production environment. As a result, high geometric accuracy, proper reinforcement placement, and execution consistency are achieved, regardless of external factors.',
+        cta: 'Learn more about the system',
         benefits: [
           {
-            title: 'monolithic concrete strength',
-            desc: 'The structure acts as a single unified whole with high structural safety.',
+            title: 'MONOLITHIC CONCRETE STRENGTH',
+            desc: 'Ensures long-term stability, increased load-bearing capacity, and high seismic resistance',
           },
           {
-            title: 'high energy efficiency',
-            desc: 'Modern insulation solutions provide comfort and lower energy consumption.',
+            title: 'INSULATION & ENERGY PERFORMANCE',
+            desc: 'Provides high thermal performance and significant reduction in operating costs.',
           },
           {
-            title: 'up to 50% faster project completion',
-            desc: 'Modern construction technology significantly reduces implementation time.',
+            title: 'UP TO 50% FASTER PROJECT COMPLETION',
+            desc: 'Enables faster project completion without compromising quality',
           },
           {
-            title: 'absolute construction precision',
-            desc: 'Every element is designed and built to high quality specifications.',
+            title: 'ABSOLUTE CONSTRUCTION PRECISION',
+            desc: 'Ensures controlled production and high construction consistency at every stage',
           },
         ],
       },
@@ -312,65 +312,65 @@ const translations = {
       constructionStages: {
         sectionTitle: 'Construction Stages',
         subtitle:
-          'From the initial idea to the completed residence, every project progresses through an organised sequence of stages that ensure proper planning, effective delivery and high construction quality.',
+          'From the initial concept to the completion of the residence, each project progresses through a structured series of stages that ensure proper design, efficient execution, and high construction quality.',
         stageLabel: 'Stage',
         stages: [
           {
             stage: '01',
             title: 'Study & Design',
-            desc: 'The initial phase covers the design and technical preparation of the construction. Architectural and structural studies are carried out, the building permit process is completed, and the basic project plan is established.',
-            details: ['Architectural drawings', 'Structural study', 'Building permit', 'Project budget'],
+            desc: 'The initial phase of the project focuses on the design and technical preparation of the construction. Architectural and structural studies are carried out, while the building permit process is completed along with the initial project planning.',
+            details: ['Architectural Drawings', 'Structural Analysis', 'Building Permit Issuance', 'Project Budgeting'],
           },
           {
             stage: '02',
-            title: 'Excavation & Foundation',
-            desc: 'Once site works begin, excavation and ground preparation are carried out in accordance with the study. The reinforced concrete foundation is then constructed, forming the base and ensuring the stability of the entire building.',
-            details: ['Excavation', 'Ground retention', 'Foundation concrete pour', 'Waterproofing'],
+            title: 'Excavation & Foundations',
+            desc: 'With the start of on-site works, excavation and ground preparation are carried out in accordance with the design. This is followed by the construction of the reinforced concrete foundations, which form the base and ensure the stability of the entire structure.',
+            details: ['Excavation Works', 'Soil Retention', 'Foundation Concreting', 'Waterproofing'],
           },
           {
             stage: '03',
             title: 'Structural Frame',
-            desc: 'In this phase the main skeleton of the building is realised. The double walls are installed and the structural frame is formed, followed by the concrete pour to create a unified and highly durable reinforced concrete structure.',
-            details: ['Double walls', 'Columns & beams', 'Concrete pour'],
+            desc: 'At this stage, the main structural framework of the building is constructed. Double Wall panels are installed, forming the load-bearing structure, followed by concreting to create a unified and highly durable reinforced concrete system.',
+            details: ['Double Wall Panels', 'Columns & beams', 'Concrete pouring'],
           },
           {
             stage: '04',
-            title: 'Masonry & Insulation',
-            desc: 'At this stage the interior spaces of the residence are shaped through the construction of internal walls. Thermal and acoustic insulation systems are installed simultaneously, contributing to the building\'s energy performance and comfort.',
+            title: 'Wall Construction & Insulation',
+            desc: 'At this stage, the internal spaces of the residence are formed through the construction of internal walls. At the same time, thermal and acoustic insulation systems are applied, contributing to the building’s energy efficiency and overall comfort',
             details: ['Internal walls', 'Thermal insulation', 'Acoustic insulation', 'Roof waterproofing'],
           },
           {
             stage: '05',
-            title: 'Electromechanical Installations',
-            desc: 'The essential networks that ensure the functioning of the residence are installed here. This includes electrical and plumbing installations as well as heating and cooling systems.',
-            details: ['Plumbing installations', 'Electrical installations', 'Heating/Cooling', 'Security systems'],
+            title: 'Mechanical, Electrical & Plumbing (MEP) Installations',
+            desc: 'At this stage, the core systems that ensure the functionality of the residence are installed. These include electrical and plumbing installations, as well as heating and cooling systems',
+            details: ['Plumbing Systems', 'Electrical Systems', 'Heating & Cooling Systems', 'Security systems'],
           },
           {
             stage: '06',
-            title: 'Finishes & Cladding',
-            desc: 'At this stage the aesthetic and functional fit-out of the residence is completed. Interior spaces take their final form through surface cladding and finishing works that shape the final result of the project.',
-            details: ['Plasterwork', 'Tiles & flooring', 'Doors & windows', 'Paintwork'],
+            title: 'Finishes & Final Works',
+            desc: 'At this stage, the aesthetic and functional completion of the residence is achieved. Internal spaces take their final form through surface finishes and final works that define the overall result of the project.',
+            details: ['Plastering', 'Tiles & flooring', 'Aluminum Frames & Openings', 'Painting'],
           },
           {
             stage: '07',
             title: 'External Works',
-            desc: 'The final phase covers the landscaping of the surrounding area and the completion of the overall plot. Through the necessary external interventions, the project achieves its full functionality and aesthetic.',
-            details: ['Building facade', 'Garden landscaping', 'Parking areas', 'External lighting'],
+            desc: 'The final stage of the project focuses on the development of the surrounding area and the completion of the overall appearance of the property. Through the necessary external works, the project achieves full functionality and its final aesthetic.',
+            details: ['Building facade', 'Landscape Design', 'Parking areas', 'Outdoor Lighting'],
           },
           {
             stage: '08',
             title: 'Handover & Warranty',
-            desc: 'Upon completion of works, a final inspection is carried out and the residence is handed over ready for use. Full documentation of all installations is provided together with a workmanship guarantee.',
-            details: ['Final technical inspection', 'Project certificates', 'Construction warranty', 'Technical support'],
+            desc: 'Upon completion of the works, a final technical inspection is carried out and the residence is delivered ready for use. Full documentation of all installations is provided, along with a warranty for the proper execution of the works',
+            details: ['Final technical inspection', 'Project Certifications', 'Construction Warranty', 'Technical Support'],
           },
         ],
       },
   
       // ── CTA Banner ───────────────────────────────────────────────
       cta: {
-        title: 'From Design to Delivery',
+        title: 'From Vision to Construction',
         subtitle:
-          'Every project begins with an idea. Our team takes on the task of turning your vision into a modern, reliable construction — with proper planning, organisation and high delivery standards.',
+          'Every project begins with an idea. Our team transforms your vision into a modern and reliable construction, through proper design, organization, and high execution standards.',
         btn: 'Contact Us',
       },
     },

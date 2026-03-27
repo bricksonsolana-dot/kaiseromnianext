@@ -35,7 +35,7 @@
     overflow: hidden;
     width: 100%;
     aspect-ratio: 16 / 9;
-    max-height: 700px;
+    max-height: 1000px;
   }
   
   /* ── Generic section ─────────────────────────────────────────────── */
@@ -150,7 +150,8 @@
   }
 
   .mvvImageWrap {
-    position: relative;
+    position: sticky;
+    top: 5.5rem;
     overflow: hidden;
     width: 100%;
     aspect-ratio: 4 / 3;
@@ -526,6 +527,7 @@
     }
 
     .mvvImageWrap {
+      position: relative;
       order: -1;
       aspect-ratio: 4 / 3;
       margin-inline: calc(-1 * clamp(1.5rem, 6vw, 5rem));

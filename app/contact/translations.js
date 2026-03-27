@@ -75,7 +75,7 @@ const translations = {
         },
         email: {
           title: 'Email',
-          addresses: ['info@kaiseromnia.gr', 'sales@kaiseromnia.gr'],
+          addresses: ['info@kaiseromnia.gr', ],
         },
       },
 
@@ -137,7 +137,7 @@ const translations = {
       // ── Hero ────────────────────────────────────────────────────
       hero: {
         title: "Let's Build Together",
-        subtitle: 'Contact us to discuss your next project.',
+        subtitle: 'Contact us to discuss your upcoming project.',
       },
   
       // ── Contact Form ─────────────────────────────────────────────
@@ -203,7 +203,7 @@ const translations = {
         },
         email: {
           title: 'Email',
-          addresses: ['info@kaiseromnia.gr', 'sales@kaiseromnia.gr'],
+          addresses: ['info@kaiseromnia.gr', ],
         },
       },
 
@@ -219,35 +219,35 @@ const translations = {
         sectionTitle: 'Frequently Asked Questions',
         items: [
           {
-            question: 'What is the project completion timeframe?',
-            answer: 'The completion timeframe is determined by the size, complexity and specific requirements of the project. As a general indication, a typical residence is completed within 6–8 months from the start of works.',
+            question: 'What is the typical project timeline?',
+            answer: 'The project timeline depends on the size, complexity, and specific requirements of each project. As an indication, a typical residential project is completed within 6–8 months from the start of construction.',
           },
           {
             question: 'How is the total construction cost determined?',
-            answer: 'The cost is determined following a technical assessment, based on the design, selected materials and the specific requirements of each project.',
+            answer: 'The total cost is determined following a technical evaluation, based on the design, selected materials, and the specific requirements of each project.',
           },
           {
-            question: 'What is the company\'s area of activity?',
-            answer: 'The company undertakes projects throughout Greece, following an assessment of the project\'s requirements and location.',
+            question: 'What is the company’s area of operation?',
+            answer: 'The company undertakes projects across Greece, subject to evaluation of project requirements and location.',
           },
           {
             question: 'What level of warranties is provided?',
-            answer: 'Construction warranties are provided in accordance with the applicable technical specifications and the terms of the contract.',
+            answer: 'Construction warranties are provided in accordance with applicable technical standards and contractual terms.',
           },
           {
-            question: 'Is project customisation possible?',
-            answer: 'Every project is tailored to the client\'s needs, with the option to select materials and technical solutions.',
+            question: 'Is project customization possible',
+            answer: 'Each project is tailored to the client’s needs, with flexibility in material selection and construction details, while maintaining the consistent application of the Double Wall system.',
           },
           {
-            question: 'What are the prerequisites for starting construction?',
-            answer: 'The commencement of works requires the issuance of the necessary permits and the completion of the relevant studies.',
+            question: 'What are the requirements to start construction?',
+            answer: 'The commencement of works requires the issuance of all necessary permits and the completion of the relevant design studies.',
           },
           {
-            question: 'What is the company\'s technical approach to construction?',
-            answer: 'The company applies Double Wall technology, achieving increased construction precision, monolithic structural behaviour and minimised construction deviations.',
+            question: 'What is the company’s technical approach to construction?',
+            answer: 'The company applies Double Wall technology, achieving enhanced construction accuracy, unified structural performance, and reduced construction deviations.',
           },
           {
-            question: 'Can I invest in property development?',
+            question: 'Can I invest in a real estate development project?',
             answer: 'The company supports real estate investment projects, providing comprehensive technical guidance from design through to construction.',
           },
         ],

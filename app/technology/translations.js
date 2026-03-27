@@ -55,21 +55,21 @@ const translations = {
   
       intro: {
         badge: '01',
-        title: 'Benefits in Practice',
+        title: 'What is Double Wall Technology?',
         paragraphs: [
-          'Double Wall technology is a modern method for constructing load-bearing reinforced concrete elements, combining factory-level quality with the monolithic integrity of in-situ concreting.',
-          'The fundamental principle of the method is the creation of a double concrete wall — two prefabricated panels connected by transverse lattice girders — which after concreting functions as a single, fully monolithic structural element. In-situ concrete pouring eliminates all discontinuities and ensures complete continuity of the load-bearing structure.',
-          'The result is a construction of high geometric precision, with correct wall alignment and clean geometry, without the need for corrective interventions in subsequent stages. At the same time, the continuous connection of structural elements ensures high structural strength and full compliance with modern seismic regulations (Eurocode 8), making the method the ideal choice for buildings requiring high seismic protection.',
+          'Modern residential construction is evolving through methods that enhance quality, project organization, and overall construction efficiency. Double Wall technology is based on the use of twin reinforced concrete elements, which are installed on site and connected with specialized steel connectors, ensuring precision, stability, and geometric consistency.',
+          'The cavity between the two elements is then filled with concrete, forming a unified load-bearing structure',
+          'The result is a monolithic reinforced concrete structure of high structural capacity, combining industrial precision with long-term durability and high energy performance, while enabling faster delivery of high-specification projects',
         ],
       },
   
       introBenefits: {
         badge: '02',
-        title: 'Operational & Environmental Benefits',
+        title: 'Long-Term Structural Performance',
         paragraphs: [
-          'Double Wall technology delivers substantial benefits both in project management and sustainability.',
-          'The organised and controlled construction process allows significant acceleration of the schedule, with project progress up to 40% faster compared to conventional methods. At the same time, the composition of the double walls improves the thermal insulation and soundproofing performance of the building, contributing to more comfortable and energy-efficient interior spaces.',
-          'Finally, the method is distinguished by its low ecological footprint: it produces 30% less construction waste, relies on recyclable materials, and involves reduced energy consumption during production — factors that place it among the most sustainable choices in modern construction.',
+          'The quality of a structure is ultimately reflected in its behavior over time. The use of controlled and repeatable production conditions results in high-density, uniform concrete with enhanced durability and stable mechanical properties.',
+          'Precision in reinforcement placement, combined with consistency in the casting and curing process, reduces internal stresses and construction discontinuities associated with crack formation. In this way, the structure maintains its cohesion and integrity over time.',
+          'The result is a load-bearing structure with long-term reliability, high resistance to wear and environmental exposure, maintaining its performance without the need for frequent maintenance interventions typically required in conventional construction.',
         ],
       },
   
@@ -82,12 +82,12 @@ const translations = {
           doubleWall: 'Double Wall System',
         },
         rows: [
-          { feature: 'Construction Time',        conventional: '9–12 months',                 doubleWall: '6–9 months' },
-          { feature: 'Seismic Performance',      conventional: 'Eurocode 8 compliant',        doubleWall: 'Full Eurocode 8 compliance' },
-          { feature: 'Thermal Performance',      conventional: 'Depends on design',           doubleWall: 'Improved thermal performance' },
-          { feature: 'Construction Precision',   conventional: 'Possible element deviations', doubleWall: 'High geometric precision' },
-          { feature: 'Construction Corrections', conventional: 'Frequent corrections',        doubleWall: 'Clean construction without patch-ups' },
-          { feature: 'Construction Cost',        conventional: 'Variable',                    doubleWall: 'Competitive' },
+          { feature: 'Construction Time',        conventional: '9–12 months',                           doubleWall: '6–9 months' },
+          { feature: 'Seismic Performance',      conventional: 'In accordance with Eurocode 8',         doubleWall: 'Full Eurocode 8 compliance' },
+          { feature: 'Thermal Performance',      conventional: 'Dependent on design',                     doubleWall: 'Improved thermal performance' },
+          { feature: 'Construction Accuracy',    conventional: 'Possible element deviations',           doubleWall: 'High geometric accuracy' },
+          { feature: 'Construction Adjustments', conventional: 'Frequent corrections',                  doubleWall: 'Clean construction without rework' },
+          { feature: 'Construction Cost',        conventional: 'Variable',                              doubleWall: 'Competitive' },
         ],
       },
   

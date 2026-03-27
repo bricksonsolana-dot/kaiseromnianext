@@ -38,7 +38,7 @@
     overflow: hidden;
     width: 100%;
     aspect-ratio: 16 / 9;
-    max-height: 700px;
+    max-height: 1000px;
   }
   
   /* ── 01 Services list ──────────────────────────────────────────── */
@@ -181,7 +181,8 @@
   }
   
   .introImageWrap {
-    position: relative;
+    position: sticky;
+    top: 5.5rem;
     overflow: hidden;
     aspect-ratio: 3 / 2;
   }
@@ -414,6 +415,7 @@
     }
 
     .introImageWrap {
+      position: relative;
       aspect-ratio: 16 / 9;
       order: -1; /* Image first */
     }

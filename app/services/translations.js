@@ -122,8 +122,8 @@ const translations = {
     // ════════════════════════════════════════════════════════════════
     en: {
       eyebrow: '// Services',
-      titleLine1: 'A full suite of',
-      titleLine2: 'construction services',
+      titleLine1: 'From Design to Execution',
+      titleLine2: '',
   
       intro: {
         badge: 'Patented Technology',
@@ -143,22 +143,22 @@ const translations = {
         {
           num: '01', total: '04',
           title: 'Design & Engineering',
-          desc: 'Our integrated design and engineering team brings together architects, structural engineers, and sustainability experts to create spaces that are both beautiful and structurally sound. We utilise BIM technology and the latest CAD tools to deliver precise, coordinated designs from concept through construction documents.',
+          desc: 'Our design approach forms the foundation of every successful project. From the earliest stage, architectural and engineering studies are fully aligned with the construction system, ensuring accuracy, cost control, and seamless execution without unnecessary adjustments. By utilizing BIM technologies and advanced CAD tools, we develop comprehensive, high-specification studies, from concept to final construction drawings',
         },
         {
           num: '02', total: '04',
-          title: 'Construction',
-          desc: 'From residential villas to large-scale commercial developments, our construction division delivers exceptional build quality on every project. With 40+ years of experience and a highly skilled workforce, we manage every aspect of the build process with precision and attention to detail.',
+          title: 'Technical Design for Execution',
+          desc: 'Technical design is the critical stage where study is translated into a buildable solution. Through precision and full coordination, the correct implementation of every detail is ensured, reducing errors and eliminating deviations during construction',
         },
         {
           num: '03', total: '04',
-          title: 'Project Management',
-          desc: 'Our project management services ensure your development is delivered on time, within budget, and to the highest quality standards. We provide dedicated project managers who oversee scheduling, procurement, contractor coordination, and quality assurance throughout every phase.',
+          title: 'Construction',
+          desc: 'Specialization in the German-origin Double Wall system forms the foundation of our construction approach, offering industrial-level precision and enhanced seismic performance. A system that elevates the quality and reliability of modern construction.',
         },
         {
           num: '04', total: '04',
-          title: 'Technical Consulting',
-          desc: 'Leverage our deep technical expertise with our consulting services. We advise on feasibility studies, construction methodology, material selection, sustainability strategy, and regulatory compliance — giving you the expert guidance needed to make informed decisions at every stage.',
+          title: 'Project Management',
+          desc: 'Project management ensures full coordination and control at every stage of construction, enabling smooth project progression without delays or deviations. Through continuous supervision, proper coordination of teams, and strict quality control, consistency in scheduling, cost control, and high-quality outcomes are achieved.',
         },
       ],
   
