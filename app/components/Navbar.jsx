@@ -115,13 +115,13 @@ export const Navbar = () => {
         </Link>
 
         <div className={styles.desktopLinks}>
-          <Link href={localePath('/projects', language)} className={styles.navLink}>
+          <Link href={localePath('/projects', language)} className={`${styles.navLink} ${barePath === '/projects' ? styles.navLinkActive : ''}`}>
             {labels.projects}
           </Link>
-          <Link href={localePath('/technology', language)} className={styles.navLink}>
+          <Link href={localePath('/technology', language)} className={`${styles.navLink} ${barePath === '/technology' ? styles.navLinkActive : ''}`}>
             {labels.technology}
           </Link>
-          <Link href={localePath('/contact', language)} className={styles.navLink}>
+          <Link href={localePath('/contact', language)} className={`${styles.navLink} ${barePath === '/contact' ? styles.navLinkActive : ''}`}>
             {labels.label}
           </Link>
         </div>
@@ -203,7 +203,7 @@ export const Navbar = () => {
             <Link
               key={item.path}
               href={localePath(item.path, language)}
-              className={styles.overlayNavItem}
+              className={`${styles.overlayNavItem} ${barePath === item.path ? styles.overlayNavItemActive : ''}`}
             >
               <span className={styles.overlayNavNum}>{item.num}</span>
               <span className={styles.overlayNavLabel}>{item.label}</span>
