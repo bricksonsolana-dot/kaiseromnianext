@@ -158,14 +158,14 @@ export const Navbar = () => {
           <p className={styles.overlayContactLabel}>
             {language === 'el' ? 'Επικοινωνία' : 'Get in touch'}
           </p>
-          <span className={styles.overlayContactItem}>Leoforos Kifisias 44</span>
-          <span className={styles.overlayContactItem}>Athens, Greece 15125</span>
+          <span className={styles.overlayContactItem}>Μεγαρίδος 125</span>
+          <span className={styles.overlayContactItem}>Ασπρόπυργος, Αττική</span>
           <a
-            href="tel:+302103000155"
+            href="tel:+306948209440"
             className={styles.overlayContactItem}
             style={{ marginTop: '0.75rem' }}
           >
-            +30 210 300 0155
+            +30 694 820 9440
           </a>
           <a href="mailto:info@kaiseromnia.gr" className={styles.overlayContactItem}>
             info@kaiseromnia.gr

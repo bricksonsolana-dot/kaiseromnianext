@@ -1,6 +1,7 @@
 'use client';
 
 import { useRef, useEffect, useState } from 'react';
+import Image from 'next/image';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation, Pagination } from 'swiper/modules';
 import 'swiper/css';
@@ -69,8 +70,14 @@ const ProjectCard = ({ project, statusLabels }) => {
               {i === 0
                 ? <ParallaxImage src={src} alt={`${project.name} 1`} />
                 : (
-                  <div className={styles.plainSlide}>
-                    <img src={src} alt={`${project.name} ${i + 1}`} className={styles.plainSlideImg} />
+                  <div className={styles.plainSlide} style={{ position: 'relative' }}>
+                    <Image
+                      src={src}
+                      alt={`${project.name} ${i + 1}`}
+                      fill
+                      sizes="(max-width: 768px) 100vw, 50vw"
+                      style={{ objectFit: 'cover' }}
+                    />
                   </div>
                 )
               }
