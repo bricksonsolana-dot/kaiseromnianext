@@ -21,12 +21,6 @@ const NAV_LINKS_EN = [
   { label: 'Contact',  path: '/contact' },
 ];
 
-const SOCIAL_LINKS = [
-  { label: 'Instagram', href: '#' },
-  { label: 'LinkedIn',  href: '#' },
-  { label: 'Facebook',  href: '#' },
-];
-
 function localePath(path, language) {
   if (language === 'en') {
     return path === '/' ? '/en' : `/en${path}`;
@@ -61,21 +55,7 @@ export const Footer = () => {
           </ul>
         </div>
 
-        {/* 3 — Social */}
-        <div>
-          <p className={styles.colHeading}>Social</p>
-          <ul className={styles.colLinks}>
-            {SOCIAL_LINKS.map(l => (
-              <li key={l.label}>
-                <a href={l.href} target="_blank" rel="noopener noreferrer">
-                  {l.label}
-                </a>
-              </li>
-            ))}
-          </ul>
-        </div>
-
-        {/* 4 — Reach us */}
+        {/* 3 — Reach us */}
         <div>
           <p className={styles.colHeading}>{t.contact.title}</p>
           <ul className={styles.colLinks}>
@@ -85,7 +65,7 @@ export const Footer = () => {
           </ul>
         </div>
 
-        {/* 5 — Contact */}
+        {/* 4 — Contact */}
         <div>
           <p className={styles.colHeading}>{t.contact.title}</p>
           <ul className={styles.colLinks}>

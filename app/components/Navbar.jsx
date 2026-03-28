@@ -181,12 +181,6 @@ export const Navbar = () => {
             info@kaiser-omnia.gr
           </a>
 
-          <div className={styles.overlaySocial}>
-            <a href="#" className={styles.overlaySocialLink}>Instagram</a>
-            <a href="#" className={styles.overlaySocialLink}>LinkedIn</a>
-            <a href="#" className={styles.overlaySocialLink}>Facebook</a>
-          </div>
-
           <div
             role="button"
             tabIndex={0}
