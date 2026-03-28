@@ -80,8 +80,7 @@ export const Navbar = () => {
     setMenuOpen((v) => !v);
   }, []);
 
-  const isHeroPage = pathname === '/';
-  const isTransparent = isHeroPage && !isScrolled && !menuOpen;
+  const isTransparent = false;
 
   const navClass = [
     styles.nav,
