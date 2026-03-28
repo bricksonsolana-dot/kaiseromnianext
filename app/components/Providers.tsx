@@ -22,9 +22,9 @@ function ScrollToTop() {
   return null;
 }
 
-export default function Providers({ children }: { children: ReactNode }) {
+export default function Providers({ children, locale }: { children: ReactNode; locale: string }) {
   return (
-    <LanguageProvider>
+    <LanguageProvider locale={locale}>
       <ScrollToTop />
       
       {/* Global visual effects */}

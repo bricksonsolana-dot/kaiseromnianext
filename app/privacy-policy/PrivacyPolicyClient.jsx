@@ -63,7 +63,7 @@ const t = {
     sections: [
       {
         heading: '1. Data Controller',
-        body: 'Kaiser Omnia Construction (hereinafter «the Company»), headquartered at Leoforos Kifisias 44, Athens 15125, Greece, is responsible for the processing of your personal data in accordance with Regulation (EU) 2016/679 (GDPR) and applicable Greek law.',
+        body: 'Kaiser Omnia Construction (hereinafter «the Company»), headquartered at Μεγαρίδος 125, Ασπρόπυργος, Greece, is responsible for the processing of your personal data in accordance with Regulation (EU) 2016/679 (GDPR) and applicable Greek law.',
       },
       {
         heading: '2. Data We Collect',
@@ -109,7 +109,7 @@ const t = {
   },
 };
 
-export default function PrivacyPolicyPage() {
+export default function PrivacyPolicyClient() {
   const { language } = useLanguage();
   const content = t[language];
 

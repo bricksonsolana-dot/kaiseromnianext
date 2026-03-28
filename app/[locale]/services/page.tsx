@@ -1,9 +1,9 @@
 import type { Metadata } from 'next';
-import ServicesClient from './ServicesClient';
+import ServicesClient from '@/app/services/ServicesClient';
 import StructuredData from '@/app/components/StructuredData';
 
 export const metadata: Metadata = {
-  title: 'Υπηρεσίες Κατασκευής & Αρχιτεκτονικής | Kaiser Omnia',
+  title: 'Υπηρεσίες Κατασκευής & Αρχιτεκτονικής',
   description:
     'Αρχιτεκτονική μελέτη, τεχνική εφαρμογή, κατασκευή και project management. 40+ χρόνια εμπειρίας στην κατασκευή υψηλών προδιαγραφών.',
   keywords: [
@@ -29,10 +29,10 @@ export const metadata: Metadata = {
     type: 'website',
     images: [
       {
-        url: 'https://kaiser-omnia.gr/philosophy.png',
+        url: '/images/services/services.png',
         width: 1200,
         height: 630,
-        alt: 'Kaiser Omnia — Υπηρεσίες',
+        alt: 'Kaiser Omnia — Υπηρεσίες Κατασκευής',
       },
     ],
   },
@@ -41,7 +41,7 @@ export const metadata: Metadata = {
     title: 'Υπηρεσίες Κατασκευής & Αρχιτεκτονικής | Kaiser Omnia',
     description:
       'Αρχιτεκτονική μελέτη, τεχνική εφαρμογή, κατασκευή και project management. 40+ χρόνια εμπειρίας στην κατασκευή υψηλών προδιαγραφών.',
-    images: ['https://kaiser-omnia.gr/philosophy.png'],
+    images: ['/images/services/services.png'],
   },
 };
 

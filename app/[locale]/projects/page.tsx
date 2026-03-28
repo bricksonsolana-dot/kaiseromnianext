@@ -1,9 +1,9 @@
 import type { Metadata } from 'next';
-import ProjectsClient from './ProjectsClient';
+import ProjectsClient from '@/app/projects/ProjectsClient';
 import StructuredData from '@/app/components/StructuredData';
 
 export const metadata: Metadata = {
-  title: 'Έργα μας | Portfolio Κατασκευών | Kaiser Omnia',
+  title: 'Portfolio Κατασκευών',
   description:
     'Δείτε το portfolio κατασκευαστικών έργων της Kaiser Omnia. Κατοικίες και εμπορικά κτίρια υψηλών προδιαγραφών σε όλη την Αθήνα.',
   keywords: [
@@ -29,19 +29,19 @@ export const metadata: Metadata = {
     type: 'website',
     images: [
       {
-        url: 'https://kaiser-omnia.gr/philosophy.png',
+        url: '/images/home/erga/villaview1.png',
         width: 1200,
         height: 630,
-        alt: 'Kaiser Omnia — Έργα',
+        alt: 'Kaiser Omnia — Portfolio Κατασκευών',
       },
     ],
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Έργα μας | Portfolio Κατασκευών | Kaiser Omnia',
+    title: 'Portfolio Κατασκευών | Kaiser Omnia',
     description:
       'Δείτε το portfolio κατασκευαστικών έργων της Kaiser Omnia. Κατοικίες και εμπορικά κτίρια υψηλών προδιαγραφών σε όλη την Αθήνα.',
-    images: ['https://kaiser-omnia.gr/philosophy.png'],
+    images: ['/images/home/erga/villaview1.png'],
   },
 };
 

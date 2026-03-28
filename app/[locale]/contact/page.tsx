@@ -1,9 +1,9 @@
 import type { Metadata } from 'next';
-import ContactClient from './ContactClient';
+import ContactClient from '@/app/contact/ContactClient';
 import StructuredData from '@/app/components/StructuredData';
 
 export const metadata: Metadata = {
-  title: 'Επικοινωνία | Kaiser Omnia — Ασπρόπυργος',
+  title: 'Επικοινωνία — Ασπρόπυργος',
   description:
     'Επικοινωνήστε με την Kaiser Omnia. Μεγαρίδος 125, Ασπρόπυργος. Τηλ: +30 6948209440. Συμπληρώστε τη φόρμα για να ξεκινήσουμε το έργο σας.',
   keywords: [
@@ -29,7 +29,7 @@ export const metadata: Metadata = {
     type: 'website',
     images: [
       {
-        url: 'https://kaiser-omnia.gr/philosophy.png',
+        url: '/contact/contact1.png',
         width: 1200,
         height: 630,
         alt: 'Kaiser Omnia — Επικοινωνία',
@@ -38,10 +38,10 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Επικοινωνία | Kaiser Omnia — Ασπρόπυργος',
+    title: 'Επικοινωνία — Ασπρόπυργος | Kaiser Omnia',
     description:
       'Επικοινωνήστε με την Kaiser Omnia. Μεγαρίδος 125, Ασπρόπυργος. Τηλ: +30 6948209440. Συμπληρώστε τη φόρμα για να ξεκινήσουμε το έργο σας.',
-    images: ['https://kaiser-omnia.gr/philosophy.png'],
+    images: ['/contact/contact1.png'],
   },
 };
 

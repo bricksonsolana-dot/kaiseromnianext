@@ -33,7 +33,7 @@ const translations = {
     contact: {
       title: 'Επικοινωνία',
       address: 'Λεωφ. Κηφισίας 280\n152 32, Χαλάνδρι, Αθήνα',
-      phone: '+30 210 123 4567',
+      phone: '+30 694 820 9440',
       email: 'info@kaiseromnia.gr',
     },
 
@@ -88,7 +88,7 @@ const translations = {
     contact: {
       title: 'Contact',
       address: 'Kifisias Ave. 280\n152 32, Chalandri, Athens',
-      phone: '+30 210 123 4567',
+      phone: '+30 694 820 9440',
       email: 'info@kaiseromnia.gr',
     },
 

@@ -1,9 +1,12 @@
-// src/app/layout.tsx
 import type { Metadata } from 'next';
+import { notFound } from 'next/navigation';
 import { Cormorant_Garamond, Barlow, Barlow_Condensed } from 'next/font/google';
 import Providers from '@/app/components/Providers';
 import StructuredData from '@/app/components/StructuredData';
-import './globals.css';  // ← Single import, replaces both index.css and App.css
+import '../globals.css';
+
+const locales = ['el', 'en'] as const;
+type Locale = (typeof locales)[number];
 
 const localBusinessSchema = {
   '@context': 'https://schema.org',
@@ -62,7 +65,7 @@ const websiteSchema = {
 }
 
 const cormorant = Cormorant_Garamond({
-  subsets: ['latin', 'latin-ext'],  // latin-ext for Greek characters
+  subsets: ['latin', 'latin-ext'],
   weight: ['300', '400', '500'],
   style: ['normal', 'italic'],
   variable: '--font-cormorant',
@@ -132,23 +135,34 @@ export const metadata: Metadata = {
   },
 };
 
-export default function RootLayout({
+export async function generateStaticParams() {
+  return locales.map((locale) => ({ locale }));
+}
+
+export default async function RootLayout({
   children,
+  params,
 }: {
   children: React.ReactNode;
+  params: Promise<{ locale: string }>;
 }) {
+  const { locale } = await params;
+
+  if (!locales.includes(locale as Locale)) {
+    notFound();
+  }
+
   return (
     <html
-      lang="el"
+      lang={locale}
       className={`${cormorant.variable} ${barlow.variable} ${barlowCondensed.variable}`}
     >
       <head>
         <StructuredData schema={localBusinessSchema} />
         <StructuredData schema={websiteSchema} />
       </head>
-      {/* No inline styles needed — globals.css handles body styling */}
       <body>
-        <Providers>
+        <Providers locale={locale}>
           {children}
         </Providers>
       </body>

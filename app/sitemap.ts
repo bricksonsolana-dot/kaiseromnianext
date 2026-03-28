@@ -6,29 +6,55 @@ type Page = {
   path: string
   priority: number
   changeFrequency: MetadataRoute.Sitemap[number]['changeFrequency']
+  lastModified: string
 }
 
 const pages: Page[] = [
-  { path: '',           priority: 1.0, changeFrequency: 'monthly' },
-  { path: '/services',  priority: 0.9, changeFrequency: 'monthly' },
-  { path: '/projects',  priority: 0.9, changeFrequency: 'weekly'  },
-  { path: '/company',   priority: 0.8, changeFrequency: 'monthly' },
-  { path: '/technology',priority: 0.8, changeFrequency: 'monthly' },
-  { path: '/contact',   priority: 0.7, changeFrequency: 'monthly' },
+  { path: '',            priority: 1.0, changeFrequency: 'monthly', lastModified: '2026-03-28' },
+  { path: '/services',   priority: 0.9, changeFrequency: 'monthly', lastModified: '2026-03-28' },
+  { path: '/projects',   priority: 0.9, changeFrequency: 'weekly',  lastModified: '2026-03-28' },
+  { path: '/company',    priority: 0.8, changeFrequency: 'monthly', lastModified: '2026-03-28' },
+  { path: '/technology', priority: 0.8, changeFrequency: 'monthly', lastModified: '2026-03-28' },
+  { path: '/contact',    priority: 0.7, changeFrequency: 'monthly', lastModified: '2026-03-28' },
 ]
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  return pages.map(({ path, priority, changeFrequency }) => ({
-    url: `${BASE_URL}${path || '/'}`,
-    lastModified: new Date(),
-    changeFrequency,
-    priority,
-    alternates: {
-      languages: {
-        el: `${BASE_URL}/el${path || '/'}`,
-        en: `${BASE_URL}/en${path || '/'}`,
-        'x-default': `${BASE_URL}${path || '/'}`,
+  const entries: MetadataRoute.Sitemap = []
+
+  for (const { path, priority, changeFrequency, lastModified } of pages) {
+    const greekUrl = `${BASE_URL}${path || '/'}`
+    const englishUrl = `${BASE_URL}/en${path || ''}`
+
+    // Greek page (canonical, root URL)
+    entries.push({
+      url: greekUrl,
+      lastModified,
+      changeFrequency,
+      priority,
+      alternates: {
+        languages: {
+          el: greekUrl,
+          en: englishUrl,
+          'x-default': greekUrl,
+        },
       },
-    },
-  }))
+    })
+
+    // English page
+    entries.push({
+      url: englishUrl,
+      lastModified,
+      changeFrequency,
+      priority: priority * 0.9,
+      alternates: {
+        languages: {
+          el: greekUrl,
+          en: englishUrl,
+          'x-default': greekUrl,
+        },
+      },
+    })
+  }
+
+  return entries
 }
