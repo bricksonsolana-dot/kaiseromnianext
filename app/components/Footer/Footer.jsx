@@ -57,9 +57,9 @@ export const Footer = () => (
       <div>
         <p className={styles.colHeading}>Reach us</p>
         <ul className={styles.colLinks}>
-          <li><span>Leoforos Kifisias 44</span></li>
-          <li><span>Athens, Greece 15125</span></li>
-          <li><a href="tel:+302103000155">+30 210 300 0155</a></li>
+          <li><span>Μεγαρίδος 125</span></li>
+          <li><span>Ασπρόπυργος, Αττική</span></li>
+          <li><a href="tel:+306948209440">+30 694 820 9440</a></li>
         </ul>
       </div>
 
@@ -67,7 +67,7 @@ export const Footer = () => (
       <div>
         <p className={styles.colHeading}>Contact</p>
         <ul className={styles.colLinks}>
-          <li><a href="mailto:info@kaiseromnia.gr">info@kaiseromnia.gr</a></li>
+          <li><a href="mailto:info@kaiser-omnia.gr">info@kaiser-omnia.gr</a></li>
           <li><Link href="/contact">Send a message</Link></li>  {/* ← to → href */}
         </ul>
       </div>

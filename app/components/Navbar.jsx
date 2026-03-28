@@ -167,8 +167,8 @@ export const Navbar = () => {
           >
             +30 694 820 9440
           </a>
-          <a href="mailto:info@kaiseromnia.gr" className={styles.overlayContactItem}>
-            info@kaiseromnia.gr
+          <a href="mailto:info@kaiser-omnia.gr" className={styles.overlayContactItem}>
+            info@kaiser-omnia.gr
           </a>
 
           <div className={styles.overlaySocial}>
