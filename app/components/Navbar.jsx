@@ -105,13 +105,13 @@ export const Navbar = () => {
         </Link>
 
         <div className={styles.desktopLinks}>
-          <Link href="/projects" className={styles.navLink}>
+          <Link href="/projects" className={`${styles.navLink} ${pathname === '/projects' ? styles.navLinkActive : ''}`}>
             {labels.projects}
           </Link>
-          <Link href="/technology" className={styles.navLink}>
+          <Link href="/technology" className={`${styles.navLink} ${pathname === '/technology' ? styles.navLinkActive : ''}`}>
             {labels.technology}
           </Link>
-          <Link href="/contact" className={styles.navLink}>
+          <Link href="/contact" className={`${styles.navLink} ${pathname === '/contact' ? styles.navLinkActive : ''}`}>
             {labels.label}
           </Link>
         </div>
@@ -193,7 +193,7 @@ export const Navbar = () => {
             <Link
               key={item.path}
               href={item.path}
-              className={styles.overlayNavItem}
+              className={`${styles.overlayNavItem} ${pathname === item.path ? styles.overlayNavItemActive : ''}`}
             >
               <span className={styles.overlayNavNum}>{item.num}</span>
               <span className={styles.overlayNavLabel}>{item.label}</span>

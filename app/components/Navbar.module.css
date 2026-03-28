@@ -174,6 +174,19 @@
   color: #fff;
 }
 
+/* ── Active page link ─────────────────────────────────────────── */
+.navLinkActive {
+  color: var(--color-ink);
+}
+
+.navLinkActive::after {
+  width: 100%;
+}
+
+.nav.transparent .navLinkActive {
+  color: #fff;
+}
+
 /* ─── Hamburger ──────────────────────────────────────────────── */
 .hamburger {
   background: none;
@@ -372,11 +385,13 @@ a.overlayContactItem:hover {
   transition: color 0.2s ease;
 }
 
-.overlayNavItem:hover .overlayNavNum {
+.overlayNavItem:hover .overlayNavNum,
+.overlayNavItemActive .overlayNavNum {
   color: var(--color-accent);
 }
 
-.overlayNavItem:hover .overlayNavLabel {
+.overlayNavItem:hover .overlayNavLabel,
+.overlayNavItemActive .overlayNavLabel {
   color: #fff;
 }
 
