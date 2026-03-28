@@ -70,7 +70,7 @@ const ProjectCard = ({ project, statusLabels }) => {
               {i === 0
                 ? <ParallaxImage src={src} alt={`${project.name} 1`} />
                 : (
-                  <div className={styles.plainSlide} style={{ position: 'relative' }}>
+                  <div className={styles.plainSlide}>
                     <Image
                       src={src}
                       alt={`${project.name} ${i + 1}`}

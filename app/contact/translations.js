@@ -82,7 +82,7 @@ const translations = {
       // ── Map ──────────────────────────────────────────────────────
       map: {
         title: 'Kaiser Omnia - Ασπρόπυργος',
-        src: 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d12563.876539012345!2d23.5833!3d38.1833!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x14a1a7f2c1e5d5b7%3A0x400bd2ce2b980a0!2z0JHPg9C/z4HPjM-Az4XPgc6/z4I!5e0!3m2!1sel!2sgr!4v1',
+        src: 'https://maps.google.com/maps?q=%CE%9C%CE%B5%CE%B3%CE%B1%CF%81%CE%AF%CE%B4%CE%BF%CF%82+125,+%CE%91%CF%83%CF%80%CF%81%CF%8C%CF%80%CF%85%CF%81%CE%B3%CE%BF%CF%82,+%CE%91%CF%84%CF%84%CE%B9%CE%BA%CE%AE,+%CE%95%CE%BB%CE%BB%CE%AC%CE%B4%CE%B1&t=&z=16&ie=UTF8&iwloc=&output=embed',
       },
   
       // ── FAQ ──────────────────────────────────────────────────────
@@ -210,7 +210,7 @@ const translations = {
       // ── Map ──────────────────────────────────────────────────────
       map: {
         title: 'Kaiser Omnia - Aspropyrgos',
-        src: 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d12563.876539012345!2d23.5833!3d38.1833!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x14a1a7f2c1e5d5b7%3A0x400bd2ce2b980a0!2z0JHPg9C/z4HPjM-Az4XPgc6/z4I!5e0!3m2!1sel!2sgr!4v1',
+        src: 'https://maps.google.com/maps?q=%CE%9C%CE%B5%CE%B3%CE%B1%CF%81%CE%AF%CE%B4%CE%BF%CF%82+125,+%CE%91%CF%83%CF%80%CF%81%CF%8C%CF%80%CF%85%CF%81%CE%B3%CE%BF%CF%82,+%CE%91%CF%84%CF%84%CE%B9%CE%BA%CE%AE,+%CE%95%CE%BB%CE%BB%CE%AC%CE%B4%CE%B1&t=&z=16&ie=UTF8&iwloc=&output=embed',
       },
   
       // ── FAQ ──────────────────────────────────────────────────────

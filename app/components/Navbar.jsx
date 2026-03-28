@@ -221,22 +221,22 @@ export const Navbar = () => {
         >
           <span
             className={
-              language === 'en'
-                ? styles.overlayLangActive
-                : styles.overlayLangInactive
-            }
-          >
-            ΕΝ
-          </span>
-          <span className={styles.overlayLangSlash}>/</span>
-          <span
-            className={
               language === 'el'
                 ? styles.overlayLangActive
                 : styles.overlayLangInactive
             }
           >
             ΕΛ
+          </span>
+          <span className={styles.overlayLangSlash}>/</span>
+          <span
+            className={
+              language === 'en'
+                ? styles.overlayLangActive
+                : styles.overlayLangInactive
+            }
+          >
+            ΕΝ
           </span>
         </div>
       </div>

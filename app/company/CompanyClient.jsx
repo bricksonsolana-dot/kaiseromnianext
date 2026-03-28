@@ -28,7 +28,7 @@ export default function CompanyClient() {
       {/* ── Hero Image ──────────────────────────────────────── */}
       <div className={styles.heroImageWrap}>
         <ParallaxImage
-          src="/company/company3.png"
+          src="/company/company.png"
           alt="Kaiser Omnia Construction"
         />
       </div>

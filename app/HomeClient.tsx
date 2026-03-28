@@ -92,19 +92,19 @@ const SERVICES: Record<Language, Service[]> = {
       code: '001',
       name: 'Design & Engineering',
       description:
-        'Studies adapted from the start to the construction system, limiting changes and unnecessary expenses.',
+        'Design studies that are adapted from the outset to the construction system, reducing changes and unnecessary costs.',
     },
     {
       code: '002',
-      name: 'Technical Application Design',
+      name: 'Technical Design for Execution',
       description:
-        'The connecting link between study and construction, ensuring accuracy and proper implementation.',
+        'It serves as the link between design and construction, ensuring accuracy and proper implementation.',
     },
     {
       code: '003',
       name: 'Construction',
       description:
-        'Specialization in double wall, resulting in faster progress and consistent quality.',
+        'Specialization in Double Wall, resulting in faster project progress and consistent quality',
     },
     {
       code: '004',
@@ -205,7 +205,7 @@ export default function HomeClient() {
            * with a fixed height — which your hero almost certainly is.
            */}
           <Image
-            src="/images/home/land4.jpg"
+            src="/images/home/landingphoto.jpg"
             alt="Kaiser Omnia Construction"
             fill
             priority          // LCP image — load immediately
