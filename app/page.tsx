@@ -196,7 +196,7 @@ export default function HomePage() {
            * with a fixed height — which your hero almost certainly is.
            */}
           <Image
-            src="/images/home/landingphoto.png"
+            src="/images/home/landingphoto.jpg"
             alt="Kaiser Omnia Construction"
             fill
             priority          // LCP image — load immediately
