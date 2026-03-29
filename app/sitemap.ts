@@ -10,12 +10,7 @@ type Page = {
 }
 
 const pages: Page[] = [
-  { path: '',            priority: 1.0, changeFrequency: 'monthly', lastModified: '2026-03-28' },
-  { path: '/services',   priority: 0.9, changeFrequency: 'monthly', lastModified: '2026-03-28' },
-  { path: '/projects',   priority: 0.9, changeFrequency: 'weekly',  lastModified: '2026-03-28' },
-  { path: '/company',    priority: 0.8, changeFrequency: 'monthly', lastModified: '2026-03-28' },
-  { path: '/technology', priority: 0.8, changeFrequency: 'monthly', lastModified: '2026-03-28' },
-  { path: '/contact',    priority: 0.7, changeFrequency: 'monthly', lastModified: '2026-03-28' },
+  { path: '', priority: 1.0, changeFrequency: 'monthly', lastModified: '2026-03-28' },
 ]
 
 export default function sitemap(): MetadataRoute.Sitemap {
