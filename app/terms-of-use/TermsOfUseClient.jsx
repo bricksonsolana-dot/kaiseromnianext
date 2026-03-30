@@ -97,7 +97,7 @@ const t = {
   },
 };
 
-export default function TermsOfUsePage() {
+export default function TermsOfUseClient() {
   const { language } = useLanguage();
   const content = t[language];
 

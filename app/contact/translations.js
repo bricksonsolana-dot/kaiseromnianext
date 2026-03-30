@@ -75,7 +75,7 @@ const translations = {
         },
         email: {
           title: 'Email',
-          addresses: ['info@kaiseromnia.gr', ],
+          addresses: ['info@kaiser-omnia.gr', ],
         },
       },
 
@@ -203,7 +203,7 @@ const translations = {
         },
         email: {
           title: 'Email',
-          addresses: ['info@kaiseromnia.gr', ],
+          addresses: ['info@kaiser-omnia.gr', ],
         },
       },
 

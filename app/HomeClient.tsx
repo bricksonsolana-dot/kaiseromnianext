@@ -1,4 +1,4 @@
-// app/page.tsx
+// app/HomeClient.tsx
 'use client';
 
 import { useEffect, useRef, useState } from 'react';
@@ -10,6 +10,15 @@ import styles from './HomePage.module.css';
 import { AnimatedDivider } from '@/app/components/AnimatedDivider/AnimatedDivider';
 import ParallaxImage from '@/app/components/ParallaxImage/ParallaxImage';
 import PageCTA from '@/app/components/PageCTA/PageCTA';
+
+// ── Helpers ─────────────────────────────────────────────────────────────────
+
+function localePath(path: string, language: string) {
+  if (language === 'en') {
+    return path === '/' ? '/en' : `/en${path}`;
+  }
+  return path;
+}
 
 // ── Types ──────────────────────────────────────────────────────────────────
 
@@ -147,7 +156,7 @@ const PROJECTS: Project[] = [
 
 // ── Component ──────────────────────────────────────────────────────────────
 
-export default function HomePage() {
+export default function HomeClient() {
   const { language } = useLanguage() as { language: Language; toggleLanguage: () => void };
   const t = translations[language];
   const heroContentRef = useRef<HTMLDivElement>(null);
@@ -261,7 +270,7 @@ export default function HomePage() {
         </div>
 
         <div className={styles.servicesFooter}>
-          <Link href="/services" className="arrow-link">
+          <Link href={localePath('/services', language)} className="arrow-link">
             {language === 'el' ? 'Όλες οι υπηρεσίες' : 'All services'}{' '}
             <ArrowRight />
           </Link>
@@ -280,7 +289,7 @@ export default function HomePage() {
           <div>
             <h3 className={styles.companyHeading}>{t.about.abouttitleline}</h3>
             <p className={styles.companyBody}>{t.about.body}</p>
-            <Link href="/company" className="arrow-link">
+            <Link href={localePath('/company', language)} className="arrow-link">
               {t.about.cta} <ArrowRight />
             </Link>
           </div>
@@ -308,7 +317,7 @@ export default function HomePage() {
               {idx > 0 && <AnimatedDivider />}
               <div className={styles.projectPair}>
                 {pair.map((p) => (
-                  <Link key={p.id} href="/projects" className={styles.projectCard}>
+                  <Link key={p.id} href={localePath('/projects', language)} className={styles.projectCard}>
                     <div className={styles.projectImageWrap}>
                       <ParallaxImage
                         src={p.image}
@@ -335,7 +344,7 @@ export default function HomePage() {
         </div>
 
         <div style={{ marginTop: '2.5rem' }}>
-          <Link href="/projects" className="arrow-link">
+          <Link href={localePath('/projects', language)} className="arrow-link">
             {t.portfolio.viewAll} <ArrowRight />
           </Link>
         </div>
@@ -360,7 +369,7 @@ export default function HomePage() {
                 </div>
               ))}
             </div>
-            <Link href="/services" className="arrow-link">
+            <Link href={localePath('/services', language)} className="arrow-link">
               {t.technology.cta} <ArrowRight />
             </Link>
           </div>

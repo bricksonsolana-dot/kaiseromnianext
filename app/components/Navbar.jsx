@@ -1,5 +1,5 @@
 'use client'
-import { useState, useEffect, useCallback } from 'react';
+import { useState, useEffect, useCallback, useMemo } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { useLanguage } from '../context/LanguageContext';
@@ -29,6 +29,14 @@ const CONTACT_INFO = {
   en: { label: 'Contact', projects: 'Projects', technology: 'Technology' },
 };
 
+// Prefix path with /en for English, bare path for Greek (default)
+function localePath(path, language) {
+  if (language === 'en') {
+    return path === '/' ? '/en' : `/en${path}`;
+  }
+  return path;
+}
+
 export const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
@@ -39,7 +47,9 @@ export const Navbar = () => {
   const items = NAV_ITEMS[language];
   const labels = CONTACT_INFO[language];
 
-  const isProjectsPage = pathname === '/projects';
+  // Strip locale prefix for route matching
+  const barePath = useMemo(() => pathname.replace(/^\/(el|en)/, '') || '/', [pathname]);
+  const isProjectsPage = barePath === '/projects';
 
   useEffect(() => {
     let lastY = window.scrollY;
@@ -80,7 +90,8 @@ export const Navbar = () => {
     setMenuOpen((v) => !v);
   }, []);
 
-  const isTransparent = false;
+  const isHeroPage = barePath === '/';
+  const isTransparent = isHeroPage && !isScrolled && !menuOpen;
 
   const navClass = [
     styles.nav,
@@ -98,19 +109,19 @@ export const Navbar = () => {
   return (
     <>
       <nav data-testid="navbar" className={navClass}>
-        <Link href="/" className={styles.logo} data-testid="logo">
+        <Link href={localePath('/', language)} className={styles.logo} data-testid="logo">
           <span className={styles.logoMain}>Kaiser Omnia</span>
           <span className={styles.logoSub}>Construction</span>
         </Link>
 
         <div className={styles.desktopLinks}>
-          <Link href="/projects" className={`${styles.navLink} ${pathname === '/projects' ? styles.navLinkActive : ''}`}>
+          <Link href={localePath('/projects', language)} className={`${styles.navLink} ${barePath === '/projects' ? styles.navLinkActive : ''}`}>
             {labels.projects}
           </Link>
-          <Link href="/technology" className={`${styles.navLink} ${pathname === '/technology' ? styles.navLinkActive : ''}`}>
+          <Link href={localePath('/technology', language)} className={`${styles.navLink} ${barePath === '/technology' ? styles.navLinkActive : ''}`}>
             {labels.technology}
           </Link>
-          <Link href="/contact" className={`${styles.navLink} ${pathname === '/contact' ? styles.navLinkActive : ''}`}>
+          <Link href={localePath('/contact', language)} className={`${styles.navLink} ${barePath === '/contact' ? styles.navLinkActive : ''}`}>
             {labels.label}
           </Link>
         </div>
@@ -170,12 +181,6 @@ export const Navbar = () => {
             info@kaiser-omnia.gr
           </a>
 
-          <div className={styles.overlaySocial}>
-            <a href="#" className={styles.overlaySocialLink}>Instagram</a>
-            <a href="#" className={styles.overlaySocialLink}>LinkedIn</a>
-            <a href="#" className={styles.overlaySocialLink}>Facebook</a>
-          </div>
-
           <div
             role="button"
             tabIndex={0}
@@ -191,8 +196,8 @@ export const Navbar = () => {
           {items.map((item) => (
             <Link
               key={item.path}
-              href={item.path}
-              className={`${styles.overlayNavItem} ${pathname === item.path ? styles.overlayNavItemActive : ''}`}
+              href={localePath(item.path, language)}
+              className={`${styles.overlayNavItem} ${barePath === item.path ? styles.overlayNavItemActive : ''}`}
             >
               <span className={styles.overlayNavNum}>{item.num}</span>
               <span className={styles.overlayNavLabel}>{item.label}</span>

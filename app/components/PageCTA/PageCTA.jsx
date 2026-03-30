@@ -44,7 +44,7 @@ export default function PageCTA() {
         <div className={styles.ctaContent}>
           <h2 className={styles.ctaTitle}>{t.title}</h2>
           <p className={styles.ctaSubtitle}>{t.subtitle}</p>
-          <Link href="/contact" className={styles.ctaBtn}>
+          <Link href={language === 'en' ? '/en/contact' : '/contact'} className={styles.ctaBtn}>
             {t.btn} <ArrowRight />
           </Link>
         </div>

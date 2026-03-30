@@ -8,7 +8,7 @@ import { AnimatedDivider } from '@/app/components/AnimatedDivider/AnimatedDivide
 import ParallaxImage from '@/app/components/ParallaxImage/ParallaxImage';
 import PageCTA from '@/app/components/PageCTA/PageCTA';
 
-export default function CompanyPage() {
+export default function CompanyClient() {
   const { language } = useLanguage();
   const t = translations[language];
 
@@ -76,7 +76,7 @@ export default function CompanyPage() {
         <h2 className={styles.sectionTitle}>{t.mvv.title}</h2>
 
         <div className={styles.mvvRows}>
-          
+
           <div className={styles.mvvRow}>
             <div>
               <h3 className={styles.mvvRowHeading}>{t.mvv.mission.title}</h3>
