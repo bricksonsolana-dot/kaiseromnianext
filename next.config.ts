@@ -9,7 +9,7 @@ const securityHeaders = [
       "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com",
       "font-src 'self' https://fonts.gstatic.com",
       "img-src 'self' data: blob:",
-      "connect-src 'self'",
+      "connect-src 'self' https://api.web3forms.com",
       "frame-src 'self' https://www.google.com https://maps.google.com",
       "frame-ancestors 'self' https://digitalfootprint.gr https://www.digitalfootprint.gr",
     ].join("; "),
