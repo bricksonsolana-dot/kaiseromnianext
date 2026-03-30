@@ -39,8 +39,12 @@ export default function ServicesClient() {
           <em>{t.titleLine2}</em>
         </h1>
       </div>
+
+      <AnimatedDivider />
+
+      {/* ── Hero Image ──────────────────────────────────────── */}
       <div className={styles.heroImageWrap}>
-        <ParallaxImage src="/images/services/services.png" alt="Double Wall Technology" />
+        <ParallaxImage src="/images/services/services.png" alt="Double Wall Technology" objectPosition="center 4%"  />
       </div>
 
       {/* ── 01 Services list ──────────────────────────────────── */}

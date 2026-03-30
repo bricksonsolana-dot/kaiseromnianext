@@ -286,7 +286,7 @@ export default function HomeClient() {
         </div>
 
         <div className={styles.companyGrid}>
-          <div>
+          <div className={styles.companyText}>
             <h3 className={styles.companyHeading}>{t.about.abouttitleline}</h3>
             <p className={styles.companyBody}>{t.about.body}</p>
             <Link href={localePath('/company', language)} className="arrow-link">
@@ -298,6 +298,7 @@ export default function HomeClient() {
             <ParallaxImage
               src="/images/home/whoweare.jpg"
               alt="Kaiser Omnia construction"
+              
             />
           </div>
         </div>
@@ -378,6 +379,7 @@ export default function HomeClient() {
             <ParallaxImage
               src="/images/home/geranosmepanel.png"
               alt="Double Wall Technology"
+              
             />
           </div>
         </div>
