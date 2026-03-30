@@ -39,7 +39,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
       url: englishUrl,
       lastModified,
       changeFrequency,
-      priority: priority * 0.9,
+      priority: Math.round(priority * 0.9 * 100) / 100,
       alternates: {
         languages: { el: greekUrl, en: englishUrl, 'x-default': greekUrl },
       },
