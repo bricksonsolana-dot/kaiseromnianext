@@ -1,11 +1,11 @@
 'use client';
 
 import { useState } from 'react';
-import Image from 'next/image';
 import { useLanguage } from '@/app/context/LanguageContext';
 import translations from './translations';
 import styles from './ContactPage.module.css';
 import { AnimatedDivider } from '@/app/components/AnimatedDivider/AnimatedDivider';
+import ParallaxImage from '@/app/components/ParallaxImage/ParallaxImage';
 
 const EMPTY_FORM = {
   name: '',
@@ -83,15 +83,14 @@ export default function ContactClient() {
         <p className={styles.pageSubtitle}>{t.hero.subtitle}</p>
       </header>
 
+      <AnimatedDivider />
+
       {/* ── Hero Image ────────────────────────────────────────── */}
       <div className={styles.heroImageWrap}>
-        <Image
+        <ParallaxImage
           src="/contact/contact1.png"
           alt="Contact"
-          fill
-          priority
-          sizes="100vw"
-          className="object-cover"
+          objectPosition="center 50%"
         />
       </div>
 
