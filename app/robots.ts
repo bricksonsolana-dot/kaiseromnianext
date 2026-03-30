@@ -4,18 +4,9 @@ export default function robots(): MetadataRoute.Robots {
   return {
     rules: {
       userAgent: '*',
-      allow: ['/', '/en'],
-      disallow: [
-        '/services', '/en/services',
-        '/projects', '/en/projects',
-        '/company', '/en/company',
-        '/technology', '/en/technology',
-        '/contact', '/en/contact',
-        '/privacy-policy', '/en/privacy-policy',
-        '/terms-of-use', '/en/terms-of-use',
-        '/api/', '/_next/',
-      ],
+      allow: '/',
+      disallow: ['/api/', '/_next/'],  // only block these — never public pages
     },
-    sitemap: 'https://kaiser-omnia.gr/sitemap.xml',
+    sitemap: 'https://www.kaiser-omnia.gr/sitemap.xml',
   }
 }
