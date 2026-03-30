@@ -36,7 +36,6 @@
   .heroImageWrap {
     position: relative;
     overflow: hidden;
-    width: 100%;
     height: clamp(330px, 35vw, 680px);
   }
   
@@ -183,6 +182,19 @@
     position: relative;
     overflow: hidden;
     min-height: 400px;
+  }
+
+  .introImageWrapNatural {
+    overflow: hidden;
+    aspect-ratio: 3 / 2;
+    padding-inline: clamp(1.5rem, 6vw, 5rem);
+  }
+
+  .introImageWrapNatural img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
   }
   
   /* ── Advantages grid ──────────────────────────────────────────── */
@@ -416,6 +428,15 @@
       min-height: unset;
       aspect-ratio: 16 / 9;
       order: -1; /* Image first */
+    }
+
+    .introImageWrapNatural {
+      order: -1; /* Image first */
+      aspect-ratio: unset;
+    }
+
+    .introImageWrapNatural img {
+      height: auto;
     }
   }
 

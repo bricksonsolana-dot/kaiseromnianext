@@ -6,6 +6,7 @@ import styles from '@/app/services/ServicesPage.module.css';
 import { AnimatedDivider } from '@/app/components/AnimatedDivider/AnimatedDivider';
 import ParallaxImage from '@/app/components/ParallaxImage/ParallaxImage';
 import PageCTA from '@/app/components/PageCTA/PageCTA';
+import Image from 'next/image';
 
 export default function TechnologyClient() {
   const { language } = useLanguage();
@@ -41,8 +42,8 @@ export default function TechnologyClient() {
               <p key={i} className={styles.introPara}>{p}</p>
             ))}
           </div>
-          <div className={styles.introImageWrap}>
-            <ParallaxImage src="/images/home/technology.png" alt="Nafplio Construction" />
+          <div className={styles.introImageWrapNatural}>
+            <Image src="/images/home/technology.png" alt="Nafplio Construction" width={0} height={0} sizes="(max-width: 1024px) 100vw, 50vw" style={{ width: '100%', height: 'auto' }} />
           </div>
         </div>
       </section>
@@ -58,8 +59,8 @@ export default function TechnologyClient() {
               <p key={i} className={styles.introPara}>{p}</p>
             ))}
           </div>
-          <div className={styles.introImageWrap}>
-            <ParallaxImage src="/images/home/panel_se_iliovasilema.png" alt="Panel at Sunset" />
+          <div className={styles.introImageWrapNatural}>
+            <Image src="/images/home/panel_se_iliovasilema.png" alt="Panel at Sunset" width={0} height={0} sizes="(max-width: 1024px) 100vw, 50vw" style={{ width: '100%', height: 'auto' }} />
           </div>
         </div>
       </section>
