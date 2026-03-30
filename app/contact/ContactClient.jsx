@@ -52,7 +52,8 @@ export default function ContactClient() {
       } else {
         setError(result.message || 'Something went wrong. Please try again.');
       }
-    } catch {
+    } catch (err) {
+      console.error('Web3Forms error:', err);
       setError('Failed to send message. Please try again later.');
     } finally {
       setIsSubmitting(false);
