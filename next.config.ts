@@ -11,12 +11,12 @@ const securityHeaders = [
       "img-src 'self' data: blob:",
       "connect-src 'self'",
       "frame-src 'self' https://www.google.com https://maps.google.com",
-      "frame-ancestors 'none'",
+      "frame-ancestors 'self' https://digitalfootprint.gr https://www.digitalfootprint.gr",
     ].join("; "),
   },
   {
     key: "X-Frame-Options",
-    value: "DENY",
+    value: "ALLOW-FROM https://digitalfootprint.gr",
   },
   {
     key: "X-Content-Type-Options",
