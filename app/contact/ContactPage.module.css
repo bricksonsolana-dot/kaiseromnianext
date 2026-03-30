@@ -249,6 +249,13 @@
     cursor: not-allowed;
   }
   
+  .errorText {
+    color: #c0392b;
+    font-family: var(--font-ui);
+    font-size: 0.85rem;
+    margin: 0;
+  }
+
   /* ── Success state ───────────────────────────────────────────── */
   .successBlock {
     padding: clamp(3rem, 6vw, 5rem) 0;

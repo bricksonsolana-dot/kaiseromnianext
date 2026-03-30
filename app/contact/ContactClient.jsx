@@ -26,14 +26,37 @@ export default function ContactClient() {
   const [submitted, setSubmitted] = useState(false);
   const [openFaq, setOpenFaq] = useState(null);
 
+  const [error, setError] = useState('');
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     setIsSubmitting(true);
+    setError('');
 
-    await new Promise((resolve) => setTimeout(resolve, 1500));
+    try {
+      const response = await fetch('https://api.web3forms.com/submit', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          access_key: 'a01ac518-9635-43ff-9ef6-da23cf4b1dd8',
+          subject: `New Contact Form: ${formData.projectType || 'General Inquiry'}`,
+          from_name: formData.name,
+          ...formData,
+        }),
+      });
 
-    setSubmitted(true);
-    setIsSubmitting(false);
+      const result = await response.json();
+
+      if (result.success) {
+        setSubmitted(true);
+      } else {
+        setError(result.message || 'Something went wrong. Please try again.');
+      }
+    } catch {
+      setError('Failed to send message. Please try again later.');
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const handleChange = (e) => {
@@ -251,6 +274,9 @@ export default function ContactClient() {
                 required
               />
             </div>
+
+            {/* Error */}
+            {error && <p className={styles.errorText}>{error}</p>}
 
             {/* Submit */}
             <button

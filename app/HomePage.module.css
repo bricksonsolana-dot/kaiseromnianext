@@ -322,7 +322,7 @@
   .companyText {
     padding-top: clamp(1rem, 2vw, 2rem);
     padding-bottom: clamp(1rem, 2vw, 2rem);
-    max-width: 85%;
+    max-width: 70%;
   }
 
   .companyHeading {
