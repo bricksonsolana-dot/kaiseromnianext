@@ -40,7 +40,7 @@ interface Project {
   image: string;
 }
 
-// ── Static Data ────────────────────────────────────────────────────────────
+// ── Static Data with js ────────────────────────────────────────────────────────────
 
 const ArrowRight = () => (
   <svg
