@@ -63,13 +63,13 @@
 @media (min-width: 2560px) {
   :root {
     --fs-display: 6.5rem;
-    --fs-h2:      4.2rem;
+    --fs-h2:      3.5rem;
     --fs-h3:      3.2rem;
     --fs-h4:      2.4rem;
-    --fs-lead:    1.7rem;
-    --fs-body:    1.25rem;
-    --fs-label:   1.1rem;
-    --fs-ui:      1rem;
+    --fs-lead:    1.5rem;
+    --fs-body:    1.15rem;
+    --fs-label:   1rem;
+    --fs-ui:      0.9rem;
   }
 }
 
