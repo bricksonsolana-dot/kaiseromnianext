@@ -33,16 +33,16 @@ export default function TechnologyClient() {
       {/* ── Technology intro ─────────────────────────────────── */}
       <AnimatedDivider />
       <section className={styles.section}>
+        <span className={styles.sectionBadge}>{t.intro.badge}</span>
         <div className={styles.introGrid}>
           <div>
-            <span className={styles.sectionBadge}>{t.intro.badge}</span>
             <h2 className={styles.sectionTitle}>{t.intro.title}</h2>
             {t.intro.paragraphs.map((p, i) => (
               <p key={i} className={styles.introPara}>{p}</p>
             ))}
           </div>
           <div className={styles.introImageWrap} >
-            <ParallaxImage src="/images/home/technology.png" alt="Nafplio Construction" objectFit="contain" />
+            <ParallaxImage src="/images/home/technology1.png" alt="Nafplio Construction" objectFit="contain" />
           </div>
         </div>
       </section>
