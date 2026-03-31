@@ -4,7 +4,7 @@ import { useRef, useEffect } from 'react';
 import Image from 'next/image';
 import styles from './ParallaxImage.module.css';
 
-export default function ParallaxImage({ src, alt, className = '', sizes = '(max-width: 768px) 100vw, 50vw', objectPosition = 'center center' }) {
+export default function ParallaxImage({ src, alt, className = '', sizes = '(max-width: 768px) 100vw, 50vw', objectPosition = 'center center', objectFit = 'cover' }) {
   const wrapRef  = useRef(null);
   const innerRef = useRef(null);
 
@@ -79,7 +79,7 @@ export default function ParallaxImage({ src, alt, className = '', sizes = '(max-
           alt={alt}
           fill
           sizes={sizes}
-          style={{ objectFit: 'cover', objectPosition }}
+          style={{ objectFit, objectPosition }}
         />
       </div>
     </div>

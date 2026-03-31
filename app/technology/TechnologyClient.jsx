@@ -6,7 +6,6 @@ import styles from '@/app/services/ServicesPage.module.css';
 import { AnimatedDivider } from '@/app/components/AnimatedDivider/AnimatedDivider';
 import ParallaxImage from '@/app/components/ParallaxImage/ParallaxImage';
 import PageCTA from '@/app/components/PageCTA/PageCTA';
-import Image from 'next/image';
 
 export default function TechnologyClient() {
   const { language } = useLanguage();
@@ -34,16 +33,16 @@ export default function TechnologyClient() {
       {/* ── Technology intro ─────────────────────────────────── */}
       <AnimatedDivider />
       <section className={styles.section}>
-        <span className={styles.sectionBadge}>{t.intro.badge}</span>
-        <h2 className={styles.sectionTitle}>{t.intro.title}</h2>
         <div className={styles.introGrid}>
           <div>
+            <span className={styles.sectionBadge}>{t.intro.badge}</span>
+            <h2 className={styles.sectionTitle}>{t.intro.title}</h2>
             {t.intro.paragraphs.map((p, i) => (
               <p key={i} className={styles.introPara}>{p}</p>
             ))}
           </div>
-          <div className={styles.introImageWrapNatural}>
-            <Image src="/images/home/technology.png" alt="Nafplio Construction" width={0} height={0} sizes="(max-width: 1024px) 100vw, 50vw" style={{ width: '100%', height: 'auto' }} />
+          <div className={styles.introImageWrap} >
+            <ParallaxImage src="/images/home/technology.png" alt="Nafplio Construction" objectFit="contain" />
           </div>
         </div>
       </section>
@@ -51,16 +50,16 @@ export default function TechnologyClient() {
       {/* ── Benefits intro ───────────────────────────────────── */}
       <AnimatedDivider />
       <section className={styles.section}>
-        <span className={styles.sectionBadge}>{t.introBenefits.badge}</span>
-        <h2 className={styles.sectionTitle}>{t.introBenefits.title}</h2>
         <div className={styles.introGrid}>
           <div>
+            <span className={styles.sectionBadge}>{t.introBenefits.badge}</span>
+            <h2 className={styles.sectionTitle}>{t.introBenefits.title}</h2>
             {t.introBenefits.paragraphs.map((p, i) => (
               <p key={i} className={styles.introPara}>{p}</p>
             ))}
           </div>
-          <div className={styles.introImageWrapNatural}>
-            <Image src="/images/home/panel_se_iliovasilema.png" alt="Panel at Sunset" width={0} height={0} sizes="(max-width: 1024px) 100vw, 50vw" style={{ width: '100%', height: 'auto' }} />
+          <div className={styles.introImageWrap} >
+            <ParallaxImage src="/images/home/panel_se_iliovasilema.png" alt="Panel at Sunset" objectFit="contain" />
           </div>
         </div>
       </section>

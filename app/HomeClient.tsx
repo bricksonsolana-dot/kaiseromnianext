@@ -205,7 +205,7 @@ export default function HomeClient() {
            * with a fixed height — which your hero almost certainly is.
            */}
           <Image
-            src="/images/home/landingphoto.jpg"
+            src="/images/home/landingpic.jpg"
             alt="Kaiser Omnia Construction"
             fill
             priority          // LCP image — load immediately
@@ -294,12 +294,14 @@ export default function HomeClient() {
             </Link>
           </div>
 
-          <div className={styles.companyImageWrap}>
-            <ParallaxImage
-              src="/images/home/whoweare.jpg"
-              alt="Kaiser Omnia construction"
-              
-            />
+          <div className={styles.companyImageCol}>
+            <div className={styles.companyImageSpacer} />
+            <div className={styles.companyImageWrap}>
+              <ParallaxImage
+                src="/images/home/whoweare.jpg"
+                alt="Kaiser Omnia construction"
+              />
+            </div>
           </div>
         </div>
       </section>
