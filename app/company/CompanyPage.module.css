@@ -154,7 +154,7 @@
     overflow: hidden;
     width: clamp(320px, 35vw, 700px);
     height: 0;
-    padding-bottom: calc(clamp(320px, 35vw, 700px) * 2 / 3);
+    padding-bottom: calc(clamp(320px, 35vw, 700px) * 0.55);
     margin-inline: auto;
   }
   

@@ -26,8 +26,8 @@ export default function TechnologyClient() {
       <AnimatedDivider />
 
       {/* ── Hero image ───────────────────────────────────────── */}
-      <div className={styles.heroImageWrap}>
-        <ParallaxImage src="/images/home/ipo_kataskevi_me_thea.png" alt="Double Wall Technology" />
+      <div className={styles.heroImageWrap} style={{ aspectRatio: 'unset', height: 'clamp(330px, 35vw, 680px)' }}>
+        <ParallaxImage src="/images/home/ipo_kataskevi_me_thea.png" alt="Double Wall Technology" objectPosition="center 75%" />
       </div>
 
       {/* ── Technology intro ─────────────────────────────────── */}
