@@ -23,8 +23,8 @@ const translations = {
       services: [
         {
           num: '01', total: '04',
-          title: 'Σχεδιασμός & Μηχανική',
-          desc: 'Ο σχεδιασμός μας αποτελεί τη βάση κάθε επιτυχημένου έργου. Από το πρώτο στάδιο, η αρχιτεκτονική και η μηχανική μελέτη εναρμονίζονται πλήρως με το σύστημα κατασκευής, εξασφαλίζοντας ακρίβεια, έλεγχο κόστους και απρόσκοπτη υλοποίηση χωρίς περιττές παρεμβάσεις.\n\nΜε την αξιοποίηση τεχνολογιών BIM και προηγμένων εργαλείων CAD, δημιουργούμε ολοκληρωμένες μελέτες υψηλών προδιαγραφών από τη σύλληψη της ιδέας έως τα τελικά κατασκευαστικά σχέδια.',
+          title: 'Στατική Μελέτη',
+          desc: 'Η στατική μελέτη αποτελεί τη βάση κάθε έργου, καθορίζοντας τη συμπεριφορά και την ασφάλεια του φέροντα οργανισμού.Σχεδιάζουμε με ακρίβεια βάσει του συστήματος double wall, εξασφαλίζοντας μονολιθική λειτουργία και ορθολογική κατανομή φορτίων.',
         },
         {
           num: '02', total: '04',
@@ -142,8 +142,8 @@ const translations = {
       services: [
         {
           num: '01', total: '04',
-          title: 'Design & Engineering',
-          desc: 'Our design approach forms the foundation of every successful project. From the earliest stage, architectural and engineering studies are fully aligned with the construction system, ensuring accuracy, cost control, and seamless execution without unnecessary adjustments. By utilizing BIM technologies and advanced CAD tools, we develop comprehensive, high-specification studies, from concept to final construction drawings',
+          title: 'Structural Engineering',
+          desc: 'Structural engineering forms the foundation of every project, defining the performance and safety of the load-bearing structure.Our designs are developed with precision, based on the double wall system, ensuring monolithic structural behavior and optimal load distribution.',
         },
         {
           num: '02', total: '04',

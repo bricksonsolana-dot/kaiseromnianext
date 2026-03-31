@@ -205,7 +205,7 @@ export default function HomeClient() {
            * with a fixed height — which your hero almost certainly is.
            */}
           <Image
-            src="/images/home/landingphoto.jpg"
+            src='/images/home/landingpic.jpg'
             alt="Kaiser Omnia Construction"
             fill
             priority          // LCP image — load immediately
