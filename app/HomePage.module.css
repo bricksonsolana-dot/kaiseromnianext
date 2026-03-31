@@ -343,22 +343,13 @@
     margin: 0 0 3rem;
   }
   
-  .companyImageCol {
-    display: flex;
-    flex-direction: column;
-    min-width: 0;
-  }
-
-  .companyImageSpacer {
-    height: clamp(1rem, 2vw, 2rem);
-    flex-shrink: 0;
-  }
-
   .companyImageWrap {
     position: relative;
     overflow: hidden;
-    flex: 1;
-    aspect-ratio: 4 / 3;
+    width: fit-content;
+    aspect-ratio: 3 / 4;
+    height: 100%;
+    justify-self: center;
   }
 
   /* ─── Technology section ─────────────────────────────────────── */
@@ -691,16 +682,8 @@
       max-width: unset;
     }
 
-    .companyImageCol {
-      order: -1;
-    }
-
-    .companyImageSpacer {
-      display: none;
-    }
-
     .companyImageWrap {
-      flex: none;
+      order: -1;
       min-height: unset;
       aspect-ratio: 4 / 3;
       margin-inline: calc(-1 * clamp(1.5rem, 6vw, 5rem));

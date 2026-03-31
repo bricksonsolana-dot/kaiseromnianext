@@ -294,14 +294,11 @@ export default function HomeClient() {
             </Link>
           </div>
 
-          <div className={styles.companyImageCol}>
-            <div className={styles.companyImageSpacer} />
-            <div className={styles.companyImageWrap}>
-              <ParallaxImage
-                src="/images/home/whoweare.jpg"
-                alt="Kaiser Omnia construction"
-              />
-            </div>
+          <div className={styles.companyImageWrap}>
+            <ParallaxImage
+              src="/images/home/whoweare.jpg"
+              alt="Kaiser Omnia construction"
+            />
           </div>
         </div>
       </section>
