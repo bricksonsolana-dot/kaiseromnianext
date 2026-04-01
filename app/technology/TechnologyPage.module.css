@@ -68,6 +68,14 @@
   }
 }
 
+/* ── 1401–1799px — bridge range ──────────────────────────────────── */
+@media (min-width: 1401px) and (max-width: 1799px) {
+  .introPara {
+    font-size: clamp(1rem, 1.3vw, 1.35rem);
+    line-height: 1.75;
+  }
+}
+
 /* ── Mid-range (1024-1400) — tighten text to keep image proportional  */
 @media (max-width: 1400px) and (min-width: 1025px) {
   .introPara {
