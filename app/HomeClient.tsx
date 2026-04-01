@@ -233,7 +233,7 @@ export default function HomeClient() {
         <div className={styles.sectionHeader}>
           <span className={styles.sectionNum}>01</span>
           <h2 className={styles.sectionTitle}>
-            {language === 'el' ? 'Υπηρεσίες μας' : 'Our Services'}
+            {language === 'el' ? 'Οι Υπηρεσίες μας' : 'Our Services'}
           </h2>
         </div>
 
