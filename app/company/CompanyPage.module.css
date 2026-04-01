@@ -36,6 +36,18 @@
     width: 100%;
     height: clamp(330px, 35vw, 680px);
   }
+
+  @media (max-width: 1024px) {
+    .heroImageWrap {
+      height: clamp(280px, 50vw, 450px);
+    }
+  }
+
+  @media (max-width: 640px) {
+    .heroImageWrap {
+      height: clamp(220px, 60vw, 350px);
+    }
+  }
   
   
   /* ── Generic section ─────────────────────────────────────────────── */

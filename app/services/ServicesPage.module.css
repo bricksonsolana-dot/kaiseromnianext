@@ -37,8 +37,19 @@
   position: relative;
   overflow: hidden;
   width: 100%;
-  aspect-ratio: 16 / 9;
-  max-height: 1000px;
+  height: clamp(330px, 35vw, 680px);
+}
+
+@media (max-width: 1024px) {
+  .heroImageWrap {
+    height: clamp(280px, 50vw, 450px);
+  }
+}
+
+@media (max-width: 640px) {
+  .heroImageWrap {
+    height: clamp(220px, 60vw, 350px);
+  }
 }
 
 /* ── 01 Services list ──────────────────────────────────────────── */
