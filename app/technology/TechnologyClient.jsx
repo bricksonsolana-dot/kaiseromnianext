@@ -27,23 +27,23 @@ export default function TechnologyClient() {
       <AnimatedDivider />
 
       {/* ── Hero image ───────────────────────────────────────── */}
-      <div className={styles.heroImageWrap}>
-        <ParallaxImage src="/images/home/ipo_kataskevi_me_thea.png" alt="Double Wall Technology" />
+      <div className={styles.heroImageWrap} style={{ aspectRatio: 'unset', height: 'clamp(330px, 35vw, 680px)' }}>
+        <ParallaxImage src="/images/home/ipo_kataskevi_me_thea.png" alt="Double Wall Technology" objectPosition="center 75%" />
       </div>
 
       {/* ── Technology intro ─────────────────────────────────── */}
       <AnimatedDivider />
       <section className={styles.section}>
         <span className={styles.sectionBadge}>{t.intro.badge}</span>
-        <h2 className={styles.sectionTitle}>{t.intro.title}</h2>
         <div className={styles.introGrid}>
           <div>
+            <h2 className={styles.sectionTitle}>{t.intro.title}</h2>
             {t.intro.paragraphs.map((p, i) => (
               <p key={i} className={`${styles.introPara} ${techStyles.introPara}`}>{p}</p>
             ))}
           </div>
-          <div className={styles.introImageWrap}>
-            <ParallaxImage src="/images/home/technology.png" alt="Nafplio Construction" />
+          <div className={styles.introImageWrap} >
+            <ParallaxImage src="/images/home/concrete_3_2_2.png" alt="Nafplio Construction" objectFit="contain" />
           </div>
         </div>
       </section>
@@ -51,16 +51,16 @@ export default function TechnologyClient() {
       {/* ── Benefits intro ───────────────────────────────────── */}
       <AnimatedDivider />
       <section className={styles.section}>
-        <span className={styles.sectionBadge}>{t.introBenefits.badge}</span>
-        <h2 className={styles.sectionTitle}>{t.introBenefits.title}</h2>
         <div className={styles.introGrid}>
           <div>
+            <span className={styles.sectionBadge}>{t.introBenefits.badge}</span>
+            <h2 className={styles.sectionTitle}>{t.introBenefits.title}</h2>
             {t.introBenefits.paragraphs.map((p, i) => (
               <p key={i} className={`${styles.introPara} ${techStyles.introPara}`}>{p}</p>
             ))}
           </div>
-          <div className={styles.introImageWrap}>
-            <ParallaxImage src="/images/home/panel_se_iliovasilema.png" alt="Panel at Sunset" />
+          <div className={styles.introImageWrap} >
+            <ParallaxImage src="/images/home/panel_se_iliovasilema.png" alt="Panel at Sunset" objectFit="contain" />
           </div>
         </div>
       </section>

@@ -30,6 +30,7 @@ export default function CompanyClient() {
         <ParallaxImage
           src="/company/company.png"
           alt="Kaiser Omnia Construction"
+          objectPosition="center 75%"
         />
       </div>
 

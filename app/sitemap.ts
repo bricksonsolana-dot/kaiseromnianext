@@ -1,6 +1,6 @@
 import type { MetadataRoute } from 'next'
 
-const BASE_URL = 'https://kaiser-omnia.gr'
+const BASE_URL = 'https://www.kaiser-omnia.gr'
 
 type Page = {
   path: string
@@ -10,7 +10,12 @@ type Page = {
 }
 
 const pages: Page[] = [
-  { path: '', priority: 1.0, changeFrequency: 'monthly', lastModified: '2026-03-28' },
+  { path: '',            priority: 1.0, changeFrequency: 'monthly', lastModified: '2026-03-28' },
+  { path: '/services',   priority: 0.9, changeFrequency: 'monthly', lastModified: '2026-03-28' },
+  { path: '/technology', priority: 0.9, changeFrequency: 'monthly', lastModified: '2026-03-28' },
+  { path: '/projects',   priority: 0.8, changeFrequency: 'monthly', lastModified: '2026-03-28' },
+  { path: '/company',    priority: 0.7, changeFrequency: 'yearly',  lastModified: '2026-03-28' },
+  { path: '/contact',    priority: 0.6, changeFrequency: 'yearly',  lastModified: '2026-03-28' },
 ]
 
 export default function sitemap(): MetadataRoute.Sitemap {
@@ -20,33 +25,23 @@ export default function sitemap(): MetadataRoute.Sitemap {
     const greekUrl = `${BASE_URL}${path || '/'}`
     const englishUrl = `${BASE_URL}/en${path || ''}`
 
-    // Greek page (canonical, root URL)
     entries.push({
       url: greekUrl,
       lastModified,
       changeFrequency,
       priority,
       alternates: {
-        languages: {
-          el: greekUrl,
-          en: englishUrl,
-          'x-default': greekUrl,
-        },
+        languages: { el: greekUrl, en: englishUrl, 'x-default': greekUrl },
       },
     })
 
-    // English page
     entries.push({
       url: englishUrl,
       lastModified,
       changeFrequency,
-      priority: priority * 0.9,
+      priority: Math.round(priority * 0.9 * 100) / 100,
       alternates: {
-        languages: {
-          el: greekUrl,
-          en: englishUrl,
-          'x-default': greekUrl,
-        },
+        languages: { el: greekUrl, en: englishUrl, 'x-default': greekUrl },
       },
     })
   }

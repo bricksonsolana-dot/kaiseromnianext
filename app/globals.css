@@ -34,6 +34,45 @@
   --fs-micro:   0.65rem;                          /* Micro/legal (Barlow Condensed) */
 }
 
+/* ── Large-display type scale boost ─────────────────────────── */
+@media (min-width: 1440px) {
+  :root {
+    --fs-display: clamp(2.5rem, 5vw, 5.2rem);
+    --fs-h2:      clamp(1.8rem, 3.5vw, 3.4rem);
+    --fs-h3:      clamp(1.3rem, 2.5vw, 2.4rem);
+    --fs-h4:      clamp(1.1rem, 1.8vw, 1.8rem);
+    --fs-lead:    clamp(1rem, 1.5vw, 1.25rem);
+    --fs-label:   0.85rem;
+    --fs-ui:      0.8rem;
+  }
+}
+
+@media (min-width: 1920px) {
+  :root {
+    --fs-display: clamp(2.5rem, 5vw, 5.8rem);
+    --fs-h2:      clamp(1.8rem, 3.5vw, 3.8rem);
+    --fs-h3:      clamp(1.3rem, 2.5vw, 2.8rem);
+    --fs-h4:      clamp(1.1rem, 1.8vw, 2rem);
+    --fs-lead:    clamp(1rem, 1.5vw, 1.45rem);
+    --fs-body:    1.1rem;
+    --fs-label:   0.95rem;
+    --fs-ui:      0.85rem;
+  }
+}
+
+@media (min-width: 2560px) {
+  :root {
+    --fs-display: 6.5rem;
+    --fs-h2:      3.5rem;
+    --fs-h3:      3.2rem;
+    --fs-h4:      2.4rem;
+    --fs-lead:    1.5rem;
+    --fs-body:    1.15rem;
+    --fs-label:   1rem;
+    --fs-ui:      0.9rem;
+  }
+}
+
 
 /* ─── Tailwind ───────────────────────────────────────────────── */
 @tailwind base;
@@ -58,10 +97,12 @@
 
 html {
   scroll-behavior: smooth;
+  overflow-x: hidden;
 }
 
 body {
   margin: 0;
+  overflow-x: hidden;
   background-color: var(--color-bg);
   color: var(--color-ink);
   font-family: var(--font-body);

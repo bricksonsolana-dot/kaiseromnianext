@@ -315,19 +315,24 @@
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: clamp(3rem, 6vw, 6rem);
-    align-items: stretch;
+    align-items: start;
   }
 
   
+  .companyText {
+    padding-top: clamp(1rem, 2vw, 2rem);
+    padding-bottom: clamp(1rem, 2vw, 2rem);
+  }
+
   .companyHeading {
     font-family: var(--font-display);
     font-size: clamp(1.5rem, 2.8vw, 3rem);
     font-weight: 300;
     color: var(--color-ink);
-    margin: 0 0 1.5rem;
-    line-height: 1.15;
+    margin: 0 0 2.5rem;
+    line-height: 1.35;
   }
-  
+
   .companyBody {
     font-family: var(--font-body);
     font-size: clamp(0.9rem, 1.3vw, 1.5rem);
@@ -341,9 +346,10 @@
     position: relative;
     overflow: hidden;
     width: 100%;
-    min-height: 400px;
+    aspect-ratio: 16 / 9;
+    max-height: 100%;
   }
-  
+
   /* ─── Technology section ─────────────────────────────────────── */
   .techSection {
     background: var(--color-bg);
@@ -728,6 +734,12 @@
       gap: 3rem;
     }
 
+    .companyText {
+      padding-top: 0;
+      padding-bottom: 0;
+      max-width: unset;
+    }
+
     .companyImageWrap {
       order: -1;
       min-height: unset;
@@ -744,7 +756,7 @@
     .techImageWrap {
       order: -1;
       min-height: unset;
-      aspect-ratio: 16 / 9;
+      aspect-ratio: 4 / 3;
       margin-inline: calc(-1 * clamp(1.5rem, 6vw, 5rem));
       width: calc(100% + 2 * clamp(1.5rem, 6vw, 5rem));
     }

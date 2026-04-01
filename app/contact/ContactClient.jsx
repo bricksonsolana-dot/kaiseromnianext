@@ -1,11 +1,11 @@
 'use client';
 
 import { useState } from 'react';
-import Image from 'next/image';
 import { useLanguage } from '@/app/context/LanguageContext';
 import translations from './translations';
 import styles from './ContactPage.module.css';
 import { AnimatedDivider } from '@/app/components/AnimatedDivider/AnimatedDivider';
+import ParallaxImage from '@/app/components/ParallaxImage/ParallaxImage';
 
 const EMPTY_FORM = {
   name: '',
@@ -26,14 +26,38 @@ export default function ContactClient() {
   const [submitted, setSubmitted] = useState(false);
   const [openFaq, setOpenFaq] = useState(null);
 
+  const [error, setError] = useState('');
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     setIsSubmitting(true);
+    setError('');
 
-    await new Promise((resolve) => setTimeout(resolve, 1500));
+    try {
+      const response = await fetch('https://api.web3forms.com/submit', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          access_key: 'a01ac518-9635-43ff-9ef6-da23cf4b1dd8',
+          subject: `New Contact Form: ${formData.projectType || 'General Inquiry'}`,
+          from_name: formData.name,
+          ...formData,
+        }),
+      });
 
-    setSubmitted(true);
-    setIsSubmitting(false);
+      const result = await response.json();
+
+      if (result.success) {
+        setSubmitted(true);
+      } else {
+        setError(result.message || 'Something went wrong. Please try again.');
+      }
+    } catch (err) {
+      console.error('Web3Forms error:', err);
+      setError('Failed to send message. Please try again later.');
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const handleChange = (e) => {
@@ -60,15 +84,14 @@ export default function ContactClient() {
         <p className={styles.pageSubtitle}>{t.hero.subtitle}</p>
       </header>
 
+      <AnimatedDivider />
+
       {/* ── Hero Image ────────────────────────────────────────── */}
       <div className={styles.heroImageWrap}>
-        <Image
+        <ParallaxImage
           src="/contact/contact1.png"
           alt="Contact"
-          fill
-          priority
-          sizes="100vw"
-          className="object-cover"
+          objectPosition="center 50%"
         />
       </div>
 
@@ -251,6 +274,9 @@ export default function ContactClient() {
                 required
               />
             </div>
+
+            {/* Error */}
+            {error && <p className={styles.errorText}>{error}</p>}
 
             {/* Submit */}
             <button

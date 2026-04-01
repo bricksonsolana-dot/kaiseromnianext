@@ -205,7 +205,7 @@ export default function HomeClient() {
            * with a fixed height — which your hero almost certainly is.
            */}
           <Image
-            src='/images/home/landingpic.jpg'
+            src="/images/home/landingpic.jpg"
             alt="Kaiser Omnia Construction"
             fill
             priority          // LCP image — load immediately
@@ -285,9 +285,9 @@ export default function HomeClient() {
           <h2 className={styles.sectionTitle}>{t.about.sectionTitle}</h2>
         </div>
 
+        <h3 className={styles.companyHeading}>{t.about.abouttitleline}</h3>
         <div className={styles.companyGrid}>
-          <div>
-            <h3 className={styles.companyHeading}>{t.about.abouttitleline}</h3>
+          <div className={styles.companyText}>
             <p className={styles.companyBody}>{t.about.body}</p>
             <Link href={localePath('/company', language)} className="arrow-link">
               {t.about.cta} <ArrowRight />
@@ -296,7 +296,7 @@ export default function HomeClient() {
 
           <div className={styles.companyImageWrap}>
             <ParallaxImage
-              src="/images/home/whoweare.jpg"
+              src="/images/home/whowearewide.png"
               alt="Kaiser Omnia construction"
             />
           </div>
@@ -378,6 +378,7 @@ export default function HomeClient() {
             <ParallaxImage
               src="/images/home/geranosmepanel.png"
               alt="Double Wall Technology"
+              
             />
           </div>
         </div>
