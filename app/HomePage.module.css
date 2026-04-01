@@ -21,11 +21,14 @@
     display: block;
   }
 
+  .heroDesktop { display: block; }
+  .heroMobile  { display: none; }
+
   @media (max-width: 768px) {
-    .hero {
-      height: 45svh;
-    }
+    .heroDesktop { display: none; }
+    .heroMobile  { display: block; }
   }
+
   
   .heroOverlay {
     position: absolute;

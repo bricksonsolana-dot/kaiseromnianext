@@ -208,9 +208,17 @@ export default function HomeClient() {
             src="/images/home/homehero.png"
             alt="Kaiser Omnia Construction"
             fill
-            priority          // LCP image — load immediately
+            priority
             sizes="100vw"
-            className={styles.heroBgImg} // add object-fit:cover here in CSS
+            className={`${styles.heroBgImg} ${styles.heroDesktop}`}
+          />
+          <Image
+            src="/og_vertical.png"
+            alt="Kaiser Omnia Construction"
+            fill
+            priority
+            sizes="100vw"
+            className={`${styles.heroBgImg} ${styles.heroMobile}`}
           />
         </div>
         <div className={styles.heroOverlay} />
