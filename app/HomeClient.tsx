@@ -286,19 +286,20 @@ export default function HomeClient() {
         </div>
 
         <div className={styles.companyGrid}>
-          <div className={styles.companyText}>
+          <div className={styles.companyTitle}>
             <h3 className={styles.companyHeading}>{t.about.abouttitleline}</h3>
+          </div>
+          <div className={styles.companyImageWrap}>
+            <ParallaxImage
+              src="/images/home/aboutus.png"
+              alt="Kaiser Omnia construction"
+            />
+          </div>
+          <div className={styles.companyText}>
             <p className={styles.companyBody}>{t.about.body}</p>
             <Link href={localePath('/company', language)} className="arrow-link">
               {t.about.cta} <ArrowRight />
             </Link>
-          </div>
-
-          <div className={styles.companyImageWrap}>
-            <ParallaxImage
-              src="/images/home/land.png"
-              alt="Kaiser Omnia construction"
-            />
           </div>
         </div>
       </section>
