@@ -27,6 +27,7 @@
   @media (max-width: 768px) {
     .heroDesktop { display: none; }
     .heroMobile  { display: block; }
+    .hero { height: auto; aspect-ratio: 2 / 3; }
   }
 
   
