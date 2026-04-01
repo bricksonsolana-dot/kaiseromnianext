@@ -27,7 +27,7 @@ export default function TechnologyClient() {
       <AnimatedDivider />
 
       {/* ── Hero image ───────────────────────────────────────── */}
-      <div className={styles.heroImageWrap} style={{ aspectRatio: 'unset', height: 'clamp(330px, 35vw, 680px)' }}>
+      <div className={`${styles.heroImageWrap} ${techStyles.heroImage}`}>
         <ParallaxImage src="/images/home/ipo_kataskevi_me_thea.png" alt="Double Wall Technology" objectPosition="center 75%" />
       </div>
 
@@ -35,15 +35,17 @@ export default function TechnologyClient() {
       <AnimatedDivider />
       <section className={styles.section}>
         <span className={styles.sectionBadge}>{t.intro.badge}</span>
-        <div className={styles.introGrid}>
-          <div>
+        <div className={`${styles.introGrid} ${techStyles.introGridMobile}`}>
+          <div className={techStyles.introTitle}>
             <h2 className={styles.sectionTitle}>{t.intro.title}</h2>
+          </div>
+          <div className={`${styles.introImageWrap} ${techStyles.introImage}`}>
+            <ParallaxImage src="/images/home/concrete_3_2_2.png" alt="Nafplio Construction" />
+          </div>
+          <div className={techStyles.introText}>
             {t.intro.paragraphs.map((p, i) => (
               <p key={i} className={`${styles.introPara} ${techStyles.introPara}`}>{p}</p>
             ))}
-          </div>
-          <div className={styles.introImageWrap} >
-            <ParallaxImage src="/images/home/concrete_3_2_2.png" alt="Nafplio Construction" />
           </div>
         </div>
       </section>
@@ -51,16 +53,18 @@ export default function TechnologyClient() {
       {/* ── Benefits intro ───────────────────────────────────── */}
       <AnimatedDivider />
       <section className={styles.section}>
-        <div className={styles.introGrid}>
-          <div>
+        <div className={`${styles.introGrid} ${techStyles.introGridMobile}`}>
+          <div className={techStyles.introTitle}>
             <span className={styles.sectionBadge}>{t.introBenefits.badge}</span>
             <h2 className={styles.sectionTitle}>{t.introBenefits.title}</h2>
+          </div>
+          <div className={`${styles.introImageWrap} ${techStyles.introImage}`}>
+            <ParallaxImage src="/images/home/panel_se_iliovasilema.png" alt="Panel at Sunset" />
+          </div>
+          <div className={techStyles.introText}>
             {t.introBenefits.paragraphs.map((p, i) => (
               <p key={i} className={`${styles.introPara} ${techStyles.introPara}`}>{p}</p>
             ))}
-          </div>
-          <div className={styles.introImageWrap} >
-            <ParallaxImage src="/images/home/panel_se_iliovasilema.png" alt="Panel at Sunset" />
           </div>
         </div>
       </section>

@@ -8,9 +8,49 @@
    distortion — only the crop amount changes.
 */
 
+/* ── Hero image ──────────────────────────────────────────────────── */
+.heroImage {
+  aspect-ratio: unset;
+  height: clamp(330px, 35vw, 680px);
+}
+
+@media (max-width: 1024px) {
+  .heroImage {
+    height: clamp(280px, 50vw, 450px);
+  }
+}
+
+@media (max-width: 640px) {
+  .heroImage {
+    height: clamp(220px, 60vw, 350px);
+  }
+}
+
+/* ── Intro paragraph fluid scaling ───────────────────────────────── */
 .introPara {
   font-size: clamp(0.9rem, 1.3vw, 1.5rem);
   line-height: clamp(1.55, 1.55 + 0.35 * 1, 1.9);
+}
+
+/* ── Desktop: title + text in left column, image in right ────────── */
+.introGridMobile {
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: auto 1fr;
+}
+
+.introTitle {
+  grid-column: 1;
+  grid-row: 1;
+}
+
+.introText {
+  grid-column: 1;
+  grid-row: 2;
+}
+
+.introImage {
+  grid-column: 2;
+  grid-row: 1 / -1;
 }
 
 /* ── Large displays (27″+) — text can breathe fully ─────────────── */
@@ -34,5 +74,39 @@
     font-size: clamp(0.88rem, 1.15vw, 1.15rem);
     line-height: 1.6;
     margin-bottom: 1rem;
+  }
+}
+
+/* ── Mobile & tablet — stack: title → image → text ───────────────── */
+@media (max-width: 1024px) {
+  .introGridMobile {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto auto auto;
+    gap: 2rem;
+  }
+
+  .introTitle {
+    grid-column: 1;
+    grid-row: 1;
+  }
+
+  .introImage {
+    grid-column: 1;
+    grid-row: 2;
+    min-height: unset;
+    aspect-ratio: 16 / 9;
+    margin-inline: calc(-1 * clamp(1.5rem, 6vw, 5rem));
+    width: calc(100% + 2 * clamp(1.5rem, 6vw, 5rem));
+  }
+
+  .introText {
+    grid-column: 1;
+    grid-row: 3;
+  }
+}
+
+@media (max-width: 640px) {
+  .introImage {
+    aspect-ratio: 4 / 3;
   }
 }
