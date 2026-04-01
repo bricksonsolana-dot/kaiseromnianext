@@ -20,6 +20,16 @@
     object-position: center;
     display: block;
   }
+
+  @media (max-width: 768px) {
+    .hero {
+      height: 70svh;
+    }
+
+    .heroBg img {
+      object-position: center 30%;
+    }
+  }
   
   .heroOverlay {
     position: absolute;
