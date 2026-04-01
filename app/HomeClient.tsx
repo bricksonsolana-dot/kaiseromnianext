@@ -291,7 +291,7 @@ export default function HomeClient() {
           </div>
           <div className={styles.companyImageWrap}>
             <ParallaxImage
-              src="/images/home/aboutus.png"
+              src="/images/home/info.png"
               alt="Kaiser Omnia construction"
             />
           </div>
