@@ -43,7 +43,7 @@ export default function TechnologyClient() {
             ))}
           </div>
           <div className={styles.introImageWrap} >
-            <ParallaxImage src="/images/home/concrete_3_2_2.png" alt="Nafplio Construction" objectFit="contain" />
+            <ParallaxImage src="/images/home/concrete_3_2_2.png" alt="Nafplio Construction" />
           </div>
         </div>
       </section>
@@ -60,7 +60,7 @@ export default function TechnologyClient() {
             ))}
           </div>
           <div className={styles.introImageWrap} >
-            <ParallaxImage src="/images/home/panel_se_iliovasilema.png" alt="Panel at Sunset" objectFit="contain" />
+            <ParallaxImage src="/images/home/panel_se_iliovasilema.png" alt="Panel at Sunset" />
           </div>
         </div>
       </section>
