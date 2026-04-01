@@ -3,6 +3,7 @@
 import { useLanguage } from '@/app/context/LanguageContext';
 import translations from './translations';
 import styles from '@/app/services/ServicesPage.module.css';
+import techStyles from './TechnologyPage.module.css';
 import { AnimatedDivider } from '@/app/components/AnimatedDivider/AnimatedDivider';
 import ParallaxImage from '@/app/components/ParallaxImage/ParallaxImage';
 import PageCTA from '@/app/components/PageCTA/PageCTA';
@@ -38,7 +39,7 @@ export default function TechnologyClient() {
         <div className={styles.introGrid}>
           <div>
             {t.intro.paragraphs.map((p, i) => (
-              <p key={i} className={styles.introPara}>{p}</p>
+              <p key={i} className={`${styles.introPara} ${techStyles.introPara}`}>{p}</p>
             ))}
           </div>
           <div className={styles.introImageWrap}>
@@ -55,7 +56,7 @@ export default function TechnologyClient() {
         <div className={styles.introGrid}>
           <div>
             {t.introBenefits.paragraphs.map((p, i) => (
-              <p key={i} className={styles.introPara}>{p}</p>
+              <p key={i} className={`${styles.introPara} ${techStyles.introPara}`}>{p}</p>
             ))}
           </div>
           <div className={styles.introImageWrap}>

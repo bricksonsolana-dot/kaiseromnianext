@@ -1,0 +1,31 @@
+/* ── Technology-page overrides ────────────────────────────────────── */
+
+/*
+   The text font-size & line-height scale fluidly with the viewport so
+   that the text column's height stays proportional to the image beside
+   it across all screen widths.  The image still uses align-items:stretch
+   + object-fit:cover, so it always fills the text height without
+   distortion — only the crop amount changes.
+*/
+
+.introPara {
+  font-size: clamp(0.9rem, 1.3vw, 1.5rem);
+  line-height: clamp(1.55, 1.55 + 0.35 * 1, 1.9);
+}
+
+/* ── Large displays — text can breathe fully ─────────────────────── */
+@media (min-width: 1800px) {
+  .introPara {
+    font-size: 1.5rem;
+    line-height: 1.9;
+  }
+}
+
+/* ── Mid-range (1024-1400) — tighten text to keep image proportional  */
+@media (max-width: 1400px) and (min-width: 1025px) {
+  .introPara {
+    font-size: clamp(0.88rem, 1.15vw, 1.15rem);
+    line-height: 1.6;
+    margin-bottom: 1rem;
+  }
+}
