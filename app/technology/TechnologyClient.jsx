@@ -53,13 +53,13 @@ export default function TechnologyClient() {
       {/* ── Benefits intro ───────────────────────────────────── */}
       <AnimatedDivider />
       <section className={styles.section}>
+        <span className={styles.sectionBadge}>{t.introBenefits.badge}</span>
         <div className={`${styles.introGrid} ${techStyles.introGridMobile}`}>
           <div className={techStyles.introTitle}>
-            <span className={styles.sectionBadge}>{t.introBenefits.badge}</span>
             <h2 className={styles.sectionTitle}>{t.introBenefits.title}</h2>
           </div>
           <div className={`${styles.introImageWrap} ${techStyles.introImage}`}>
-            <ParallaxImage src="/images/home/panel_se_iliovasilema.png" alt="Panel at Sunset" />
+            <ParallaxImage src="/images/home/panel1.png" alt="Panel at Sunset" />
           </div>
           <div className={techStyles.introText}>
             {t.introBenefits.paragraphs.map((p, i) => (
