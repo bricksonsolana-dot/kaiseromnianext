@@ -64,7 +64,7 @@ const SERVICES: Record<Language, Service[]> = {
   el: [
     {
       code: '001',
-      name: 'Σχεδιασμός & Μηχανική',
+      name: 'Στατική Μελέτη',
       description:
         'Μελέτη που προσαρμόζεται από την αρχή στο σύστημα κατασκευής, περιορίζοντας αλλαγές και περιττές δαπάνες.',
     },
@@ -90,7 +90,7 @@ const SERVICES: Record<Language, Service[]> = {
   en: [
     {
       code: '001',
-      name: 'Design & Engineering',
+      name: 'Structural Engineering',
       description:
         'Design studies that are adapted from the outset to the construction system, reducing changes and unnecessary costs.',
     },
