@@ -16,6 +16,7 @@ const localBusinessSchema = {
   url: 'https://kaiser-omnia.gr',
   logo: 'https://kaiser-omnia.gr/logo.png',
   image: 'https://kaiser-omnia.gr/og-image.jpg',
+
   description: 'Κατασκευαστική Εταιρεία με 40+ χρόνια εμπειρίας. Αρχιτεκτονική και Κατασκευή Υψηλών Προδιαγραφών.',
   foundingDate: '1984',
   telephone: '+30 6948209440',
