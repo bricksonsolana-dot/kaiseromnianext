@@ -40,7 +40,7 @@ export default function TechnologyClient() {
             <h2 className={styles.sectionTitle}>{t.intro.title}</h2>
           </div>
           <div className={`${styles.introImageWrap} ${techStyles.introImage}`}>
-            <ParallaxImage src="/images/home/concrete_3_2_2.png" alt="Nafplio Construction" />
+            <ParallaxImage src="/images/home/concrete_3_2_2.png" alt="Nafplio Construction" className={techStyles.zoomOut} />
           </div>
           <div className={techStyles.introText}>
             {t.intro.paragraphs.map((p, i) => (
