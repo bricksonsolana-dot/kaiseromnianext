@@ -50,7 +50,7 @@ export async function generateMetadata({ params }) {
       type: 'website',
       images: [
         {
-          url: `${BASE_URL}/company/company3.png`,
+          url: `${BASE_URL}/company/company.png`,
           width: 1200,
           height: 630,
           alt: t.ogAlt,
@@ -61,7 +61,7 @@ export async function generateMetadata({ params }) {
       card: 'summary_large_image',
       title: t.ogTitle,
       description: t.description,
-      images: [`${BASE_URL}/company/company3.png`],
+      images: [`${BASE_URL}/company/company.png`],
     },
   };
 }
