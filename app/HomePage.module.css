@@ -321,7 +321,7 @@
   
   .companyHeading {
     font-family: var(--font-display);
-    font-size: clamp(1.85rem, 3.5vw, 3rem);
+    font-size: clamp(1.5rem, 2.8vw, 3rem);
     font-weight: 300;
     color: var(--color-ink);
     margin: 0 0 1.5rem;
@@ -330,10 +330,10 @@
   
   .companyBody {
     font-family: var(--font-body);
-    font-size: var(--fs-lead);
+    font-size: clamp(0.9rem, 1.3vw, 1.5rem);
     font-weight: 400;
     color: var(--color-ink-muted);
-    line-height: 1.9;
+    line-height: clamp(1.55, 1.55 + 0.35 * 1, 1.9);
     margin: 0 0 2rem;
   }
   
@@ -360,10 +360,10 @@
   
   .techBody {
     font-family: var(--font-body);
-    font-size: var(--fs-lead);
+    font-size: clamp(0.9rem, 1.3vw, 1.5rem);
     font-weight: 400;
     color: var(--color-ink-muted);
-    line-height: 1.85;
+    line-height: clamp(1.55, 1.55 + 0.35 * 1, 1.9);
     margin: 0 0 2.5rem;
   }
   
@@ -391,10 +391,10 @@
   
   .techBenefitDesc {
     font-family: var(--font-body);
-    font-size: 1rem;
+    font-size: clamp(0.85rem, 1vw, 1rem);
     font-weight: 400;
     color: var(--color-ink-muted);
-    line-height: 1.75;
+    line-height: clamp(1.5, 1.5 + 0.25 * 1, 1.75);
     margin: 0;
   }
   
@@ -652,11 +652,71 @@
   /* ═══════════════════════════════════════════════════════════════
      RESPONSIVE — all breakpoints consolidated
      ═══════════════════════════════════════════════════════════════ */
-  
+
+  /* ── 2400px+ — large displays (27″+) ────────────────────────── */
+  @media (min-width: 2400px) {
+    .companyBody {
+      font-size: 1.85rem;
+      line-height: 1.95;
+    }
+
+    .techBody {
+      font-size: 1.85rem;
+      line-height: 1.95;
+    }
+
+    .techBenefitDesc {
+      font-size: 1.15rem;
+      line-height: 1.75;
+    }
+  }
+
+  /* ── 1800–2399px — large screens ────────────────────────────── */
+  @media (min-width: 1800px) and (max-width: 2399px) {
+    .companyBody {
+      font-size: 1.6rem;
+      line-height: 1.9;
+    }
+
+    .techBody {
+      font-size: 1.6rem;
+      line-height: 1.9;
+    }
+
+    .techBenefitDesc {
+      font-size: 1.05rem;
+      line-height: 1.75;
+    }
+  }
+
   /* ── 2100px — font-size adjustments only ────────────────────── */
   @media (max-width: 2100px) {
     .stageTitle {
       font-size: 1.85rem;
+    }
+  }
+
+  /* ── 1025–1400px — mid-range tightening ─────────────────────── */
+  @media (max-width: 1400px) and (min-width: 1025px) {
+    .companyBody {
+      font-size: clamp(0.88rem, 1.15vw, 1.15rem);
+      line-height: 1.6;
+    }
+
+    .techBody {
+      font-size: clamp(0.88rem, 1.15vw, 1.15rem);
+      line-height: 1.6;
+      margin-bottom: 1.5rem;
+    }
+
+    .techBenefits {
+      gap: 1.25rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .techBenefitDesc {
+      font-size: 0.85rem;
+      line-height: 1.5;
     }
   }
   

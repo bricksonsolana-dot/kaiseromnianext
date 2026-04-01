@@ -13,10 +13,17 @@
   line-height: clamp(1.55, 1.55 + 0.35 * 1, 1.9);
 }
 
-/* ── Large displays — text can breathe fully ─────────────────────── */
-@media (min-width: 1800px) {
+/* ── Large displays (27″+) — text can breathe fully ─────────────── */
+@media (min-width: 2400px) {
   .introPara {
-    font-size: 1.5rem;
+    font-size: 1.85rem;
+    line-height: 1.95;
+  }
+}
+
+@media (min-width: 1800px) and (max-width: 2399px) {
+  .introPara {
+    font-size: 1.6rem;
     line-height: 1.9;
   }
 }
