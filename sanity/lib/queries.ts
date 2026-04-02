@@ -7,7 +7,8 @@ export const homePageQuery = groq`
       titleLine1,
       titleLine2,
       subtitle,
-      "backgroundImage": backgroundImage.asset->url
+      "backgroundImage": backgroundImage.asset->url,
+      "backgroundImageMobile": backgroundImageMobile.asset->url
     },
     servicesSection,
     services[] {

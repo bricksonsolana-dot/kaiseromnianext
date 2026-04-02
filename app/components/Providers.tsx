@@ -22,7 +22,7 @@ function ScrollToTop() {
   return null;
 }
 
-export default function Providers({ children }: { children: ReactNode }) {
+export default function Providers({ children, locale }: { children: ReactNode; locale?: string }) {
   const pathname = usePathname();
   const isStudio = pathname.startsWith('/admin');
 
@@ -31,7 +31,7 @@ export default function Providers({ children }: { children: ReactNode }) {
   }
 
   return (
-    <LanguageProvider>
+    <LanguageProvider locale={locale}>
       <ScrollToTop />
 
       {/* Global visual effects */}

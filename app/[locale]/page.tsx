@@ -1,4 +1,6 @@
 import type { Metadata } from 'next';
+import { client } from '@/sanity/lib/client';
+import { homePageQuery, featuredProjectsQuery } from '@/sanity/lib/queries';
 import HomeClient from '@/app/HomeClient';
 
 const BASE_URL = 'https://kaiser-omnia.gr';
@@ -63,6 +65,13 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   };
 }
 
-export default function HomePage() {
-  return <HomeClient />;
+export const revalidate = 3600;
+
+export default async function HomePage() {
+  const [sanityData, featuredProjects] = await Promise.all([
+    client.fetch(homePageQuery).catch(() => null),
+    client.fetch(featuredProjectsQuery).catch(() => []),
+  ]);
+
+  return <HomeClient sanityData={sanityData} featuredProjects={featuredProjects} />;
 }

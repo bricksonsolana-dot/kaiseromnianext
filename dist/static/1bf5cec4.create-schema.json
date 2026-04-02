@@ -1,0 +1,394 @@
+[
+  {
+    "fields": [
+      {
+        "name": "el",
+        "type": "string",
+        "title": "Greek"
+      },
+      {
+        "name": "en",
+        "type": "string",
+        "title": "English"
+      }
+    ],
+    "name": "localeString",
+    "type": "object",
+    "title": "Localized String"
+  },
+  {
+    "fields": [
+      {
+        "name": "el",
+        "type": "text",
+        "title": "Greek"
+      },
+      {
+        "name": "en",
+        "type": "text",
+        "title": "English"
+      }
+    ],
+    "name": "localeText",
+    "type": "object",
+    "title": "Localized Text"
+  },
+  {
+    "fields": [
+      {
+        "validation": [
+          {
+            "rules": [
+              {
+                "flag": "presence",
+                "constraint": "required"
+              }
+            ],
+            "level": "error"
+          }
+        ],
+        "name": "name",
+        "type": "localeString",
+        "title": "Project Name"
+      },
+      {
+        "name": "location",
+        "type": "localeString"
+      },
+      {
+        "name": "typeName",
+        "type": "localeString",
+        "title": "Project Type"
+      },
+      {
+        "options": {
+          "list": [
+            {
+              "title": "Residential",
+              "value": "residential"
+            },
+            {
+              "title": "Apartment",
+              "value": "apartment"
+            },
+            {
+              "title": "Commercial",
+              "value": "commercial"
+            },
+            {
+              "title": "Hotel",
+              "value": "hotel"
+            },
+            {
+              "title": "Public",
+              "value": "public"
+            },
+            {
+              "title": "Industrial",
+              "value": "industrial"
+            }
+          ]
+        },
+        "validation": [
+          {
+            "rules": [
+              {
+                "flag": "valid",
+                "constraint": [
+                  "residential",
+                  "apartment",
+                  "commercial",
+                  "hotel",
+                  "public",
+                  "industrial"
+                ]
+              },
+              {
+                "flag": "presence",
+                "constraint": "required"
+              }
+            ],
+            "level": "error"
+          }
+        ],
+        "name": "category",
+        "type": "string"
+      },
+      {
+        "validation": [
+          {
+            "rules": [
+              {
+                "flag": "presence",
+                "constraint": "required"
+              },
+              {
+                "flag": "min",
+                "constraint": 1
+              }
+            ],
+            "level": "error"
+          }
+        ],
+        "of": [
+          {
+            "options": {
+              "hotspot": true
+            },
+            "type": "image"
+          }
+        ],
+        "name": "images",
+        "type": "array"
+      },
+      {
+        "options": {
+          "list": [
+            {
+              "title": "Completed",
+              "value": "completed"
+            },
+            {
+              "title": "In Progress",
+              "value": "in-progress"
+            }
+          ]
+        },
+        "initialValue": "completed",
+        "name": "status",
+        "type": "string"
+      },
+      {
+        "name": "year",
+        "type": "string"
+      },
+      {
+        "description": "Lower numbers appear first",
+        "name": "order",
+        "type": "number",
+        "title": "Sort Order"
+      },
+      {
+        "initialValue": false,
+        "name": "featured",
+        "type": "boolean",
+        "title": "Featured on Home Page"
+      }
+    ],
+    "name": "project",
+    "type": "document"
+  },
+  {
+    "fields": [
+      {
+        "fields": [
+          {
+            "name": "tag",
+            "type": "string",
+            "title": "Tag Line"
+          },
+          {
+            "name": "titleLine1",
+            "type": "localeString"
+          },
+          {
+            "name": "titleLine2",
+            "type": "localeString"
+          },
+          {
+            "name": "subtitle",
+            "type": "localeText"
+          },
+          {
+            "options": {
+              "hotspot": true
+            },
+            "name": "backgroundImage",
+            "type": "image"
+          },
+          {
+            "options": {
+              "hotspot": true
+            },
+            "description": "Vertical image shown on mobile devices. Falls back to /og_vertical.png if not set.",
+            "name": "backgroundImageMobile",
+            "type": "image",
+            "title": "Hero Background (Mobile)"
+          }
+        ],
+        "name": "hero",
+        "type": "object",
+        "title": "Hero Section"
+      },
+      {
+        "fields": [
+          {
+            "name": "sectionTitle",
+            "type": "localeString"
+          },
+          {
+            "name": "viewAll",
+            "type": "localeString",
+            "title": "\"View All\" Link Text"
+          }
+        ],
+        "name": "servicesSection",
+        "type": "object",
+        "title": "Services Section Labels"
+      },
+      {
+        "of": [
+          {
+            "fields": [
+              {
+                "name": "code",
+                "type": "string",
+                "title": "Code (e.g. 001)"
+              },
+              {
+                "name": "name",
+                "type": "localeString"
+              },
+              {
+                "name": "description",
+                "type": "localeText"
+              }
+            ],
+            "type": "object",
+            "name": "service"
+          }
+        ],
+        "name": "services",
+        "type": "array"
+      },
+      {
+        "fields": [
+          {
+            "name": "sectionTitle",
+            "type": "localeString"
+          },
+          {
+            "name": "heading",
+            "type": "localeString"
+          },
+          {
+            "name": "body",
+            "type": "localeText",
+            "title": "Body Text"
+          },
+          {
+            "name": "cta",
+            "type": "localeString",
+            "title": "CTA Label"
+          },
+          {
+            "options": {
+              "hotspot": true
+            },
+            "name": "image",
+            "type": "image",
+            "title": "Company Photo"
+          }
+        ],
+        "name": "about",
+        "type": "object",
+        "title": "About Section"
+      },
+      {
+        "fields": [
+          {
+            "name": "sectionTitle",
+            "type": "localeString"
+          },
+          {
+            "name": "viewAll",
+            "type": "localeString",
+            "title": "\"View All\" Label"
+          }
+        ],
+        "name": "portfolio",
+        "type": "object",
+        "title": "Portfolio Section"
+      },
+      {
+        "fields": [
+          {
+            "name": "sectionTitle",
+            "type": "localeString"
+          },
+          {
+            "name": "body",
+            "type": "localeText",
+            "title": "Body Text"
+          },
+          {
+            "name": "cta",
+            "type": "localeString",
+            "title": "CTA Label"
+          },
+          {
+            "options": {
+              "hotspot": true
+            },
+            "name": "image",
+            "type": "image",
+            "title": "Section Image"
+          },
+          {
+            "of": [
+              {
+                "fields": [
+                  {
+                    "name": "title",
+                    "type": "localeString"
+                  },
+                  {
+                    "name": "desc",
+                    "type": "localeText",
+                    "title": "Description"
+                  }
+                ],
+                "type": "object",
+                "name": "benefit"
+              }
+            ],
+            "name": "benefits",
+            "type": "array"
+          }
+        ],
+        "name": "technology",
+        "type": "object",
+        "title": "Technology Section"
+      },
+      {
+        "fields": [
+          {
+            "name": "title",
+            "type": "localeString"
+          },
+          {
+            "name": "subtitle",
+            "type": "localeText"
+          },
+          {
+            "name": "btn",
+            "type": "localeString",
+            "title": "Button Label"
+          },
+          {
+            "options": {
+              "hotspot": true
+            },
+            "name": "backgroundImage",
+            "type": "image"
+          }
+        ],
+        "name": "cta",
+        "type": "object",
+        "title": "CTA Banner"
+      }
+    ],
+    "name": "homePage",
+    "type": "document"
+  }
+]

@@ -15,6 +15,13 @@ export const homePage = defineType({
         { name: 'titleLine2', title: 'Title Line 2', type: 'localeString' },
         { name: 'subtitle', title: 'Subtitle', type: 'localeText' },
         { name: 'backgroundImage', title: 'Background Image', type: 'image', options: { hotspot: true } },
+        {
+          name: 'backgroundImageMobile',
+          title: 'Hero Background (Mobile)',
+          type: 'image',
+          description: 'Vertical image shown on mobile devices. Falls back to /og_vertical.png if not set.',
+          options: { hotspot: true },
+        },
       ],
     }),
     defineField({
