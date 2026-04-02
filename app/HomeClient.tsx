@@ -5,14 +5,15 @@ import { useEffect, useRef, useState } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { useLanguage } from '@/app/context/LanguageContext';
-import translations from '@/app/translations/home'; // adjust path to match yours
+import translations from '@/app/translations/home';
 import styles from './HomePage.module.css';
 import { AnimatedDivider } from '@/app/components/AnimatedDivider/AnimatedDivider';
 import ParallaxImage from '@/app/components/ParallaxImage/ParallaxImage';
-import PageCTA from '@/app/components/PageCTA/PageCTA';
+import PageCTA from '@/app/components/PageCTA/PageCTA';          // ← from master
 
 // ── Helpers ─────────────────────────────────────────────────────────────────
 
+/** Prefix path with /en when the active language is English (from master) */
 function localePath(path: string, language: string) {
   if (language === 'en') {
     return path === '/' ? '/en' : `/en${path}`;
@@ -31,7 +32,7 @@ interface Service {
 }
 
 interface Project {
-  id: number;
+  id: string | number;
   nameEl: string;
   nameEn: string;
   locationEl: string;
@@ -40,7 +41,7 @@ interface Project {
   image: string;
 }
 
-// ── Static Data with js ────────────────────────────────────────────────────────────
+// ── Static Data (master's latest content, used as Sanity fallback) ─────────
 
 const ArrowRight = () => (
   <svg
@@ -156,20 +157,80 @@ const PROJECTS: Project[] = [
 
 // ── Component ──────────────────────────────────────────────────────────────
 
-export default function HomeClient() {
-  const { language } = useLanguage() as { language: Language; toggleLanguage: () => void };
+interface HomeClientProps {
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  sanityData?: any;
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  featuredProjects?: any[];
+}
+
+export default function HomeClient({
+  sanityData = null,
+  featuredProjects = [],
+}: HomeClientProps) {
+  const { language } = useLanguage() as {
+    language: Language;
+    toggleLanguage: () => void;
+  };
   const t = translations[language];
   const heroContentRef = useRef<HTMLDivElement>(null);
   const heroBgRef = useRef<HTMLDivElement>(null);
   const [openService, setOpenService] = useState<number | null>(null);
 
-  const services = SERVICES[language];
+  // ── Sanity helper ────────────────────────────────────────────
+  const pick = (
+    sanityField: { el?: string; en?: string } | null | undefined,
+    fallback: string
+  ): string => sanityField?.[language] || fallback;
+
+  // ── Services — Sanity → static fallback ──────────────────────
+  const services: Service[] =
+    sanityData?.services?.length > 0
+      ? sanityData.services.map(
+          (s: {
+            code: string;
+            name: { el: string; en: string };
+            description: { el: string; en: string };
+          }) => ({
+            code: s.code,
+            name: s.name?.[language] || '',
+            description: s.description?.[language] || '',
+          })
+        )
+      : SERVICES[language];
+
+  // ── Projects — Sanity → static fallback ──────────────────────
+  const displayProjects: Project[] =
+    featuredProjects.length > 0
+      ? featuredProjects.slice(0, 4).map(
+          (p: {
+            _id: string;
+            name?: { el: string; en: string };
+            location?: { el: string; en: string };
+            year?: string;
+            images?: string[];
+          }) => ({
+            id: p._id,
+            nameEl: p.name?.el || '',
+            nameEn: p.name?.en || '',
+            locationEl: p.location?.el || '',
+            locationEn: p.location?.en || '',
+            year: p.year || '',
+            image: p.images?.[0] || '',
+          })
+        )
+      : PROJECTS;
+
+  const projectPairs: Project[][] = [];
+  for (let i = 0; i < displayProjects.length; i += 2) {
+    projectPairs.push(displayProjects.slice(i, i + 2));
+  }
 
   const handleServiceToggle = (index: number) => {
     setOpenService(openService === index ? null : index);
   };
 
-  // Parallax scroll effect on hero
+  // ── Parallax scroll ──────────────────────────────────────────
   useEffect(() => {
     const onScroll = () => {
       const sy = window.scrollY;
@@ -187,33 +248,31 @@ export default function HomeClient() {
     return () => window.removeEventListener('scroll', onScroll);
   }, []);
 
-  // Pair up projects for the two-column row layout
-  const projectPairs: Project[][] = [
-    [PROJECTS[0], PROJECTS[1]],
-    [PROJECTS[2], PROJECTS[3]],
-  ];
-
+  // ─────────────────────────────────────────────────────────────
   return (
     <div data-testid="home-page">
 
-      {/* ── Hero ──────────────────────────────────────────────────── */}
+      {/* ── Hero ──────────────────────────────────────────────── */}
       <section className={styles.hero} data-testid="hero-section">
         <div ref={heroBgRef} className={styles.heroBg}>
-          {/*
-           * next/image requires explicit width + height (or fill).
-           * Use fill + object-cover when the parent is position:relative
-           * with a fixed height — which your hero almost certainly is.
-           */}
+          {/* Desktop hero – from master (with Sanity override) */}
           <Image
-            src="/images/home/homehero.png"
+            src={
+              sanityData?.hero?.backgroundImage ||
+              '/images/home/homehero.png'
+            }
             alt="Kaiser Omnia Construction"
             fill
             priority
             sizes="100vw"
             className={`${styles.heroBgImg} ${styles.heroDesktop}`}
           />
+          {/* Mobile hero – from master (with Sanity override) */}
           <Image
-            src="/og_vertical.png"
+            src={
+              sanityData?.hero?.backgroundImageMobile ||
+              '/og_vertical.png'
+            }
             alt="Kaiser Omnia Construction"
             fill
             priority
@@ -224,24 +283,33 @@ export default function HomeClient() {
         <div className={styles.heroOverlay} />
 
         <div ref={heroContentRef} className={styles.heroContent}>
-          <span className={styles.heroTag}>{t.hero.tag}</span>
+          <span className={styles.heroTag}>
+            {sanityData?.hero?.tag || t.hero.tag}
+          </span>
           <h1>
-            <span className={styles.heroHeadSpan}>{t.hero.titleLine1}</span>
+            <span className={styles.heroHeadSpan}>
+              {pick(sanityData?.hero?.titleLine1, t.hero.titleLine1)}
+            </span>
             <span className={`${styles.heroHeadSpan} ${styles.italic}`}>
-              {t.hero.titleLine2}
+              {pick(sanityData?.hero?.titleLine2, t.hero.titleLine2)}
             </span>
           </h1>
-          <p className={styles.heroSubtitle}>{t.hero.subtitle}</p>
+          <p className={styles.heroSubtitle}>
+            {pick(sanityData?.hero?.subtitle, t.hero.subtitle)}
+          </p>
         </div>
       </section>
 
-      {/* ── 01 Services ───────────────────────────────────────────── */}
+      {/* ── 01 Services ───────────────────────────────────────── */}
       <AnimatedDivider />
       <section className={styles.section} data-testid="services-section">
         <div className={styles.sectionHeader}>
           <span className={styles.sectionNum}>01</span>
           <h2 className={styles.sectionTitle}>
-            {language === 'el' ? 'Οι Υπηρεσίες μας' : 'Our Services'}
+            {pick(
+              sanityData?.servicesSection?.sectionTitle,
+              language === 'el' ? 'Οι Υπηρεσίες μας' : 'Our Services'
+            )}
           </h2>
         </div>
 
@@ -278,46 +346,67 @@ export default function HomeClient() {
         </div>
 
         <div className={styles.servicesFooter}>
-          <Link href={localePath('/services', language)} className="arrow-link">
-            {language === 'el' ? 'Όλες οι υπηρεσίες' : 'All services'}{' '}
+          <Link
+            href={localePath('/services', language)}
+            className="arrow-link"
+          >
+            {pick(
+              sanityData?.servicesSection?.viewAll,
+              language === 'el' ? 'Όλες οι υπηρεσίες' : 'All services'
+            )}{' '}
             <ArrowRight />
           </Link>
         </div>
       </section>
 
-      {/* ── 02 Company ────────────────────────────────────────────── */}
+      {/* ── 02 Company ────────────────────────────────────────── */}
       <AnimatedDivider />
       <section className={styles.section} data-testid="about-preview">
         <div className={styles.sectionHeader}>
           <span className={styles.sectionNum}>02</span>
-          <h2 className={styles.sectionTitle}>{t.about.sectionTitle}</h2>
+          <h2 className={styles.sectionTitle}>
+            {pick(sanityData?.about?.sectionTitle, t.about.sectionTitle)}
+          </h2>
         </div>
 
+        {/* Master's 3-slot grid layout */}
         <div className={styles.companyGrid}>
           <div className={styles.companyTitle}>
-            <h3 className={styles.companyHeading}>{t.about.abouttitleline}</h3>
+            <h3 className={styles.companyHeading}>
+              {pick(sanityData?.about?.heading, t.about.abouttitleline)}
+            </h3>
           </div>
           <div className={styles.companyImageWrap}>
             <ParallaxImage
-              src="/images/home/info.png"
+              src={sanityData?.about?.image || '/images/home/info.png'}
               alt="Kaiser Omnia construction"
             />
           </div>
           <div className={styles.companyText}>
-            <p className={styles.companyBody}>{t.about.body}</p>
-            <Link href={localePath('/company', language)} className="arrow-link">
-              {t.about.cta} <ArrowRight />
+            <p className={styles.companyBody}>
+              {pick(sanityData?.about?.body, t.about.body)}
+            </p>
+            <Link
+              href={localePath('/company', language)}
+              className="arrow-link"
+            >
+              {pick(sanityData?.about?.cta, t.about.cta)} <ArrowRight />
             </Link>
           </div>
         </div>
       </section>
 
-      {/* ── 03 Recent Projects ────────────────────────────────────── */}
+      {/* ── 03 Recent Projects ────────────────────────────────── */}
       <AnimatedDivider />
       <section className={styles.section} data-testid="projects-section">
         <div className={styles.sectionHeader}>
           <span className={styles.sectionNum}>03</span>
-          <h2 className={styles.sectionTitle}>{t.portfolio.sectionTitle}</h2>
+          <h2 className={styles.sectionTitle}>
+            {pick(
+              sanityData?.portfolio?.sectionTitle,
+              t.portfolio.sectionTitle
+            )}
+          </h2>
         </div>
 
         <div className={styles.projectsRows}>
@@ -326,7 +415,11 @@ export default function HomeClient() {
               {idx > 0 && <AnimatedDivider />}
               <div className={styles.projectPair}>
                 {pair.map((p) => (
-                  <Link key={p.id} href={localePath('/projects', language)} className={styles.projectCard}>
+                  <Link
+                    key={p.id}
+                    href={localePath('/projects', language)}
+                    className={styles.projectCard}
+                  >
                     <div className={styles.projectImageWrap}>
                       <ParallaxImage
                         src={p.image}
@@ -353,49 +446,76 @@ export default function HomeClient() {
         </div>
 
         <div style={{ marginTop: '2.5rem' }}>
-          <Link href={localePath('/projects', language)} className="arrow-link">
-            {t.portfolio.viewAll} <ArrowRight />
+          <Link
+            href={localePath('/projects', language)}
+            className="arrow-link"
+          >
+            {pick(sanityData?.portfolio?.viewAll, t.portfolio.viewAll)}{' '}
+            <ArrowRight />
           </Link>
         </div>
       </section>
 
-      {/* ── 04 Technology ─────────────────────────────────────────── */}
+      {/* ── 04 Technology ─────────────────────────────────────── */}
       <AnimatedDivider />
       <section className={styles.techSection} data-testid="tech-preview">
         <div className={styles.sectionHeader}>
           <span className={styles.sectionNum}>04</span>
-          <h2 className={styles.sectionTitle}>{t.technology.sectionTitle}</h2>
+          <h2 className={styles.sectionTitle}>
+            {pick(
+              sanityData?.technology?.sectionTitle,
+              t.technology.sectionTitle
+            )}
+          </h2>
         </div>
 
         <div className={styles.techGrid}>
           <div>
-            <p className={styles.techBody}>{t.technology.body}</p>
+            <p className={styles.techBody}>
+              {pick(sanityData?.technology?.body, t.technology.body)}
+            </p>
             <div className={styles.techBenefits}>
-              {t.technology.benefits.map((b, i) => (
+              {(sanityData?.technology?.benefits?.length > 0
+                ? sanityData.technology.benefits.map(
+                    (b: {
+                      title?: { el: string; en: string };
+                      desc?: { el: string; en: string };
+                    }) => ({
+                      title: b.title?.[language] || '',
+                      desc: b.desc?.[language] || '',
+                    })
+                  )
+                : t.technology.benefits
+              ).map((b: { title: string; desc: string }, i: number) => (
                 <div key={i} className={styles.techBenefit}>
                   <span className={styles.techBenefitTitle}>{b.title}</span>
                   <p className={styles.techBenefitDesc}>{b.desc}</p>
                 </div>
               ))}
             </div>
-            <Link href={localePath('/services', language)} className="arrow-link">
-              {t.technology.cta} <ArrowRight />
+            <Link
+              href={localePath('/services', language)}
+              className="arrow-link"
+            >
+              {pick(sanityData?.technology?.cta, t.technology.cta)}{' '}
+              <ArrowRight />
             </Link>
           </div>
 
           <div className={styles.techImageWrap}>
             <ParallaxImage
-              src="/images/home/geranosmepanel.png"
+              src={
+                sanityData?.technology?.image ||
+                '/images/home/geranosmepanel.png'
+              }
               alt="Double Wall Technology"
-              
             />
           </div>
         </div>
       </section>
 
-      {/* ── CTA ───────────────────────────────────────────────────── */}
+      {/* ── CTA — using master's PageCTA component ────────────── */}
       <PageCTA />
-
     </div>
   );
 }

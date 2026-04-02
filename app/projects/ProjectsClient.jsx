@@ -1,7 +1,7 @@
 'use client';
 
 import { useRef, useEffect, useState } from 'react';
-import Image from 'next/image';
+import Image from 'next/image';                                    // ← from master
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation, Pagination } from 'swiper/modules';
 import 'swiper/css';
@@ -11,7 +11,7 @@ import { useLanguage } from '@/app/context/LanguageContext';
 import translations, { projectsMeta } from './translations';
 import styles from './ProjectsPage.module.css';
 import ParallaxImage from '@/app/components/ParallaxImage/ParallaxImage';
-import PageCTA from '@/app/components/PageCTA/PageCTA';
+import PageCTA from '@/app/components/PageCTA/PageCTA';            // ← from master
 
 // ── ProjectDivider ────────────────────────────────────────────────
 const ProjectDivider = ({ delay = 0 }) => {
@@ -65,22 +65,22 @@ const ProjectCard = ({ project, statusLabels }) => {
           loop={images.length > 1}
           className={styles.swiperInstance}
         >
+          {/* Master's optimisation: first slide = ParallaxImage, rest = plain Image */}
           {images.map((src, i) => (
             <SwiperSlide key={i}>
-              {i === 0
-                ? <ParallaxImage src={src} alt={`${project.name} 1`} />
-                : (
-                  <div className={styles.plainSlide}>
-                    <Image
-                      src={src}
-                      alt={`${project.name} ${i + 1}`}
-                      fill
-                      sizes="(max-width: 768px) 100vw, 50vw"
-                      style={{ objectFit: 'cover' }}
-                    />
-                  </div>
-                )
-              }
+              {i === 0 ? (
+                <ParallaxImage src={src} alt={`${project.name} 1`} />
+              ) : (
+                <div className={styles.plainSlide}>
+                  <Image
+                    src={src}
+                    alt={`${project.name} ${i + 1}`}
+                    fill
+                    sizes="(max-width: 768px) 100vw, 50vw"
+                    style={{ objectFit: 'cover' }}
+                  />
+                </div>
+              )}
             </SwiperSlide>
           ))}
         </Swiper>
@@ -94,6 +94,7 @@ const ProjectCard = ({ project, statusLabels }) => {
         </p>
         {project.status && (
           <span className={styles.projectStatus}>
+            {/* Master's statusLabel override, then generic lookup */}
             {project.statusLabel || statusLabels[project.status]}
           </span>
         )}
@@ -139,21 +140,35 @@ const ProjectPair = ({ projects, statusLabels }) => {
 };
 
 // ── Page ──────────────────────────────────────────────────────────
-export default function ProjectsClient() {
+export default function ProjectsClient({ sanityProjects = [] }) {
   const { language } = useLanguage();
   const t = translations[language];
   const [activeFilter, setActiveFilter] = useState('all');
 
-  const allProjects = projectsMeta.map((meta) => {
-    const text = t.projects.find((p) => p.id === meta.id) || {};
-    return {
-      ...meta,
-      name: text.name || '',
-      location: text.location || '',
-      typeName: text.type || '',
-      statusLabel: text.statusLabel || null,
-    };
-  });
+  // Sanity data → static fallback (from Sanity branch + master's statusLabel)
+  const allProjects =
+    sanityProjects.length > 0
+      ? sanityProjects.map((p) => ({
+          id: p._id,
+          category: p.category,
+          images: p.images || [],
+          status: p.status,
+          year: p.year,
+          name: p.name?.[language] || '',
+          location: p.location?.[language] || '',
+          typeName: p.typeName?.[language] || '',
+          statusLabel: null,             // Sanity projects use statusLabels lookup
+        }))
+      : projectsMeta.map((meta) => {
+          const text = t.projects.find((p) => p.id === meta.id) || {};
+          return {
+            ...meta,
+            name: text.name || '',
+            location: text.location || '',
+            typeName: text.type || '',
+            statusLabel: text.statusLabel || null,   // ← from master
+          };
+        });
 
   const filtered =
     activeFilter === 'all'
@@ -187,7 +202,9 @@ export default function ProjectsClient() {
           <button
             key={cat.id}
             onClick={() => setActiveFilter(cat.id)}
-            className={`${styles.filterBtn} ${activeFilter === cat.id ? styles.active : ''}`}
+            className={`${styles.filterBtn} ${
+              activeFilter === cat.id ? styles.active : ''
+            }`}
           >
             {cat.name}
           </button>
@@ -208,10 +225,10 @@ export default function ProjectsClient() {
         ))
       )}
 
+      {/* ── CTA — from master ─────────────────────────────────── */}
       <div className={styles.fullBleed}>
         <PageCTA />
       </div>
-
     </div>
   );
 }

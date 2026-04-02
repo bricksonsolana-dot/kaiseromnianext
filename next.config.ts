@@ -8,15 +8,14 @@ const securityHeaders = [
       "script-src 'self' 'unsafe-inline'",
       "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com",
       "font-src 'self' https://fonts.gstatic.com",
-      "img-src 'self' data: blob:",
-      "connect-src 'self' https://api.web3forms.com",
-      "frame-src 'self' https://www.google.com https://maps.google.com",
-      "frame-ancestors 'self' https://digitalfootprint.gr https://www.digitalfootprint.gr",
+      "img-src 'self' data: blob: https://cdn.sanity.io",
+      "connect-src 'self' https://*.sanity.io https://*.api.sanity.io",
+      "frame-ancestors 'none'",
     ].join("; "),
   },
   {
     key: "X-Frame-Options",
-    value: "ALLOW-FROM https://digitalfootprint.gr",
+    value: "DENY",
   },
   {
     key: "X-Content-Type-Options",
@@ -44,20 +43,30 @@ const nextConfig: NextConfig = {
   async headers() {
     return [
       {
-        source: "/(.*)",
+        // Permissive CSP for Sanity Studio
+        source: "/admin/:path*",
+        headers: [
+          {
+            key: "Content-Security-Policy",
+            value: "default-src *; script-src * 'unsafe-inline' 'unsafe-eval'; style-src * 'unsafe-inline'; img-src * data: blob:; font-src * data:; connect-src *; frame-src *; frame-ancestors 'self'",
+          },
+        ],
+      },
+      {
+        source: "/((?!admin).*)",
         headers: securityHeaders,
       },
     ];
   },
-  compress: true,
   images: {
-    formats: ["image/avif", "image/webp"],
-    deviceSizes: [640, 750, 828, 1080, 1200, 1920, 2048, 3840],
-    imageSizes: [16, 32, 48, 64, 96, 128, 256, 384],
     remotePatterns: [
       {
         protocol: "https",
         hostname: "images.unsplash.com",
+      },
+      {
+        protocol: "https",
+        hostname: "cdn.sanity.io",
       },
     ],
   },
