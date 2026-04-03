@@ -24,17 +24,8 @@ export const project = defineType({
     defineField({
       name: 'category',
       title: 'Category',
-      type: 'string',
-      options: {
-        list: [
-          { title: 'Residential', value: 'residential' },
-          { title: 'Apartment', value: 'apartment' },
-          { title: 'Commercial', value: 'commercial' },
-          { title: 'Hotel', value: 'hotel' },
-          { title: 'Public', value: 'public' },
-          { title: 'Industrial', value: 'industrial' },
-        ],
-      },
+      type: 'reference',
+      to: [{ type: 'projectCategory' }],
       validation: (rule) => rule.required(),
     }),
     defineField({
@@ -73,6 +64,13 @@ export const project = defineType({
       type: 'boolean',
       initialValue: false,
     }),
+    defineField({
+      name: 'featuredOrder',
+      title: 'Homepage Sort Order',
+      type: 'number',
+      description: 'Order for featured projects on the homepage (lower numbers appear first)',
+      hidden: ({ document }) => !document?.featured,
+    }),
   ],
   orderings: [
     {
@@ -84,7 +82,7 @@ export const project = defineType({
   preview: {
     select: {
       title: 'name.en',
-      subtitle: 'category',
+      subtitle: 'category.name.en',
       media: 'images.0',
     },
   },

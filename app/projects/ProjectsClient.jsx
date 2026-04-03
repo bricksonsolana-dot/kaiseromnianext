@@ -140,10 +140,21 @@ const ProjectPair = ({ projects, statusLabels }) => {
 };
 
 // ── Page ──────────────────────────────────────────────────────────
-export default function ProjectsClient({ sanityProjects = [] }) {
+export default function ProjectsClient({ sanityProjects = [], sanityPageData = null, sanityCategories = [] }) {
   const { language } = useLanguage();
   const t = translations[language];
   const [activeFilter, setActiveFilter] = useState('all');
+
+  const pick = (sanityField, fallback) =>
+    sanityField?.[language] ?? fallback;
+
+  // Build filter buttons: "All" + dynamic categories from Sanity
+  const filterCategories = sanityCategories.length > 0
+    ? [
+        { id: 'all', name: pick(sanityPageData?.allLabel, t.categories[0]?.name ?? 'All') },
+        ...sanityCategories.map((c) => ({ id: c.slug, name: pick(c.name, c.slug) })),
+      ]
+    : t.categories;
 
   // Sanity data → static fallback (from Sanity branch + master's statusLabel)
   const allProjects =
@@ -185,12 +196,12 @@ export default function ProjectsClient({ sanityProjects = [] }) {
 
       {/* ── SECTION 1 — Page header ─────────────────────────── */}
       <header className={styles.header}>
-        <span className={styles.eyebrow}>{t.eyebrow}</span>
+        <span className={styles.eyebrow}>{pick(sanityPageData?.header?.eyebrow, t.eyebrow)}</span>
         <div className={styles.titleRow}>
-          <h1 className={styles.pageTitle}>{t.pageTitle}</h1>
+          <h1 className={styles.pageTitle}>{pick(sanityPageData?.header?.pageTitle, t.pageTitle)}</h1>
         </div>
-        {t.pageSubtitle && (
-          <p className={styles.pageSubtitle}>{t.pageSubtitle}</p>
+        {pick(sanityPageData?.header?.pageSubtitle, t.pageSubtitle) && (
+          <p className={styles.pageSubtitle}>{pick(sanityPageData?.header?.pageSubtitle, t.pageSubtitle)}</p>
         )}
       </header>
 
@@ -198,7 +209,7 @@ export default function ProjectsClient({ sanityProjects = [] }) {
 
       {/* ── SECTION 2 — Filter bar ──────────────────────────── */}
       <div className={styles.filterBar}>
-        {t.categories.map((cat) => (
+        {filterCategories.map((cat) => (
           <button
             key={cat.id}
             onClick={() => setActiveFilter(cat.id)}
@@ -215,11 +226,14 @@ export default function ProjectsClient({ sanityProjects = [] }) {
 
       {/* ── SECTION 3 — Project pairs ─────────────────────────── */}
       {pairs.length === 0 ? (
-        <p className={styles.emptyState}>{t.emptyState}</p>
+        <p className={styles.emptyState}>{pick(sanityPageData?.uiLabels?.emptyState, t.emptyState)}</p>
       ) : (
         pairs.map((pair, index) => (
           <div key={index}>
-            <ProjectPair projects={pair} statusLabels={t.statusLabels} />
+            <ProjectPair projects={pair} statusLabels={{
+              completed: pick(sanityPageData?.statusLabels?.completed, t.statusLabels.completed),
+              'in-progress': pick(sanityPageData?.statusLabels?.inProgress, t.statusLabels['in-progress']),
+            }} />
             <ProjectDivider />
           </div>
         ))

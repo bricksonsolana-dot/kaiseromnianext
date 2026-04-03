@@ -1,6 +1,8 @@
 import type { Metadata } from 'next';
 import ContactClient from '@/app/contact/ContactClient';
 import StructuredData from '@/app/components/StructuredData';
+import { client } from '@/sanity/lib/client';
+import { contactPageQuery } from '@/sanity/lib/queries';
 
 const BASE_URL = 'https://kaiser-omnia.gr';
 
@@ -80,11 +82,15 @@ const breadcrumbSchema = {
   ],
 };
 
-export default function ContactPage() {
+export const revalidate = 3600;
+
+export default async function ContactPage() {
+  const sanityData = await client.fetch(contactPageQuery).catch(() => null);
+
   return (
     <>
       <StructuredData schema={breadcrumbSchema} />
-      <ContactClient />
+      <ContactClient sanityData={sanityData} />
     </>
   );
 }

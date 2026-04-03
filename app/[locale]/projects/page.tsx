@@ -1,6 +1,6 @@
 import type { Metadata } from 'next';
 import { client } from '@/sanity/lib/client';
-import { projectsQuery } from '@/sanity/lib/queries';
+import { projectsQuery, projectsPageQuery, projectCategoriesQuery } from '@/sanity/lib/queries';
 import ProjectsClient from '@/app/projects/ProjectsClient';
 import StructuredData from '@/app/components/StructuredData';
 
@@ -85,12 +85,16 @@ const breadcrumbSchema = {
 export const revalidate = 3600;
 
 export default async function ProjectsPage() {
-  const projects = await client.fetch(projectsQuery).catch(() => []);
+  const [projects, pageData, categories] = await Promise.all([
+    client.fetch(projectsQuery).catch(() => []),
+    client.fetch(projectsPageQuery).catch(() => null),
+    client.fetch(projectCategoriesQuery).catch(() => []),
+  ]);
 
   return (
     <>
       <StructuredData schema={breadcrumbSchema} />
-      <ProjectsClient sanityProjects={projects} />
+      <ProjectsClient sanityProjects={projects} sanityPageData={pageData} sanityCategories={categories} />
     </>
   );
 }

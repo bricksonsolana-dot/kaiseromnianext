@@ -23,20 +23,23 @@ const STAGE_IMAGES = [
 
 const STAGE_PAIRS = [[0, 1], [2, 3], [4, 5], [6, 7]];
 
-export default function ServicesClient() {
+export default function ServicesClient({ sanityData = null }) {
   const { language } = useLanguage();
   const t = translations[language];
   const ht = homeTranslations[language];
+
+  const pick = (sanityField, fallback) =>
+    sanityField?.[language] || fallback;
 
   return (
     <div className={styles.page} data-testid="services-page">
 
       {/* ── Page hero ─────────────────────────────────────────── */}
       <div className={styles.hero}>
-        <span className={styles.heroEyebrow}>{t.eyebrow}</span>
+        <span className={styles.heroEyebrow}>{sanityData?.hero?.eyebrow || t.eyebrow}</span>
         <h1 className={styles.heroTitle}>
-          {t.titleLine1}<br />
-          <em>{t.titleLine2}</em>
+          {pick(sanityData?.hero?.titleLine1, t.titleLine1)}<br />
+          <em>{pick(sanityData?.hero?.titleLine2, t.titleLine2)}</em>
         </h1>
       </div>
 
@@ -44,13 +47,20 @@ export default function ServicesClient() {
 
       {/* ── Hero Image ──────────────────────────────────────── */}
       <div className={styles.heroImageWrap}>
-        <ParallaxImage src="/images/services/services.png" alt="Double Wall Technology" objectPosition="center 25%" />
+        <ParallaxImage src={sanityData?.heroImage || "/images/services/services.png"} alt="Double Wall Technology" objectPosition="center 25%" />
       </div>
 
       {/* ── 01 Services list ──────────────────────────────────── */}
       <AnimatedDivider />
       <div className={styles.servicesList}>
-        {t.services.map((s, i) => (
+        {(sanityData?.services?.length > 0
+          ? sanityData.services.map((s) => ({
+              num: s.num,
+              title: s.title?.[language] || '',
+              desc: s.desc?.[language] || '',
+            }))
+          : t.services
+        ).map((s, i) => (
           <div key={s.num}>
             <div className={styles.serviceRow}>
               <div>
@@ -68,49 +78,96 @@ export default function ServicesClient() {
 
       {/* ── 05 Construction Stages ────────────────────────────── */}
       <section className={homeStyles.stagesSection} data-testid="construction-stages">
-        <span className={styles.sectionBadge}>05</span>
-        <h2 className={styles.sectionTitle}>{ht.constructionStages.sectionTitle}</h2>
+        <span className={styles.sectionBadge}>
+          {sanityData?.process?.badge || '05'}
+        </span>
+        <h2 className={styles.sectionTitle}>
+          {pick(sanityData?.process?.title, ht.constructionStages.sectionTitle)}
+        </h2>
         <p className={homeStyles.stagesSubtitle} style={{ maxWidth: 'none' }}>
           {ht.constructionStages.subtitle}
         </p>
 
         <div className={homeStyles.stagesRows}>
-          {STAGE_PAIRS.map((pair, pairIdx) => {
-            const stages = pair
-              .map((imgIdx) => ({ stage: ht.constructionStages.stages[imgIdx], imgIdx }))
-              .filter(({ stage }) => Boolean(stage));
+          {(() => {
+            const sanitySteps = sanityData?.process?.steps;
+            const useSanity = sanitySteps?.length > 0 && sanitySteps.some((s) => s.image);
 
-            return (
-              <div key={pairIdx}>
-                {pairIdx > 0 && <AnimatedDivider />}
-                <div className={homeStyles.stagePairGrid}>
-                  {stages.map(({ stage, imgIdx }) => (
-                    <div key={stage.stage} className={homeStyles.stageCard}>
-                      <div className={homeStyles.stageImageWrap}>
-                        <ParallaxImage src={STAGE_IMAGES[imgIdx]} alt={stage.title} />
-                      </div>
-                      <div className={homeStyles.stageInfo}>
-                        <div className={homeStyles.stageLabel}>
-                          <span className={homeStyles.stageLabelLine} />
-                          {ht.constructionStages.stageLabel} {stage.stage}
+            if (useSanity) {
+              // Build pairs from Sanity steps
+              const pairs = [];
+              for (let i = 0; i < sanitySteps.length; i += 2) {
+                pairs.push(sanitySteps.slice(i, i + 2));
+              }
+              return pairs.map((pair, pairIdx) => (
+                <div key={pairIdx}>
+                  {pairIdx > 0 && <AnimatedDivider />}
+                  <div className={homeStyles.stagePairGrid}>
+                    {pair.map((step) => (
+                      <div key={step.step} className={homeStyles.stageCard}>
+                        <div className={homeStyles.stageImageWrap}>
+                          <ParallaxImage
+                            src={step.image}
+                            alt={step.title?.[language] || ''}
+                          />
                         </div>
-                        <h3 className={homeStyles.stageTitle}>{stage.title}</h3>
-                        <p className={homeStyles.stageDesc}>{stage.desc}</p>
-                        <div className={homeStyles.stageDetails}>
-                          {stage.details.map((d, i) => (
-                            <span key={i} className={homeStyles.stageDetail}>
-                              <span className={homeStyles.stageDetailDot} />
-                              {d}
-                            </span>
-                          ))}
+                        <div className={homeStyles.stageInfo}>
+                          <div className={homeStyles.stageLabel}>
+                            <span className={homeStyles.stageLabelLine} />
+                            {ht.constructionStages.stageLabel} {String(step.step).padStart(2, '0')}
+                          </div>
+                          <h3 className={homeStyles.stageTitle}>
+                            {step.title?.[language] || ''}
+                          </h3>
+                          <p className={homeStyles.stageDesc}>
+                            {step.desc?.[language] || ''}
+                          </p>
                         </div>
                       </div>
-                    </div>
-                  ))}
+                    ))}
+                  </div>
                 </div>
-              </div>
-            );
-          })}
+              ));
+            }
+
+            // Fallback: hardcoded home translations + static images
+            return STAGE_PAIRS.map((pair, pairIdx) => {
+              const stages = pair
+                .map((imgIdx) => ({ stage: ht.constructionStages.stages[imgIdx], imgIdx }))
+                .filter(({ stage }) => Boolean(stage));
+
+              return (
+                <div key={pairIdx}>
+                  {pairIdx > 0 && <AnimatedDivider />}
+                  <div className={homeStyles.stagePairGrid}>
+                    {stages.map(({ stage, imgIdx }) => (
+                      <div key={stage.stage} className={homeStyles.stageCard}>
+                        <div className={homeStyles.stageImageWrap}>
+                          <ParallaxImage src={STAGE_IMAGES[imgIdx]} alt={stage.title} />
+                        </div>
+                        <div className={homeStyles.stageInfo}>
+                          <div className={homeStyles.stageLabel}>
+                            <span className={homeStyles.stageLabelLine} />
+                            {ht.constructionStages.stageLabel} {stage.stage}
+                          </div>
+                          <h3 className={homeStyles.stageTitle}>{stage.title}</h3>
+                          <p className={homeStyles.stageDesc}>{stage.desc}</p>
+                          <div className={homeStyles.stageDetails}>
+                            {stage.details.map((d, i) => (
+                              <span key={i} className={homeStyles.stageDetail}>
+                                <span className={homeStyles.stageDetailDot} />
+                                {d}
+                              </span>
+                            ))}
+                          </div>
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              );
+            });
+          })()}
         </div>
       </section>
 

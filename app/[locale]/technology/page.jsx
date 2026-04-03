@@ -1,3 +1,5 @@
+import { client } from '@/sanity/lib/client';
+import { technologyPageQuery } from '@/sanity/lib/queries';
 import TechnologyClient from '@/app/technology/TechnologyClient';
 import StructuredData from '@/app/components/StructuredData';
 
@@ -75,11 +77,15 @@ const breadcrumbSchema = {
   ],
 };
 
-export default function TechnologyPage() {
+export const revalidate = 3600;
+
+export default async function TechnologyPage() {
+  const sanityData = await client.fetch(technologyPageQuery).catch(() => null);
+
   return (
     <>
       <StructuredData schema={breadcrumbSchema} />
-      <TechnologyClient />
+      <TechnologyClient sanityData={sanityData} />
     </>
   );
 }

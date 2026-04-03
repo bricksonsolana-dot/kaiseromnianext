@@ -1,6 +1,8 @@
 import type { Metadata } from 'next';
 import ServicesClient from '@/app/services/ServicesClient';
 import StructuredData from '@/app/components/StructuredData';
+import { client } from '@/sanity/lib/client';
+import { servicesPageQuery } from '@/sanity/lib/queries';
 
 const BASE_URL = 'https://kaiser-omnia.gr';
 
@@ -80,11 +82,15 @@ const breadcrumbSchema = {
   ],
 };
 
-export default function ServicesPage() {
+export const revalidate = 3600;
+
+export default async function ServicesPage() {
+  const sanityData = await client.fetch(servicesPageQuery).catch(() => null);
+
   return (
     <>
       <StructuredData schema={breadcrumbSchema} />
-      <ServicesClient />
+      <ServicesClient sanityData={sanityData} />
     </>
   );
 }

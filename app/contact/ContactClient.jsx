@@ -17,9 +17,13 @@ const EMPTY_FORM = {
   message: '',
 };
 
-export default function ContactClient() {
+export default function ContactClient({ sanityData = null }) {
   const { language } = useLanguage();
   const t = translations[language];
+
+  // Sanity helper — pick locale value or fall back to static string
+  const pick = (sanityField, fallback) =>
+    sanityField?.[language] || fallback;
 
   const [formData, setFormData] = useState(EMPTY_FORM);
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -79,9 +83,9 @@ export default function ContactClient() {
 
       {/* ── Header ────────────────────────────────────────────── */}
       <header className={styles.header} data-testid="contact-hero">
-        <span className={styles.eyebrow}>{t.breadcrumb.contact}</span>
-        <h1 className={styles.pageTitle}>{t.hero.title}</h1>
-        <p className={styles.pageSubtitle}>{t.hero.subtitle}</p>
+        <span className={styles.eyebrow}>{sanityData?.hero?.eyebrow || t.breadcrumb.contact}</span>
+        <h1 className={styles.pageTitle}>{pick(sanityData?.hero?.title, t.hero.title)}</h1>
+        <p className={styles.pageSubtitle}>{pick(sanityData?.hero?.subtitle, t.hero.subtitle)}</p>
       </header>
 
       <AnimatedDivider />
@@ -89,7 +93,7 @@ export default function ContactClient() {
       {/* ── Hero Image ────────────────────────────────────────── */}
       <div className={styles.heroImageWrap}>
         <ParallaxImage
-          src="/contact/contact1.png"
+          src={sanityData?.heroImage || '/contact/contact1.png'}
           alt="Contact"
           objectPosition="center 50%"
         />
@@ -100,31 +104,35 @@ export default function ContactClient() {
 
         {/* Address */}
         <div className={styles.infoCell}>
-          <span className={styles.infoCellLabel}>{t.info.address.title}</span>
+          <span className={styles.infoCellLabel}>{pick(sanityData?.info?.address?.title, t.info.address.title)}</span>
           <span className={styles.infoCellValue}>
-            {t.info.address.lines[0]}
+            {sanityData?.info?.address?.lines?.length > 0
+              ? (sanityData.info.address.lines[0]?.[language] || t.info.address.lines[0])
+              : t.info.address.lines[0]}
           </span>
           <span className={styles.infoCellMeta}>
-            {t.info.address.lines.slice(1).join('\n')}
+            {sanityData?.info?.address?.lines?.length > 1
+              ? sanityData.info.address.lines.slice(1).map((l) => l?.[language] || '').join('\n')
+              : t.info.address.lines.slice(1).join('\n')}
           </span>
         </div>
 
         {/* Phone */}
         <div className={styles.infoCell}>
-          <span className={styles.infoCellLabel}>{t.info.phone.title}</span>
+          <span className={styles.infoCellLabel}>{pick(sanityData?.info?.phone?.title, t.info.phone.title)}</span>
           <a
-            href={`tel:${t.info.phone.number.replace(/\s/g, '')}`}
+            href={`tel:${(sanityData?.info?.phone?.number || t.info.phone.number).replace(/\s/g, '')}`}
             className={styles.infoCellLink}
           >
-            {t.info.phone.number}
+            {sanityData?.info?.phone?.number || t.info.phone.number}
           </a>
-          <span className={styles.infoCellMeta}>{t.info.phone.hours}</span>
+          <span className={styles.infoCellMeta}>{pick(sanityData?.info?.phone?.hours, t.info.phone.hours)}</span>
         </div>
 
         {/* Email */}
         <div className={styles.infoCell}>
-          <span className={styles.infoCellLabel}>{t.info.email.title}</span>
-          {t.info.email.addresses.map((addr) => (
+          <span className={styles.infoCellLabel}>{pick(sanityData?.info?.email?.title, t.info.email.title)}</span>
+          {(sanityData?.info?.email?.addresses || t.info.email.addresses).map((addr) => (
             <a key={addr} href={`mailto:${addr}`} className={styles.infoCellLink}>
               {addr}
             </a>
@@ -136,8 +144,8 @@ export default function ContactClient() {
       {/* ── Form Section ──────────────────────────────────────── */}
       <section className={styles.formSection} data-testid="contact-form-section">
         <div className={styles.formHeader}>
-          <span className={styles.sectionBadge}>{t.form.sectionLabel}</span>
-          <h2 className={styles.sectionTitle}>{t.form.sectionTitle}</h2>
+          <span className={styles.sectionBadge}>{sanityData?.form?.sectionLabel || t.form.sectionLabel}</span>
+          <h2 className={styles.sectionTitle}>{pick(sanityData?.form?.sectionTitle, t.form.sectionTitle)}</h2>
         </div>
 
         {submitted ? (
@@ -295,26 +303,32 @@ export default function ContactClient() {
       <section data-testid="map-section">
         <div className={styles.mapWrap}>
           <iframe
-            src={t.map.src}
+            src={sanityData?.map?.src || t.map.src}
             width="100%"
             height="100%"
             style={{ border: 0 }}
             allowFullScreen
             loading="lazy"
             referrerPolicy="no-referrer-when-downgrade"
-            title={t.map.title}
+            title={pick(sanityData?.map?.title, t.map.title)}
           />
         </div>
       </section>
 
       {/* ── FAQ ───────────────────────────────────────────────── */}
       <section className={styles.faqSection} data-testid="faq-section">
-        <span className={styles.sectionBadge}>{t.faq.sectionLabel}</span>
-        <h2 className={styles.sectionTitle}>{t.faq.sectionTitle}</h2>
+        <span className={styles.sectionBadge}>{pick(sanityData?.faq?.sectionLabel, t.faq.sectionLabel)}</span>
+        <h2 className={styles.sectionTitle}>{pick(sanityData?.faq?.sectionTitle, t.faq.sectionTitle)}</h2>
 
         <div className={styles.faqList} data-testid="faq-accordion">
           <AnimatedDivider />
-          {t.faq.items.map((item, index) => (
+          {(sanityData?.faq?.items?.length > 0
+            ? sanityData.faq.items.map((item) => ({
+                question: item.question?.[language] || '',
+                answer: item.answer?.[language] || '',
+              }))
+            : t.faq.items
+          ).map((item, index) => (
             <div key={index} className={styles.faqEntry}>
               <button
                 className={`${styles.faqRow} ${openFaq === index ? styles.faqRowOpen : ''}`}
