@@ -85,7 +85,7 @@ const translations = {
         src: 'https://maps.google.com/maps?q=%CE%9C%CE%B5%CE%B3%CE%B1%CF%81%CE%AF%CE%B4%CE%BF%CF%82+125,+%CE%91%CF%83%CF%80%CF%81%CF%8C%CF%80%CF%85%CF%81%CE%B3%CE%BF%CF%82,+%CE%91%CF%84%CF%84%CE%B9%CE%BA%CE%AE,+%CE%95%CE%BB%CE%BB%CE%AC%CE%B4%CE%B1&t=&z=16&ie=UTF8&iwloc=&output=embed',
       },
   
-      // ── FAQ ──────────────────────────────────────────────────────
+      // ── FAQ ─────────────────────────────────────────────────────
       faq: {
         sectionLabel: 'Απορίες',
         sectionTitle: 'Συχνές Ερωτήσεις',
