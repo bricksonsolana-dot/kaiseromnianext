@@ -303,14 +303,14 @@ export default function ContactClient({ sanityData = null }) {
       <section data-testid="map-section">
         <div className={styles.mapWrap}>
           <iframe
-            src={sanityData?.map?.src || t.map.src}
+            src={t.map.src}
             width="100%"
             height="100%"
             style={{ border: 0 }}
             allowFullScreen
             loading="lazy"
             referrerPolicy="no-referrer-when-downgrade"
-            title={pick(sanityData?.map?.title, t.map.title)}
+            title={t.map.title}
           />
         </div>
       </section>
