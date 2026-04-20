@@ -82,12 +82,12 @@ export const Footer = () => {
           &copy; {new Date().getFullYear()} {t.bottom.copyright}
         </p>
         <a
-          href="https://digitalfootprint.gr"
+          href="https://devox.gr"
           target="_blank"
           rel="noopener noreferrer"
           className={styles.credit}
         >
-          Made by Digital Footprint
+          Made by Devox
         </a>
         <ul className={styles.legalLinks}>
           <li><Link href={localePath('/privacy-policy', language)}>{t.bottom.privacyPolicy}</Link></li>
