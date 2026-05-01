@@ -38,14 +38,8 @@ export const project = defineType({
     defineField({
       name: 'status',
       title: 'Status',
-      type: 'string',
-      options: {
-        list: [
-          { title: 'Completed', value: 'completed' },
-          { title: 'In Progress', value: 'in-progress' },
-        ],
-      },
-      initialValue: 'completed',
+      type: 'localeString',
+      description: 'Custom status text per project, e.g. "Completed", "In Progress", or "Completed | Participation in foundations". Leave blank to hide.',
     }),
     defineField({
       name: 'year',

@@ -163,12 +163,12 @@ export default function ProjectsClient({ sanityProjects = [], sanityPageData = n
           id: p._id,
           category: p.category,
           images: p.images || [],
-          status: p.status,
+          status: p.status?.[language] || null,
           year: p.year,
           name: p.name?.[language] || '',
           location: p.location?.[language] || '',
           typeName: p.typeName?.[language] || '',
-          statusLabel: null,             // Sanity projects use statusLabels lookup
+          statusLabel: p.status?.[language] || null,
         }))
       : projectsMeta.map((meta) => {
           const text = t.projects.find((p) => p.id === meta.id) || {};
