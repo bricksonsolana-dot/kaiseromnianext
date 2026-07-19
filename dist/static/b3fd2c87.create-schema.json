@@ -1,0 +1,1591 @@
+[
+  {
+    "fields": [
+      {
+        "name": "el",
+        "type": "string",
+        "title": "Greek"
+      },
+      {
+        "name": "en",
+        "type": "string",
+        "title": "English"
+      }
+    ],
+    "name": "localeString",
+    "type": "object",
+    "title": "Localized String"
+  },
+  {
+    "fields": [
+      {
+        "name": "el",
+        "type": "text",
+        "title": "Greek"
+      },
+      {
+        "name": "en",
+        "type": "text",
+        "title": "English"
+      }
+    ],
+    "name": "localeText",
+    "type": "object",
+    "title": "Localized Text"
+  },
+  {
+    "fields": [
+      {
+        "validation": [
+          {
+            "rules": [
+              {
+                "flag": "presence",
+                "constraint": "required"
+              }
+            ],
+            "level": "error"
+          }
+        ],
+        "description": "Headline name shown above each project card and on the detail. Bilingual (EL / EN). Required.",
+        "name": "name",
+        "type": "localeString",
+        "title": "Project Name"
+      },
+      {
+        "description": "Where the project is, e.g. \"Athens, Attica\" / \"Αθήνα, Αττική\". Shown in uppercase under the name.",
+        "name": "location",
+        "type": "localeString"
+      },
+      {
+        "description": "Short type label, e.g. \"Private Residence\" / \"Ιδιωτική Κατοικία\". Shown above the project name.",
+        "name": "typeName",
+        "type": "localeString",
+        "title": "Project Type"
+      },
+      {
+        "validation": [
+          {
+            "rules": [
+              {
+                "flag": "presence",
+                "constraint": "required"
+              }
+            ],
+            "level": "error"
+          }
+        ],
+        "description": "Pick from the Project Categories list. Categories drive the filter bar on the Projects page (e.g. \"Residences\", \"Tourism\", \"Collaborations\"). To add a new category, create a new Project Category document.",
+        "to": [
+          {
+            "type": "projectCategory"
+          }
+        ],
+        "name": "category",
+        "type": "reference"
+      },
+      {
+        "validation": [
+          {
+            "rules": [
+              {
+                "flag": "presence",
+                "constraint": "required"
+              },
+              {
+                "flag": "min",
+                "constraint": 1
+              }
+            ],
+            "level": "error"
+          }
+        ],
+        "description": "One or more project photos. The first image is the main card image; the rest become a swipeable gallery. Use landscape images, ideally ≥ 1600×1100px. Set the hotspot on each so the focal point stays visible when cropped.",
+        "of": [
+          {
+            "options": {
+              "hotspot": true
+            },
+            "type": "image"
+          }
+        ],
+        "name": "images",
+        "type": "array"
+      },
+      {
+        "description": "Custom status text shown on the project card, e.g. \"Completed\", \"In Progress\", or \"Completed | Participation in foundations\". Leave both languages blank to hide the status badge entirely.",
+        "name": "status",
+        "type": "localeString"
+      },
+      {
+        "description": "Project year, e.g. \"2024\". Shown next to the location. Same in both languages.",
+        "name": "year",
+        "type": "string"
+      },
+      {
+        "description": "Controls the position on the Projects page. Lower numbers appear first. Use 10, 20, 30… so you can insert new projects between existing ones without re-numbering everything.",
+        "name": "order",
+        "type": "number",
+        "title": "Sort Order"
+      },
+      {
+        "initialValue": false,
+        "description": "Turn on to show this project in the portfolio strip on the home page. Aim for 3–6 featured projects total.",
+        "name": "featured",
+        "type": "boolean",
+        "title": "Featured on Home Page"
+      },
+      {
+        "description": "Position in the home-page portfolio strip. Lower numbers appear first. Only relevant when \"Featured on Home Page\" is on.",
+        "hidden": "conditional",
+        "name": "featuredOrder",
+        "type": "number",
+        "title": "Homepage Sort Order"
+      }
+    ],
+    "name": "project",
+    "type": "document"
+  },
+  {
+    "fields": [
+      {
+        "options": {
+          "source": "name.en",
+          "maxLength": 96
+        },
+        "validation": [
+          {
+            "rules": [
+              {
+                "flag": "custom"
+              },
+              {
+                "flag": "presence",
+                "constraint": "required"
+              }
+            ],
+            "level": "error"
+          }
+        ],
+        "description": "Unique technical identifier used for filtering, e.g. \"residential\", \"hotel\". Use lowercase letters and dashes only — never change this on a category that already has projects assigned, or those projects will fall out of their filter.",
+        "name": "slug",
+        "type": "slug"
+      },
+      {
+        "validation": [
+          {
+            "rules": [
+              {
+                "flag": "presence",
+                "constraint": "required"
+              }
+            ],
+            "level": "error"
+          }
+        ],
+        "description": "The label shown on the filter button on the Projects page, e.g. \"Residences\" / \"Κατοικίες\". Bilingual.",
+        "name": "name",
+        "type": "localeString",
+        "title": "Display Name"
+      },
+      {
+        "initialValue": 0,
+        "description": "Controls the position in the filter bar. Lower numbers appear first (right after the \"All\" button). Use 10, 20, 30… to leave room between categories.",
+        "name": "order",
+        "type": "number",
+        "title": "Sort Order"
+      }
+    ],
+    "name": "projectCategory",
+    "type": "document",
+    "title": "Project Categories"
+  },
+  {
+    "fields": [
+      {
+        "description": "The first thing visitors see at the top of the home page — full-screen image with a tagline and the two-line title overlaid.",
+        "fields": [
+          {
+            "description": "Small label above the title, e.g. \"// Construction since 1984\". Same in both languages — keep it short.",
+            "name": "tag",
+            "type": "string",
+            "title": "Tag Line"
+          },
+          {
+            "description": "First line of the big hero headline. Aim for 1–3 words. Renders in italic.",
+            "name": "titleLine1",
+            "type": "localeString"
+          },
+          {
+            "description": "Second line of the headline. Aim for 1–3 words. Together with line 1 it forms the full title.",
+            "name": "titleLine2",
+            "type": "localeString"
+          },
+          {
+            "description": "One sentence under the title. Keep under ~120 characters or it wraps awkwardly on mobile.",
+            "name": "subtitle",
+            "type": "localeText"
+          },
+          {
+            "options": {
+              "hotspot": true
+            },
+            "description": "Full-bleed hero background on desktop and tablet. Use a wide landscape image, ideally ≥ 2400×1400px. Set the hotspot so the focal point stays visible across screen sizes.",
+            "name": "backgroundImage",
+            "type": "image",
+            "title": "Background Image (Desktop)"
+          },
+          {
+            "options": {
+              "hotspot": true
+            },
+            "description": "Vertical image shown on mobile devices. Use a portrait crop, ideally ≥ 1200×1600px. Falls back to /og_vertical.png if not set.",
+            "name": "backgroundImageMobile",
+            "type": "image",
+            "title": "Hero Background (Mobile)"
+          }
+        ],
+        "name": "hero",
+        "type": "object",
+        "title": "Hero Section"
+      },
+      {
+        "description": "Labels around the services list — section title above and the \"View All\" link below.",
+        "fields": [
+          {
+            "description": "E.g. \"What we do\" / \"Τι κάνουμε\".",
+            "name": "sectionTitle",
+            "type": "localeString"
+          },
+          {
+            "description": "Bottom-right link, e.g. \"View all services\" / \"Όλες οι υπηρεσίες\".",
+            "name": "viewAll",
+            "type": "localeString",
+            "title": "\"View All\" Link Text"
+          }
+        ],
+        "name": "servicesSection",
+        "type": "object",
+        "title": "Services Section Labels"
+      },
+      {
+        "description": "The 4 service cards under the hero on the home page. Order here is the display order. Stick to exactly 4 for the layout to balance — fewer leaves gaps, more wraps to a second row.",
+        "of": [
+          {
+            "fields": [
+              {
+                "description": "Three-digit code shown above the service name (e.g. 001, 002, 003, 004). Same in both languages.",
+                "name": "code",
+                "type": "string"
+              },
+              {
+                "description": "Short service title, e.g. \"Architectural Design\". Keep under ~30 characters or the card breaks.",
+                "name": "name",
+                "type": "localeString"
+              },
+              {
+                "description": "1–2 sentences describing the service. Keep under ~200 characters in each language to avoid overflow on mobile.",
+                "name": "description",
+                "type": "localeText"
+              }
+            ],
+            "type": "object",
+            "name": "service"
+          }
+        ],
+        "name": "services",
+        "type": "array"
+      },
+      {
+        "description": "The \"About\" block on the home page — section title, headline, body paragraph, CTA button label, and a company photo.",
+        "fields": [
+          {
+            "description": "Eyebrow above the heading, e.g. \"// About us\".",
+            "name": "sectionTitle",
+            "type": "localeString"
+          },
+          {
+            "description": "The big bold line, e.g. \"40 years of building trust\".",
+            "name": "heading",
+            "type": "localeString"
+          },
+          {
+            "description": "2–4 sentences. Renders to the right of the company photo on desktop, below it on mobile.",
+            "name": "body",
+            "type": "localeText",
+            "title": "Body Text"
+          },
+          {
+            "description": "Button label that links to the Company page, e.g. \"Read more\".",
+            "name": "cta",
+            "type": "localeString",
+            "title": "CTA Label"
+          },
+          {
+            "options": {
+              "hotspot": true
+            },
+            "description": "Photograph of the team / office / a finished project. Landscape orientation, ideally ≥ 1600×1100px.",
+            "name": "image",
+            "type": "image",
+            "title": "Company Photo"
+          }
+        ],
+        "name": "about",
+        "type": "object",
+        "title": "About Section"
+      },
+      {
+        "description": "Header for the portfolio strip on the home page. The actual project cards come from individual Project documents marked \"Featured on Home Page\".",
+        "fields": [
+          {
+            "description": "Eyebrow above the project cards, e.g. \"// Selected projects\".",
+            "name": "sectionTitle",
+            "type": "localeString"
+          },
+          {
+            "description": "Link label that takes visitors to the full Projects page, e.g. \"All projects\".",
+            "name": "viewAll",
+            "type": "localeString",
+            "title": "\"View All\" Label"
+          }
+        ],
+        "name": "portfolio",
+        "type": "object",
+        "title": "Portfolio Section"
+      },
+      {
+        "description": "The Double-Wall System block on the home page — section title, body, image and a list of bullet benefits to the right.",
+        "fields": [
+          {
+            "description": "Eyebrow above the heading, e.g. \"// Technology\".",
+            "name": "sectionTitle",
+            "type": "localeString"
+          },
+          {
+            "description": "Short pitch about the building system. 2–3 sentences.",
+            "name": "body",
+            "type": "localeText",
+            "title": "Body Text"
+          },
+          {
+            "description": "Button label that links to the Technology page, e.g. \"Learn more\".",
+            "name": "cta",
+            "type": "localeString",
+            "title": "CTA Label"
+          },
+          {
+            "options": {
+              "hotspot": true
+            },
+            "description": "Photo of a build that shows the technology, e.g. wall section under construction. Landscape, ≥ 1400×900px.",
+            "name": "image",
+            "type": "image",
+            "title": "Section Image"
+          },
+          {
+            "description": "Bullet list of 3–5 benefits shown to the right of the section image. Keep titles short and consistent in style.",
+            "of": [
+              {
+                "fields": [
+                  {
+                    "description": "2–4 word bullet title, e.g. \"Energy efficiency\".",
+                    "name": "title",
+                    "type": "localeString"
+                  },
+                  {
+                    "description": "One line under the bullet title. ~80 characters max.",
+                    "name": "desc",
+                    "type": "localeText",
+                    "title": "Description"
+                  }
+                ],
+                "type": "object",
+                "name": "benefit"
+              }
+            ],
+            "name": "benefits",
+            "type": "array"
+          }
+        ],
+        "name": "technology",
+        "type": "object",
+        "title": "Technology Section"
+      },
+      {
+        "description": "Full-width call-to-action banner shown near the bottom of the home page, with a background image and a button.",
+        "fields": [
+          {
+            "description": "Big headline on the banner. ~6 words max.",
+            "name": "title",
+            "type": "localeString"
+          },
+          {
+            "description": "One sentence below the title.",
+            "name": "subtitle",
+            "type": "localeText"
+          },
+          {
+            "description": "Action button text, e.g. \"Get in touch\".",
+            "name": "btn",
+            "type": "localeString",
+            "title": "Button Label"
+          },
+          {
+            "options": {
+              "hotspot": true
+            },
+            "description": "Wide landscape image used as the banner background. Will be darkened automatically for text legibility. Ideally ≥ 2400×900px.",
+            "name": "backgroundImage",
+            "type": "image"
+          }
+        ],
+        "name": "cta",
+        "type": "object",
+        "title": "CTA Banner"
+      }
+    ],
+    "name": "homePage",
+    "type": "document"
+  },
+  {
+    "fields": [
+      {
+        "description": "Top of the Technology page — eyebrow, two-line headline and a hero image.",
+        "fields": [
+          {
+            "description": "Small uppercase label above the title, e.g. \"// Technology\".",
+            "name": "eyebrow",
+            "type": "localeString"
+          },
+          {
+            "description": "First line of the big headline. 1–3 words.",
+            "name": "titleLine1",
+            "type": "localeString"
+          },
+          {
+            "description": "Second line of the headline. 1–3 words.",
+            "name": "titleLine2",
+            "type": "localeString"
+          },
+          {
+            "options": {
+              "hotspot": true
+            },
+            "description": "Hero photo, ideally landscape ≥ 2400×1400px. Set the hotspot so the focal point stays visible across screen sizes.",
+            "name": "image",
+            "type": "image",
+            "title": "Hero Image"
+          }
+        ],
+        "name": "hero",
+        "type": "object",
+        "title": "Hero Section"
+      },
+      {
+        "description": "First section after the hero — introduces the construction technology with a badge, title, paragraphs and an image.",
+        "fields": [
+          {
+            "description": "Small label above the section title, e.g. \"01\".",
+            "name": "badge",
+            "type": "string"
+          },
+          {
+            "description": "Section title, e.g. \"What is the Double-Wall System?\".",
+            "name": "title",
+            "type": "localeString"
+          },
+          {
+            "description": "One paragraph per item. Bilingual (EL / EN).",
+            "of": [
+              {
+                "type": "localeText",
+                "title": "Localized Text"
+              }
+            ],
+            "name": "paragraphs",
+            "type": "array"
+          },
+          {
+            "options": {
+              "hotspot": true
+            },
+            "description": "Photo or diagram next to the paragraphs. Landscape, ≥ 1400×900px.",
+            "name": "image",
+            "type": "image"
+          }
+        ],
+        "name": "intro",
+        "type": "object",
+        "title": "Intro Section"
+      },
+      {
+        "description": "Second section — explains the benefits of the technology with the same structure as the Intro section.",
+        "fields": [
+          {
+            "description": "Small label, e.g. \"02\".",
+            "name": "badge",
+            "type": "string"
+          },
+          {
+            "description": "Section title, e.g. \"Why it matters\".",
+            "name": "title",
+            "type": "localeString"
+          },
+          {
+            "description": "One paragraph per item. Bilingual.",
+            "of": [
+              {
+                "type": "localeText",
+                "title": "Localized Text"
+              }
+            ],
+            "name": "paragraphs",
+            "type": "array"
+          },
+          {
+            "options": {
+              "hotspot": true
+            },
+            "description": "Photo or diagram. Landscape, ≥ 1400×900px.",
+            "name": "image",
+            "type": "image"
+          }
+        ],
+        "name": "introBenefits",
+        "type": "object",
+        "title": "Benefits Intro Section"
+      },
+      {
+        "description": "Side-by-side comparison table: Conventional construction vs. Double-Wall System, one row per feature.",
+        "fields": [
+          {
+            "description": "Small label, e.g. \"03\".",
+            "name": "badge",
+            "type": "string"
+          },
+          {
+            "description": "Section title, e.g. \"Comparison\".",
+            "name": "title",
+            "type": "localeString"
+          },
+          {
+            "description": "Column headers shown above the comparison rows.",
+            "fields": [
+              {
+                "description": "Left-column label, e.g. \"Conventional\" / \"Συμβατικό\".",
+                "name": "conventional",
+                "type": "localeString",
+                "title": "Conventional Header"
+              },
+              {
+                "description": "Right-column label, e.g. \"Double-Wall\" / \"Διπλό Τοίχο\".",
+                "name": "doubleWall",
+                "type": "localeString",
+                "title": "Double Wall Header"
+              }
+            ],
+            "name": "headers",
+            "type": "object",
+            "title": "Table Headers"
+          },
+          {
+            "description": "Each item is one comparison row. Order here is the display order. Keep cell text short — long values wrap awkwardly on mobile.",
+            "of": [
+              {
+                "fields": [
+                  {
+                    "description": "Row label on the left, e.g. \"Energy efficiency\".",
+                    "name": "feature",
+                    "type": "localeString"
+                  },
+                  {
+                    "description": "Value for the conventional column. Keep under ~30 characters.",
+                    "name": "conventional",
+                    "type": "localeString"
+                  },
+                  {
+                    "description": "Value for the Double-Wall column. Keep under ~30 characters.",
+                    "name": "doubleWall",
+                    "type": "localeString"
+                  }
+                ],
+                "type": "object",
+                "name": "comparisonRow"
+              }
+            ],
+            "name": "rows",
+            "type": "array",
+            "title": "Table Rows"
+          }
+        ],
+        "name": "comparison",
+        "type": "object",
+        "title": "Comparison Section"
+      },
+      {
+        "description": "Call-to-action banner at the bottom of the page with a title, subtitle and button.",
+        "fields": [
+          {
+            "description": "Banner headline. ~6 words max.",
+            "name": "title",
+            "type": "localeString"
+          },
+          {
+            "description": "One sentence below the title.",
+            "name": "subtitle",
+            "type": "localeText"
+          },
+          {
+            "description": "Action button text, e.g. \"Get in touch\".",
+            "name": "btn",
+            "type": "localeString",
+            "title": "Button Label"
+          }
+        ],
+        "name": "cta",
+        "type": "object",
+        "title": "CTA Section"
+      }
+    ],
+    "name": "technologyPage",
+    "type": "document"
+  },
+  {
+    "fields": [
+      {
+        "description": "Top of the Company page — small eyebrow line and the page title.",
+        "fields": [
+          {
+            "description": "Small uppercase label above the page title, e.g. \"// Company\". Same in both languages.",
+            "name": "eyebrow",
+            "type": "string"
+          },
+          {
+            "description": "The big page title, e.g. \"About us\" / \"Σχετικά με εμάς\".",
+            "name": "pageTitle",
+            "type": "localeString"
+          }
+        ],
+        "name": "header",
+        "type": "object"
+      },
+      {
+        "options": {
+          "hotspot": true
+        },
+        "description": "Full-width hero image at the top of the Company page. Landscape, ideally ≥ 2400×1400px. Use the hotspot to center the focal point.",
+        "name": "heroImage",
+        "type": "image"
+      },
+      {
+        "description": "First section: an \"About\" block with a small badge, a section title, and a list of paragraphs.",
+        "fields": [
+          {
+            "description": "Small label above the section title, e.g. \"01\" or \"About\". Same in both languages.",
+            "name": "badge",
+            "type": "string"
+          },
+          {
+            "description": "Section title, e.g. \"Who we are\".",
+            "name": "title",
+            "type": "localeString"
+          },
+          {
+            "description": "One paragraph per item. Add or remove items to control how many paragraphs render. Each item is bilingual (EL / EN).",
+            "of": [
+              {
+                "type": "localeText",
+                "title": "Localized Text"
+              }
+            ],
+            "name": "paragraphs",
+            "type": "array"
+          }
+        ],
+        "name": "about",
+        "type": "object",
+        "title": "01 — About"
+      },
+      {
+        "description": "Second section: a chronological list of company milestones rendered as a timeline.",
+        "fields": [
+          {
+            "description": "Small label above the section title, e.g. \"02\" or \"Timeline\".",
+            "name": "badge",
+            "type": "string"
+          },
+          {
+            "description": "Section title, e.g. \"Our journey\" / \"Η πορεία μας\".",
+            "name": "title",
+            "type": "localeString"
+          },
+          {
+            "description": "Each item is one milestone. Order here is the display order — keep them chronological (earliest first).",
+            "of": [
+              {
+                "fields": [
+                  {
+                    "description": "Just the year, e.g. \"1984\". Same in both languages.",
+                    "name": "year",
+                    "type": "string"
+                  },
+                  {
+                    "description": "Short milestone title, e.g. \"Company founded\".",
+                    "name": "title",
+                    "type": "localeString"
+                  },
+                  {
+                    "description": "1–2 sentences expanding on the milestone.",
+                    "name": "desc",
+                    "type": "localeText",
+                    "title": "Description"
+                  }
+                ],
+                "type": "object",
+                "name": "timelineEvent"
+              }
+            ],
+            "name": "events",
+            "type": "array"
+          }
+        ],
+        "name": "timeline",
+        "type": "object",
+        "title": "02 — Timeline"
+      },
+      {
+        "description": "Third section: three side-by-side cards for the company's Mission, Vision, and Values. Each card has its own title, body and image.",
+        "fields": [
+          {
+            "description": "Small label above the section title, e.g. \"03\".",
+            "name": "badge",
+            "type": "string"
+          },
+          {
+            "description": "Section title that introduces all three cards.",
+            "name": "title",
+            "type": "localeString"
+          },
+          {
+            "description": "First card. Use the same structure for all three cards.",
+            "fields": [
+              {
+                "description": "Card title, e.g. \"Mission\" / \"Αποστολή\".",
+                "name": "title",
+                "type": "localeString"
+              },
+              {
+                "description": "Body text on the card. 1–3 sentences. Keep similar in length across the three cards for visual balance.",
+                "name": "content",
+                "type": "localeText"
+              },
+              {
+                "options": {
+                  "hotspot": true
+                },
+                "description": "Square or 4:3 image for the card. Ideally ≥ 1000×1000px.",
+                "name": "image",
+                "type": "image"
+              }
+            ],
+            "name": "mission",
+            "type": "object"
+          },
+          {
+            "description": "Second card.",
+            "fields": [
+              {
+                "description": "Card title, e.g. \"Vision\" / \"Όραμα\".",
+                "name": "title",
+                "type": "localeString"
+              },
+              {
+                "description": "Body text on the card. 1–3 sentences.",
+                "name": "content",
+                "type": "localeText"
+              },
+              {
+                "options": {
+                  "hotspot": true
+                },
+                "description": "Square or 4:3 image. Ideally ≥ 1000×1000px.",
+                "name": "image",
+                "type": "image"
+              }
+            ],
+            "name": "vision",
+            "type": "object"
+          },
+          {
+            "description": "Third card.",
+            "fields": [
+              {
+                "description": "Card title, e.g. \"Values\" / \"Αξίες\".",
+                "name": "title",
+                "type": "localeString"
+              },
+              {
+                "description": "Body text on the card. 1–3 sentences.",
+                "name": "content",
+                "type": "localeText"
+              },
+              {
+                "options": {
+                  "hotspot": true
+                },
+                "description": "Square or 4:3 image. Ideally ≥ 1000×1000px.",
+                "name": "image",
+                "type": "image"
+              }
+            ],
+            "name": "values",
+            "type": "object"
+          }
+        ],
+        "name": "mvv",
+        "type": "object",
+        "title": "03 — Mission / Vision / Values"
+      }
+    ],
+    "name": "companyPage",
+    "type": "document"
+  },
+  {
+    "fields": [
+      {
+        "description": "Top of the Services page — small eyebrow and a two-line headline.",
+        "fields": [
+          {
+            "description": "Small uppercase label above the title, e.g. \"// Services\". Same in both languages.",
+            "name": "eyebrow",
+            "type": "string"
+          },
+          {
+            "description": "First line of the big headline. 1–3 words.",
+            "name": "titleLine1",
+            "type": "localeString"
+          },
+          {
+            "description": "Second line of the headline. 1–3 words.",
+            "name": "titleLine2",
+            "type": "localeString"
+          }
+        ],
+        "name": "hero",
+        "type": "object"
+      },
+      {
+        "options": {
+          "hotspot": true
+        },
+        "description": "Full-width hero image. Landscape, ideally ≥ 2400×1400px. Use the hotspot to center the focal point.",
+        "name": "heroImage",
+        "type": "image"
+      },
+      {
+        "description": "The numbered list of services on this page. Order here is the display order. Each item shows its number and title; clicking expands the description.",
+        "of": [
+          {
+            "fields": [
+              {
+                "description": "Two-digit number shown on the left, e.g. \"01\", \"02\". Same in both languages.",
+                "name": "num",
+                "type": "string",
+                "title": "Number"
+              },
+              {
+                "description": "Total count shown after the slash, e.g. \"/04\". Should be the same on every item — update all items if you add or remove one.",
+                "name": "total",
+                "type": "string"
+              },
+              {
+                "description": "Service name, e.g. \"Architectural Design\". Keep under ~40 characters.",
+                "name": "title",
+                "type": "localeString"
+              },
+              {
+                "description": "2–4 sentences describing the service. Renders when the row is expanded.",
+                "name": "desc",
+                "type": "localeText",
+                "title": "Description"
+              }
+            ],
+            "type": "object",
+            "name": "serviceItem"
+          }
+        ],
+        "name": "services",
+        "type": "array",
+        "title": "Services List"
+      },
+      {
+        "description": "Section that walks visitors through the construction process step-by-step, with a numbered list and an image per step.",
+        "fields": [
+          {
+            "description": "Small label above the section title, e.g. \"04\". Same in both languages.",
+            "name": "badge",
+            "type": "string"
+          },
+          {
+            "description": "Section title, e.g. \"Our process\".",
+            "name": "title",
+            "type": "localeString"
+          },
+          {
+            "description": "Each item is one step in the process. Order here is the display order — keep them sequential.",
+            "of": [
+              {
+                "fields": [
+                  {
+                    "description": "Step number, e.g. 1, 2, 3.",
+                    "name": "step",
+                    "type": "number",
+                    "title": "Step Number"
+                  },
+                  {
+                    "description": "Step title, e.g. \"Initial consultation\". Keep under ~40 characters.",
+                    "name": "title",
+                    "type": "localeString"
+                  },
+                  {
+                    "description": "2–3 sentences describing what happens in this step.",
+                    "name": "desc",
+                    "type": "localeText",
+                    "title": "Description"
+                  },
+                  {
+                    "options": {
+                      "hotspot": true
+                    },
+                    "description": "Photo for this step. Landscape, ideally ≥ 1400×900px.",
+                    "name": "image",
+                    "type": "image",
+                    "title": "Step Image"
+                  }
+                ],
+                "type": "object",
+                "name": "processStep"
+              }
+            ],
+            "name": "steps",
+            "type": "array"
+          }
+        ],
+        "name": "process",
+        "type": "object",
+        "title": "04 — Construction Process"
+      },
+      {
+        "description": "Call-to-action banner at the bottom with title, subtitle and a button.",
+        "fields": [
+          {
+            "description": "Banner headline. ~6 words max.",
+            "name": "title",
+            "type": "localeString"
+          },
+          {
+            "description": "One sentence below the title.",
+            "name": "subtitle",
+            "type": "localeText"
+          },
+          {
+            "description": "Action button text, e.g. \"Request a quote\".",
+            "name": "btn",
+            "type": "localeString",
+            "title": "Button Label"
+          }
+        ],
+        "name": "cta",
+        "type": "object",
+        "title": "CTA Section"
+      }
+    ],
+    "name": "servicesPage",
+    "type": "document"
+  },
+  {
+    "fields": [
+      {
+        "description": "Top of the Contact page — eyebrow, title, subtitle.",
+        "fields": [
+          {
+            "description": "Small uppercase label above the title, e.g. \"// Contact\". Same in both languages.",
+            "name": "eyebrow",
+            "type": "string"
+          },
+          {
+            "description": "Big page title, e.g. \"Get in touch\".",
+            "name": "title",
+            "type": "localeString"
+          },
+          {
+            "description": "Short tagline below the title. ~80 characters.",
+            "name": "subtitle",
+            "type": "localeString"
+          }
+        ],
+        "name": "hero",
+        "type": "object"
+      },
+      {
+        "options": {
+          "hotspot": true
+        },
+        "description": "Full-width hero image at the top of the page. Landscape, ideally ≥ 2400×1400px.",
+        "name": "heroImage",
+        "type": "image"
+      },
+      {
+        "description": "The \"address / phone / email\" block shown above the form.",
+        "fields": [
+          {
+            "description": "Postal address card. The \"Lines\" array renders each line on its own row.",
+            "fields": [
+              {
+                "description": "Card title, e.g. \"Address\" / \"Διεύθυνση\".",
+                "name": "title",
+                "type": "localeString"
+              },
+              {
+                "description": "One address line per item, e.g. street, city + postcode, country. Each item is bilingual.",
+                "of": [
+                  {
+                    "type": "localeString",
+                    "title": "Localized String"
+                  }
+                ],
+                "name": "lines",
+                "type": "array"
+              }
+            ],
+            "name": "address",
+            "type": "object"
+          },
+          {
+            "description": "Phone number card.",
+            "fields": [
+              {
+                "description": "Card title, e.g. \"Phone\" / \"Τηλέφωνο\".",
+                "name": "title",
+                "type": "localeString"
+              },
+              {
+                "description": "Full international phone number, e.g. \"+30 6948 209440\". Same in both languages.",
+                "name": "number",
+                "type": "string"
+              },
+              {
+                "description": "Office hours, e.g. \"Mon–Fri 09:00–18:00\".",
+                "name": "hours",
+                "type": "localeString"
+              }
+            ],
+            "name": "phone",
+            "type": "object"
+          },
+          {
+            "description": "Email card. Multiple addresses are stacked vertically.",
+            "fields": [
+              {
+                "description": "Card title, e.g. \"Email\".",
+                "name": "title",
+                "type": "localeString"
+              },
+              {
+                "description": "One email address per item. Same address in both languages — these are not translated.",
+                "of": [
+                  {
+                    "type": "string"
+                  }
+                ],
+                "name": "addresses",
+                "type": "array"
+              }
+            ],
+            "name": "email",
+            "type": "object"
+          }
+        ],
+        "name": "info",
+        "type": "object",
+        "title": "Contact Info"
+      },
+      {
+        "description": "Header above the contact form. The form fields themselves are coded in the page, not editable here.",
+        "fields": [
+          {
+            "description": "Small uppercase label above the form title, e.g. \"// Form\". Same in both languages.",
+            "name": "sectionLabel",
+            "type": "string"
+          },
+          {
+            "description": "The form section title, e.g. \"Tell us about your project\".",
+            "name": "sectionTitle",
+            "type": "localeString"
+          }
+        ],
+        "name": "form",
+        "type": "object",
+        "title": "Form Section"
+      },
+      {
+        "description": "Embedded Google Map of the office location.",
+        "fields": [
+          {
+            "description": "Section title above the map, e.g. \"Find us\".",
+            "name": "title",
+            "type": "localeString"
+          },
+          {
+            "validation": [
+              {
+                "rules": [
+                  {
+                    "flag": "uri",
+                    "constraint": {
+                      "options": {
+                        "scheme": [
+                          "/^http$/",
+                          "/^https$/"
+                        ],
+                        "allowRelative": false,
+                        "relativeOnly": false,
+                        "allowCredentials": false
+                      }
+                    }
+                  }
+                ],
+                "level": "error"
+              }
+            ],
+            "description": "Google Maps embed URL. To get this: open Google Maps → search the address → Share → Embed a map → copy the URL inside src=\"...\".",
+            "name": "src",
+            "type": "url",
+            "title": "Embed URL"
+          }
+        ],
+        "name": "map",
+        "type": "object"
+      },
+      {
+        "description": "Frequently-asked-questions accordion at the bottom of the page.",
+        "fields": [
+          {
+            "description": "Small label above the FAQ title, e.g. \"// FAQ\".",
+            "name": "sectionLabel",
+            "type": "localeString"
+          },
+          {
+            "description": "Section title, e.g. \"Frequently asked questions\".",
+            "name": "sectionTitle",
+            "type": "localeString"
+          },
+          {
+            "description": "Each item is one collapsible FAQ row. Order here is the display order.",
+            "of": [
+              {
+                "fields": [
+                  {
+                    "description": "The question, ending in a question mark.",
+                    "name": "question",
+                    "type": "localeString"
+                  },
+                  {
+                    "description": "1–4 sentences answering the question. Bilingual.",
+                    "name": "answer",
+                    "type": "localeText"
+                  }
+                ],
+                "type": "object",
+                "name": "faqItem"
+              }
+            ],
+            "name": "items",
+            "type": "array"
+          }
+        ],
+        "name": "faq",
+        "type": "object",
+        "title": "FAQ"
+      }
+    ],
+    "name": "contactPage",
+    "type": "document"
+  },
+  {
+    "fields": [
+      {
+        "description": "Top of the Projects page — eyebrow, title, subtitle. The actual project cards come from individual Project documents, not from this page.",
+        "fields": [
+          {
+            "description": "Small uppercase label above the title, e.g. \"// Projects\".",
+            "name": "eyebrow",
+            "type": "localeString"
+          },
+          {
+            "description": "Big page title, e.g. \"Selected projects\".",
+            "name": "pageTitle",
+            "type": "localeString"
+          },
+          {
+            "description": "One sentence below the title. ~120 characters max.",
+            "name": "pageSubtitle",
+            "type": "localeText"
+          }
+        ],
+        "name": "header",
+        "type": "object"
+      },
+      {
+        "description": "Label for the \"All\" filter button on the left of the filter bar (e.g. \"All\" / \"Όλα\"). Other filter buttons come from Project Categories.",
+        "name": "allLabel",
+        "type": "localeString",
+        "title": "\"All\" Filter Label"
+      },
+      {
+        "description": "Legacy fallback labels. Most projects now have their own custom Status text written directly on the Project document — these labels are only used for old projects that haven't been updated yet.",
+        "fields": [
+          {
+            "description": "Fallback label for \"completed\" status, e.g. \"Completed\" / \"Ολοκληρωμένο\".",
+            "name": "completed",
+            "type": "localeString"
+          },
+          {
+            "description": "Fallback label for \"in-progress\" status, e.g. \"In Progress\" / \"Σε Εξέλιξη\".",
+            "name": "inProgress",
+            "type": "localeString"
+          }
+        ],
+        "name": "statusLabels",
+        "type": "object",
+        "title": "Status Labels (legacy)"
+      },
+      {
+        "description": "Small bits of UI text used on this page.",
+        "fields": [
+          {
+            "description": "Hover label on each project card, e.g. \"View project\".",
+            "name": "viewProject",
+            "type": "localeString"
+          },
+          {
+            "description": "Label for the \"Show more\" / \"Load more\" button if more projects can be loaded.",
+            "name": "showMore",
+            "type": "localeString"
+          },
+          {
+            "description": "Message shown when no projects match the current filter, e.g. \"No projects in this category yet\".",
+            "name": "emptyState",
+            "type": "localeString"
+          }
+        ],
+        "name": "uiLabels",
+        "type": "object",
+        "title": "UI Labels"
+      },
+      {
+        "description": "Call-to-action banner at the bottom of the page with title, subtitle and button.",
+        "fields": [
+          {
+            "description": "Banner headline. ~6 words max.",
+            "name": "title",
+            "type": "localeString"
+          },
+          {
+            "description": "One sentence below the title.",
+            "name": "subtitle",
+            "type": "localeText"
+          },
+          {
+            "description": "Action button text, e.g. \"Get in touch\".",
+            "name": "btn",
+            "type": "localeString",
+            "title": "Button Label"
+          }
+        ],
+        "name": "cta",
+        "type": "object",
+        "title": "CTA Section"
+      }
+    ],
+    "name": "projectsPage",
+    "type": "document"
+  },
+  {
+    "fields": [
+      {
+        "description": "Welcome message and overall workflow notes shown at the top of the guide. Editors see this first when they open the guide.",
+        "of": [
+          {
+            "marks": {
+              "annotations": [
+                {
+                  "i18nTitleKey": "inputs.portable-text.annotation.link",
+                  "options": {
+                    "modal": {
+                      "type": "popover"
+                    }
+                  },
+                  "fields": [
+                    {
+                      "validation": [
+                        {
+                          "rules": [
+                            {
+                              "flag": "uri",
+                              "constraint": {
+                                "options": {
+                                  "scheme": [
+                                    "/^http$/",
+                                    "/^https$/",
+                                    "/^tel$/",
+                                    "/^mailto$/"
+                                  ],
+                                  "allowRelative": true,
+                                  "relativeOnly": false,
+                                  "allowCredentials": false
+                                }
+                              }
+                            }
+                          ],
+                          "level": "error"
+                        }
+                      ],
+                      "description": "A valid web, email, phone, or relative link.",
+                      "name": "href",
+                      "type": "url",
+                      "title": "Link"
+                    }
+                  ],
+                  "name": "link",
+                  "type": "object"
+                }
+              ],
+              "decorators": [
+                {
+                  "value": "strong",
+                  "title": "Strong"
+                },
+                {
+                  "value": "em",
+                  "title": "Italic"
+                },
+                {
+                  "value": "code",
+                  "title": "Code"
+                },
+                {
+                  "value": "underline",
+                  "title": "Underline"
+                },
+                {
+                  "value": "strike-through",
+                  "title": "Strike"
+                }
+              ]
+            },
+            "lists": [
+              {
+                "value": "bullet",
+                "title": "Bulleted list"
+              },
+              {
+                "value": "number",
+                "title": "Numbered list"
+              }
+            ],
+            "styles": [
+              {
+                "value": "normal",
+                "title": "Normal"
+              },
+              {
+                "value": "h1",
+                "title": "Heading 1"
+              },
+              {
+                "value": "h2",
+                "title": "Heading 2"
+              },
+              {
+                "value": "h3",
+                "title": "Heading 3"
+              },
+              {
+                "value": "h4",
+                "title": "Heading 4"
+              },
+              {
+                "value": "h5",
+                "title": "Heading 5"
+              },
+              {
+                "value": "h6",
+                "title": "Heading 6"
+              },
+              {
+                "value": "blockquote",
+                "title": "Quote"
+              }
+            ],
+            "of": [],
+            "type": "block"
+          }
+        ],
+        "name": "intro",
+        "type": "array",
+        "title": "Introduction"
+      },
+      {
+        "description": "Add one section per topic. Suggested sections: \"Editing the home page\", \"Adding a project\", \"Image guidelines\", \"Languages (EL / EN)\", \"Backups\", \"What to avoid\".",
+        "of": [
+          {
+            "fields": [
+              {
+                "description": "Short, descriptive — e.g. \"Adding a project\" or \"Image guidelines\".",
+                "name": "title",
+                "type": "string",
+                "title": "Section Title"
+              },
+              {
+                "description": "Rich text. Use the image button to drop in screenshots of the studio so editors can see what to click. Use code blocks for shell commands.",
+                "of": [
+                  {
+                    "marks": {
+                      "annotations": [
+                        {
+                          "i18nTitleKey": "inputs.portable-text.annotation.link",
+                          "options": {
+                            "modal": {
+                              "type": "popover"
+                            }
+                          },
+                          "fields": [
+                            {
+                              "validation": [
+                                {
+                                  "rules": [
+                                    {
+                                      "flag": "uri",
+                                      "constraint": {
+                                        "options": {
+                                          "scheme": [
+                                            "/^http$/",
+                                            "/^https$/",
+                                            "/^tel$/",
+                                            "/^mailto$/"
+                                          ],
+                                          "allowRelative": true,
+                                          "relativeOnly": false,
+                                          "allowCredentials": false
+                                        }
+                                      }
+                                    }
+                                  ],
+                                  "level": "error"
+                                }
+                              ],
+                              "description": "A valid web, email, phone, or relative link.",
+                              "name": "href",
+                              "type": "url",
+                              "title": "Link"
+                            }
+                          ],
+                          "name": "link",
+                          "type": "object"
+                        }
+                      ],
+                      "decorators": [
+                        {
+                          "value": "strong",
+                          "title": "Strong"
+                        },
+                        {
+                          "value": "em",
+                          "title": "Italic"
+                        },
+                        {
+                          "value": "code",
+                          "title": "Code"
+                        },
+                        {
+                          "value": "underline",
+                          "title": "Underline"
+                        },
+                        {
+                          "value": "strike-through",
+                          "title": "Strike"
+                        }
+                      ]
+                    },
+                    "lists": [
+                      {
+                        "value": "bullet",
+                        "title": "Bulleted list"
+                      },
+                      {
+                        "value": "number",
+                        "title": "Numbered list"
+                      }
+                    ],
+                    "styles": [
+                      {
+                        "value": "normal",
+                        "title": "Normal"
+                      },
+                      {
+                        "value": "h1",
+                        "title": "Heading 1"
+                      },
+                      {
+                        "value": "h2",
+                        "title": "Heading 2"
+                      },
+                      {
+                        "value": "h3",
+                        "title": "Heading 3"
+                      },
+                      {
+                        "value": "h4",
+                        "title": "Heading 4"
+                      },
+                      {
+                        "value": "h5",
+                        "title": "Heading 5"
+                      },
+                      {
+                        "value": "h6",
+                        "title": "Heading 6"
+                      },
+                      {
+                        "value": "blockquote",
+                        "title": "Quote"
+                      }
+                    ],
+                    "of": [],
+                    "type": "block"
+                  },
+                  {
+                    "options": {
+                      "hotspot": true
+                    },
+                    "type": "image"
+                  }
+                ],
+                "name": "body",
+                "type": "array"
+              }
+            ],
+            "type": "object",
+            "name": "guideSection"
+          }
+        ],
+        "name": "sections",
+        "type": "array"
+      }
+    ],
+    "name": "editorGuide",
+    "type": "document"
+  }
+]

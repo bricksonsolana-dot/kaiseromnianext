@@ -9,7 +9,8 @@ import { servicesPage } from './documents/servicesPage'
 import { contactPage } from './documents/contactPage'
 import { projectsPage } from './documents/projectsPage'
 import { projectCategory } from './documents/projectCategory'
+import { editorGuide } from './documents/editorGuide'
 
 export const schema: { types: SchemaTypeDefinition[] } = {
-  types: [localeString, localeText, project, projectCategory, homePage, technologyPage, companyPage, servicesPage, contactPage, projectsPage],
+  types: [localeString, localeText, project, projectCategory, homePage, technologyPage, companyPage, servicesPage, contactPage, projectsPage, editorGuide],
 }

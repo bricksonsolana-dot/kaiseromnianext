@@ -1,7 +1,7 @@
 import type { Metadata } from 'next';
 import ContactClient from '@/app/contact/ContactClient';
 import StructuredData from '@/app/components/StructuredData';
-import { client } from '@/sanity/lib/client';
+import { sanityFetch } from '@/sanity/lib/live';
 import { contactPageQuery } from '@/sanity/lib/queries';
 
 const BASE_URL = 'https://kaiser-omnia.gr';
@@ -82,10 +82,8 @@ const breadcrumbSchema = {
   ],
 };
 
-export const revalidate = 3600;
-
 export default async function ContactPage() {
-  const sanityData = await client.fetch(contactPageQuery).catch(() => null);
+  const { data: sanityData } = await sanityFetch({ query: contactPageQuery });
 
   return (
     <>

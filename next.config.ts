@@ -11,12 +11,12 @@ const securityHeaders = [
       "img-src 'self' data: blob: https://cdn.sanity.io",
       "connect-src 'self' https://*.sanity.io https://*.api.sanity.io",
       "frame-src https://maps.google.com https://www.google.com",
-      "frame-ancestors 'none'",
+      "frame-ancestors 'self'",
     ].join("; "),
   },
   {
     key: "X-Frame-Options",
-    value: "DENY",
+    value: "SAMEORIGIN",
   },
   {
     key: "X-Content-Type-Options",

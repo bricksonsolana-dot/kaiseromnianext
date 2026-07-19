@@ -1,5 +1,5 @@
 import type { Metadata } from 'next';
-import { client } from '@/sanity/lib/client';
+import { sanityFetch } from '@/sanity/lib/live';
 import { projectsQuery, projectsPageQuery, projectCategoriesQuery } from '@/sanity/lib/queries';
 import ProjectsClient from '@/app/projects/ProjectsClient';
 import StructuredData from '@/app/components/StructuredData';
@@ -82,19 +82,17 @@ const breadcrumbSchema = {
   ],
 };
 
-export const revalidate = 3600;
-
 export default async function ProjectsPage() {
-  const [projects, pageData, categories] = await Promise.all([
-    client.fetch(projectsQuery).catch(() => []),
-    client.fetch(projectsPageQuery).catch(() => null),
-    client.fetch(projectCategoriesQuery).catch(() => []),
+  const [{ data: projects }, { data: pageData }, { data: categories }] = await Promise.all([
+    sanityFetch({ query: projectsQuery }),
+    sanityFetch({ query: projectsPageQuery }),
+    sanityFetch({ query: projectCategoriesQuery }),
   ]);
 
   return (
     <>
       <StructuredData schema={breadcrumbSchema} />
-      <ProjectsClient sanityProjects={projects} sanityPageData={pageData} sanityCategories={categories} />
+      <ProjectsClient sanityProjects={projects ?? []} sanityPageData={pageData} sanityCategories={categories ?? []} />
     </>
   );
 }

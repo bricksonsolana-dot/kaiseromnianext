@@ -1,5 +1,5 @@
 import type { Metadata } from 'next';
-import { client } from '@/sanity/lib/client';
+import { sanityFetch } from '@/sanity/lib/live';
 import { homePageQuery, featuredProjectsQuery } from '@/sanity/lib/queries';
 import HomeClient from '@/app/HomeClient';
 
@@ -65,13 +65,11 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   };
 }
 
-export const revalidate = 3600;
-
 export default async function HomePage() {
-  const [sanityData, featuredProjects] = await Promise.all([
-    client.fetch(homePageQuery).catch(() => null),
-    client.fetch(featuredProjectsQuery).catch(() => []),
+  const [{ data: sanityData }, { data: featuredProjects }] = await Promise.all([
+    sanityFetch({ query: homePageQuery }),
+    sanityFetch({ query: featuredProjectsQuery }),
   ]);
 
-  return <HomeClient sanityData={sanityData} featuredProjects={featuredProjects} />;
+  return <HomeClient sanityData={sanityData} featuredProjects={featuredProjects ?? []} />;
 }

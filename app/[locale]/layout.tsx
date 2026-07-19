@@ -1,8 +1,11 @@
 import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
+import { draftMode } from 'next/headers';
 import { Cormorant_Garamond, Barlow, Barlow_Condensed } from 'next/font/google';
+import { VisualEditing } from 'next-sanity/visual-editing';
 import Providers from '@/app/components/Providers';
 import StructuredData from '@/app/components/StructuredData';
+import { SanityLive } from '@/sanity/lib/live';
 import '../globals.css';
 
 const locales = ['el', 'en'] as const;
@@ -153,6 +156,8 @@ export default async function RootLayout({
     notFound();
   }
 
+  const { isEnabled: isDraftMode } = await draftMode();
+
   return (
     <html
       lang={locale}
@@ -166,6 +171,8 @@ export default async function RootLayout({
         <Providers locale={locale}>
           {children}
         </Providers>
+        {isDraftMode && <VisualEditing />}
+        <SanityLive />
       </body>
     </html>
   );

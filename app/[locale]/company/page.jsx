@@ -1,6 +1,6 @@
 import CompanyClient from '@/app/company/CompanyClient';
 import StructuredData from '@/app/components/StructuredData';
-import { client } from '@/sanity/lib/client';
+import { sanityFetch } from '@/sanity/lib/live';
 import { companyPageQuery } from '@/sanity/lib/queries';
 
 const BASE_URL = 'https://kaiser-omnia.gr';
@@ -77,10 +77,8 @@ const breadcrumbSchema = {
   ],
 };
 
-export const revalidate = 3600;
-
 export default async function CompanyPage() {
-  const sanityData = await client.fetch(companyPageQuery).catch(() => null);
+  const { data: sanityData } = await sanityFetch({ query: companyPageQuery });
 
   return (
     <>

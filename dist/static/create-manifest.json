@@ -1,19 +1,19 @@
 {
   "version": 3,
-  "createdAt": "2026-04-02T02:17:55.512Z",
+  "createdAt": "2026-05-02T16:39:20.783Z",
   "workspaces": [
     {
       "name": "default",
-      "title": "Default",
+      "title": "Kaiser Omnia",
       "basePath": "/admin",
       "projectId": "8otz28ab",
       "dataset": "production",
-      "icon": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 32 32\"><rect width=\"32\" height=\"32\" rx=\"2\" fill=\"#f7d455\"></rect><text x=\"50%\" y=\"50%\" text-anchor=\"middle\" alignment-baseline=\"middle\" fill=\"hsla(47, 91%, 25%, 1)\" style=\"font-family:Inter, -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, Roboto, &quot;Helvetica Neue&quot;, &quot;Liberation Sans&quot;, Helvetica, Arial, system-ui, sans-serif;font-weight:500;font-size:13px;transform:translateY(1px)\">D</text></svg>",
+      "icon": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 32 32\"><rect width=\"32\" height=\"32\" rx=\"2\" fill=\"#0ff0a1\"></rect><text x=\"50%\" y=\"50%\" text-anchor=\"middle\" alignment-baseline=\"middle\" fill=\"hsla(159, 88%, 10%, 1)\" style=\"font-family:Inter, -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, Roboto, &quot;Helvetica Neue&quot;, &quot;Liberation Sans&quot;, Helvetica, Arial, system-ui, sans-serif;font-weight:500;font-size:13px;transform:translateY(1px)\">KO</text></svg>",
       "mediaLibrary": {
         "enabled": false
       },
-      "schema": "1bf5cec4.create-schema.json",
-      "tools": "ba47da56.create-tools.json"
+      "schema": "b3fd2c87.create-schema.json",
+      "tools": "3ef57399.create-tools.json"
     }
   ],
   "studioVersion": "4.22.0"
